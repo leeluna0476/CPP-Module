@@ -1,7 +1,7 @@
-NAME=megaphone
+NAME=phonebook
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror
-SRCS=megaphone.cpp
+SRCS=phonebook.cpp main.cpp
 OBJS=$(SRCS:.cpp=.o)
 
 all : $(NAME)
@@ -9,15 +9,15 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $^
 
-%.o : %.cpp
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+%.o : %.cpp %.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
 clean:
 	rm -fr $(OBJS)
 
 fclean: clean
-	rm -fr megaphone
+	rm -fr phonebook
 
 re: fclean
 	make all
