@@ -1,7 +1,10 @@
 #include <iostream>
 #include "phonebook.hpp"
 
-void	PhoneBook::add(void)
+void	PhoneBook::add(int idx)
 {
-	std::cout << "add" << std::endl;
+	this->contacts[idx].idx = idx;
+//	std::cout << this->contacts[idx].idx << std::endl;
+	
+
 }

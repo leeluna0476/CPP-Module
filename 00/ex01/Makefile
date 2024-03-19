@@ -1,6 +1,6 @@
 NAME=phonebook
 CXX=c++
-CXXFLAGS=-Wall -Wextra -Werror
+CXXFLAGS=-Wall -Wextra -Werror --std=c++98
 SRCS=phonebook.cpp main.cpp
 OBJS=$(SRCS:.cpp=.o)
 
