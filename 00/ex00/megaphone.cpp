@@ -1,5 +1,4 @@
 #include <iostream>
-//#include <cctype>
 
 void	change_to_uppercase(std::string &str)
 {

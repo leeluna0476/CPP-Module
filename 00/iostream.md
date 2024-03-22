@@ -29,3 +29,12 @@ std::cout << "hello world" << std::endl;
 - `cout`에 `endl` 조작자를 삽입하면 마치 `\n`을 삽입하는 것과 비슷하게 개행문자가 출력된다.
 - `endl`과 `\n`의 차이점은, `std::cout << '\n'`은 단순히 개행문자를 스트림 버퍼에 삽입을 하는 것 뿐이지만 `std::cout << std::endl`은 `'\n'`을 스트림 버퍼에 삽입하고 현재 스트림 버퍼에 있는 데이터를 즉각 출력시키도록 한다. `printf("\n");`, `printf("\n"); fflush();`와 비슷하다고 할 수 있겠다.
 - `endl`은 함수이다.
+
+## cin, >>
+```cpp
+int	var;
+
+std::cin >> var;
+```
+
+- `cin`은 C++ 표준 입력 스트림 객체이다.

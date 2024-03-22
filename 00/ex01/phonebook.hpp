@@ -3,9 +3,27 @@
 
 # include "contact.hpp"
 
+# define FIRST_NAME "[First name]: "
+# define LAST_NAME "[Last name]: "
+# define NICKNAME "[Nickname]: "
+# define PHONE_NUM "[Phone number]: "
+# define SECRET "[Darkest secret]: "
+
 class PhoneBook
 {
+	private:
+		int		cdx;
+		Contact contacts[8];
+		// add
+		void	get_input(std::string &str, std::string msg);
+		bool	check_number(std::string str, std::string msg);
+		void	print_errmsg(std::string str, std::string msg);
+		// search
+		void	print_contacts(void);
+		void	search_contacts(void);
+
 	public:
+		PhoneBook();
 		void	add(int idx);
 		void	search(void);
 };
