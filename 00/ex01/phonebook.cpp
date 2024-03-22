@@ -27,14 +27,9 @@ void	PhoneBook::search(void)
 	if (this->cdx == 0)
 	{
 		std::cout << "No database" << std::endl;
-		return ;
+		return;
 	}
 	std::cout << "Enter an index between 1 ~ " << this->cdx << std::endl;
 	print_contacts();
 	search_contacts();
 }
-/*
----------------------------------------------
-|     Index|First name| Last name|  Nickname|
----------------------------------------------
-*/

@@ -23,24 +23,6 @@ void	PhoneBook::print_errmsg(std::string str, std::string msg)
 	}
 }
 
-//void	PhoneBook::get_input(std::string &str, std::string msg)
-//{
-//	for (;;)
-//	{
-//		std::cout << msg;
-//		getline(std::cin, str);
-//
-//		if (!std::cin.eof() && !str.empty() && check_number(str, msg))
-//			break ;
-//		else
-//		{
-//			print_errmsg(str, msg);
-//			std::cin.clear();
-//			clearerr(stdin);
-//		}
-//	}
-//}
-
 std::string	PhoneBook::get_input(std::string msg)
 {
 	std::string	str;
@@ -51,7 +33,7 @@ std::string	PhoneBook::get_input(std::string msg)
 		getline(std::cin, str);
 
 		if (!std::cin.eof() && !str.empty() && check_number(str, msg))
-			break ;
+			break;
 		else
 		{
 			print_errmsg(str, msg);
@@ -106,7 +88,7 @@ void	PhoneBook::search_contacts(void)
 			std::cout << "  \nEnter a value" << std::endl;
 			std::cin.clear();
 			clearerr(stdin);
-			continue ;
+			continue;
 		}
 		std::istringstream iss(str);
 		if (!(iss >> idx) || idx < 1 || idx > this->cdx)
@@ -118,7 +100,7 @@ void	PhoneBook::search_contacts(void)
 			std::cout << this->contacts[idx].get_nickname() << std::endl;
 			std::cout << this->contacts[idx].get_phone_number() << std::endl;
 			std::cout << this->contacts[idx].get_darkest_secret() << std::endl;
-			break ;
+			break;
 		}
 	}
 }
