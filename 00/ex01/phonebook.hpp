@@ -15,17 +15,18 @@ class PhoneBook
 		int		cdx;
 		Contact contacts[8];
 		// add
-		void	get_input(std::string &str, std::string msg);
-		bool	check_number(std::string str, std::string msg);
-		void	print_errmsg(std::string str, std::string msg);
+		std::string	get_input(std::string msg);
+		bool		check_number(std::string str, std::string msg);
+		void		print_errmsg(std::string str, std::string msg);
 		// search
-		void	print_contacts(void);
-		void	search_contacts(void);
+		void		print_contacts(void);
+		void		search_contacts(void);
 
 	public:
 		PhoneBook();
-		void	add(int idx);
-		void	search(void);
+		~PhoneBook();
+		void		add(int idx);
+		void		search(void);
 };
 
 #endif

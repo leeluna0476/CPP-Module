@@ -1,27 +1,36 @@
 #include "phonebook.hpp"
+#include <iostream>
+#include <sstream>
 
 PhoneBook::PhoneBook()
 {
 	this->cdx = 0;
 }
 
+PhoneBook::~PhoneBook()
+{
+}
+
 void	PhoneBook::add(int idx)
 {
-	get_input(this->contacts[idx].first_name, FIRST_NAME);
-	get_input(this->contacts[idx].last_name, LAST_NAME);
-	get_input(this->contacts[idx].nickname, NICKNAME);
-	get_input(this->contacts[idx].phone_number, PHONE_NUM);
-	get_input(this->contacts[idx].darkest_secret, SECRET);
+	this->contacts[idx].set_first_name(get_input(FIRST_NAME));
+	this->contacts[idx].set_last_name(get_input(LAST_NAME));
+	this->contacts[idx].set_nickname(get_input(NICKNAME));
+	this->contacts[idx].set_phone_number(get_input(PHONE_NUM));
+	this->contacts[idx].set_darkest_secret(get_input(SECRET));
+
 	if (this->cdx < 8)
 		(this->cdx)++;
 }
 
-void	PhoneBook::search_contacts(void)
-{
-}
-
 void	PhoneBook::search(void)
 {
+	if (this->cdx == 0)
+	{
+		std::cout << "No database" << std::endl;
+		return ;
+	}
+	std::cout << "Enter an index between 1 ~ " << this->cdx << std::endl;
 	print_contacts();
 	search_contacts();
 }

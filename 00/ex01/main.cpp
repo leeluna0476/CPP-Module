@@ -4,7 +4,7 @@
 
 int	main(void)
 {
-	PhoneBook	phbk;
+	PhoneBook	phonebook;
 	std::string	cmd;
 	int			idx;
 
@@ -22,11 +22,11 @@ int	main(void)
 		}
 		if (cmd == "ADD")
 		{
-			phbk.add(idx);
+			phonebook.add(idx);
 			idx = (idx + 1) % 8;
 		}
 		else if (cmd == "SEARCH")
-			phbk.search();
+			phonebook.search();
 		else if (cmd == "EXIT")
 			break;
 		else
