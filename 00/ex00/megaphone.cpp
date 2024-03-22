@@ -1,33 +1,33 @@
 #include <iostream>
+//#include <cctype>
 
-void	change_to_uppercase(char *msg)
+void	change_to_uppercase(std::string &str)
 {
-	int	i;
-
-	i = 0;
-	while (msg[i])
+	for (std::string::iterator i = str.begin(); i != str.end(); i++)
 	{
-		if (msg[i] >= 97 && msg[i] <= 122)
-			msg[i] -= 32;
-		i++;
+		if ('a' <= *i && *i <= 'z')
+			*i -= 32;
 	}
 }
 
-void	shout(char *msg)
+void	shout(std::string str)
 {
-	std::cout << msg;
+	std::cout << str;
 }
 
 int	main(int ac, char **av)
 {
+	std::string	str;
+
 	if (ac < 2)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else
 	{
 		for (int i = 1; i < ac; i++)
 		{
-			change_to_uppercase(av[i]);
-			shout(av[i]);
+			str = av[i];
+			change_to_uppercase(str);
+			shout(str);
 		}
 		std::cout << std::endl;
 	}
