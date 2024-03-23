@@ -5,10 +5,15 @@
 
 bool	PhoneBook::check_number(std::string str, std::string msg)
 {
-	int	num;
-
-	std::istringstream iss(str);
-	return msg == PHONE_NUM ? iss >> num : true;
+	if (msg == PHONE_NUM)
+	{
+		for (std::string::iterator i = str.begin(); i != str.end(); i++)
+		{
+			if (*i < '0' || *i > '9')
+				return false;
+		}
+	}
+	return true;
 }
 
 void	PhoneBook::print_errmsg(std::string str, std::string msg)
