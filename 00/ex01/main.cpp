@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdio>
+#include <unistd.h>
 #include "phonebook.hpp"
 
 int	main(void)
@@ -8,6 +9,11 @@ int	main(void)
 	std::string	cmd;
 	int			idx;
 
+	if (!isatty(0))
+	{
+		std::cerr << "GUESS YOU ARE ATTEMPTING TO GIVE AN INPUT THROUGH A NON-TTY FILE! MERONG!" << std::endl;
+		return 1;
+	}
 	idx = 0;
 	for (;;)
 	{
