@@ -13,6 +13,7 @@ int	main(void)
 		std::cerr << "GUESS YOU ARE ATTEMPTING TO GIVE AN INPUT THROUGH A NON-TTY FILE! MERONG!" << std::endl;
 		return 1;
 	}
+
 	for (;;)
 	{
 		std::cout << ">>> ";
@@ -36,5 +37,6 @@ int	main(void)
 				std::cout << "Enter one of the followings:\n  ADD\n  SEARCH\n  EXIT" << std::endl;
 		}
 	}
+
 	return 0;
 }
