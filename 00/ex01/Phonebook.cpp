@@ -83,8 +83,8 @@ void	PhoneBook::print_contacts(void)
 		line = std::string(45, '-');
 		if (i + 1 != saved_contacts)
 		{
-			line.front() = '|';
-			line.back() = '|';
+			*(line.begin()) = '|';
+			*(line.end() + 1) = '|';
 		}
 		std::cout << line << std::endl;
 	}
