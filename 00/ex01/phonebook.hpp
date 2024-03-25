@@ -19,6 +19,7 @@ class PhoneBook
 		bool		check_number(std::string str, std::string msg);
 		void		print_errmsg(std::string str, std::string msg);
 		// search
+		std::string	print_data(std::string str);
 		void		print_contacts(void);
 		void		search_contacts(void);
 
