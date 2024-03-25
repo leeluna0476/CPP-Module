@@ -59,7 +59,6 @@ std::string	PhoneBook::get_printable_data(const std::string &str)
 		return str;
 }
 
-// << operator overload
 void	PhoneBook::print_contacts(void)
 {
 	std::string	line;
