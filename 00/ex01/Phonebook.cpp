@@ -1,4 +1,5 @@
 #include "Phonebook.hpp"
+#include <cstdio>
 #include "manipulator.hpp"
 #include <iostream>
 #include <iomanip>
