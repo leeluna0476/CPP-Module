@@ -71,7 +71,7 @@ void	PhoneBook::print_contacts(void)
 	for (int i = 0; i < saved_contacts; i++)
 	{
 		// print Index
-		std::cout << '|' << align_width << std::setw(10) << i + 1;
+		std::cout << '|' << align_width << i + 1;
 
 		// print First name
 		std::cout << '|' << align_width << get_printable_data(contacts[i].get_first_name());
