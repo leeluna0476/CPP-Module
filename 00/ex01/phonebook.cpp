@@ -5,7 +5,7 @@
 #include <sstream>
 #include <cctype>
 
-PhoneBook::PhoneBook() : max_contacts(8), curr_contacts(0), saved_contacts(0)
+PhoneBook::PhoneBook() : max_contacts(8), curr_contact(0), saved_contacts(0)
 {
 }
 
@@ -129,15 +129,15 @@ void	PhoneBook::search_contacts(void)
 // remove this?
 void	PhoneBook::add(void)
 {
-	contacts[curr_contacts].set_first_name(get_input("[First name]: "));
-	contacts[curr_contacts].set_last_name(get_input("[Last name]: "));
-	contacts[curr_contacts].set_nickname(get_input("[Nickname]: "));
-	contacts[curr_contacts].set_phone_number(get_input("[Phone number]: "));
-	contacts[curr_contacts].set_darkest_secret(get_input("[Darkest secret]: "));
+	contacts[curr_contact].set_first_name(get_input("[First name]: "));
+	contacts[curr_contact].set_last_name(get_input("[Last name]: "));
+	contacts[curr_contact].set_nickname(get_input("[Nickname]: "));
+	contacts[curr_contact].set_phone_number(get_input("[Phone number]: "));
+	contacts[curr_contact].set_darkest_secret(get_input("[Darkest secret]: "));
 
 	if (saved_contacts < max_contacts)
 		saved_contacts++;
-	curr_contacts = (curr_contacts + 1) % max_contacts;
+	curr_contact = (curr_contact + 1) % max_contacts;
 }
 
 void	PhoneBook::search(void)

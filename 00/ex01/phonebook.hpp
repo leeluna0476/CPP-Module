@@ -7,7 +7,7 @@ class PhoneBook
 {
 	private:
 		const int	max_contacts;
-		int			curr_contacts;
+		int			curr_contact;
 		int			saved_contacts;
 		Contact		contacts[8];
 
