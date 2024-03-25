@@ -1,8 +1,8 @@
 #include <iomanip>
 #include "manipulator.hpp"
 
-std::ostream	&align_width(std::ostream &cout)
+std::ostream	&align_width(std::ostream &ostream)
 {
-	cout << std::right << std::setw(10);
-	return cout;
+	ostream << std::right << std::setw(10);
+	return ostream;
 }
