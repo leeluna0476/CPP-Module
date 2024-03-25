@@ -1,5 +1,13 @@
 #include "Contact.hpp"
 
+Contact::Contact()
+{
+}
+
+Contact::~Contact()
+{
+}
+
 // getter
 std::string	Contact::get_first_name()
 {

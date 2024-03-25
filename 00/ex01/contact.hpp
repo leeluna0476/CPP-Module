@@ -15,6 +15,8 @@ class Contact
 	// remove getter, setter
 	// add constructor
 	public:
+		Contact();
+		~Contact();
 		// getter
 		std::string	get_first_name();
 		std::string	get_last_name();
