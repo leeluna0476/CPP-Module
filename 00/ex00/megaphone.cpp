@@ -6,11 +6,6 @@ void	change_to_uppercase(std::string &str)
 		*i = std::toupper(*i);
 }
 
-void	shout(std::string str)
-{
-	std::cout << str;
-}
-
 int	main(int ac, char **av)
 {
 	std::string	str;
@@ -23,7 +18,7 @@ int	main(int ac, char **av)
 		{
 			str = av[i];
 			change_to_uppercase(str);
-			shout(str);
+			std::cout << str;
 		}
 		std::cout << std::endl;
 	}
