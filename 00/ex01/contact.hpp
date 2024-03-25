@@ -12,6 +12,8 @@ class Contact
 		std::string phone_number;
 		std::string darkest_secret;
 
+	// remove getter, setter
+	// add constructor
 	public:
 		// getter
 		std::string	get_first_name();

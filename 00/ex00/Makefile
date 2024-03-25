@@ -17,7 +17,7 @@ clean:
 	rm -fr $(OBJS)
 
 fclean: clean
-	rm -fr megaphone
+	rm -fr $(NAME)
 
 re: fclean
 	make all

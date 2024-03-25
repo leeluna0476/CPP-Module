@@ -3,10 +3,7 @@
 void	change_to_uppercase(std::string &str)
 {
 	for (std::string::iterator i = str.begin(); i != str.end(); i++)
-	{
-		if (*i >= 'a' && *i <= 'z')
-			*i -= 32;
-	}
+		*i = std::toupper(*i);
 }
 
 void	shout(std::string str)

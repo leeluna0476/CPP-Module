@@ -1,32 +1,29 @@
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-# include "contact.hpp"
-
-# define FIRST_NAME "[First name]: "
-# define LAST_NAME "[Last name]: "
-# define NICKNAME "[Nickname]: "
-# define PHONE_NUM "[Phone number]: "
-# define SECRET "[Darkest secret]: "
+# include "Contact.hpp"
 
 class PhoneBook
 {
 	private:
-		int		cdx;
-		Contact contacts[8];
+		const int	max_contacts;
+		int			curr_contacts;
+		int			saved_contacts;
+		Contact		contacts[8];
+
 		// add
-		std::string	get_input(std::string msg);
-		bool		check_number(std::string str, std::string msg);
-		void		print_errmsg(std::string str, std::string msg);
+		std::string	get_input(const std::string &msg);
+		void		print_errmsg(const std::string &str, const bool num_checked);
+
 		// search
-		std::string	print_data(std::string str);
+		std::string	get_printable_data(const std::string &str);
 		void		print_contacts(void);
 		void		search_contacts(void);
 
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void		add(int idx);
+		void		add(void);
 		void		search(void);
 };
 
