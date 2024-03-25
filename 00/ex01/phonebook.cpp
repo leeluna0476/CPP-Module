@@ -1,4 +1,5 @@
 #include "Phonebook.hpp"
+#include "manipulator.hpp"
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -70,16 +71,16 @@ void	PhoneBook::print_contacts(void)
 	for (int i = 0; i < saved_contacts; i++)
 	{
 		// print Index
-		std::cout << '|' << std::right << std::setw(10) << i + 1;
+		std::cout << '|' << align_width << std::setw(10) << i + 1;
 
 		// print First name
-		std::cout << '|' << std::right << std::setw(10) << get_printable_data(contacts[i].get_first_name());
+		std::cout << '|' << align_width << get_printable_data(contacts[i].get_first_name());
 
 		// print Last name
-		std::cout << '|' << std::right << std::setw(10) << get_printable_data(contacts[i].get_last_name());
+		std::cout << '|' << align_width << get_printable_data(contacts[i].get_last_name());
 
 		// print Nickname
-		std::cout << '|' << std::right << std::setw(10) << get_printable_data(contacts[i].get_nickname()) << '|' << std::endl;
+		std::cout << '|' << align_width << get_printable_data(contacts[i].get_nickname()) << '|' << std::endl;
 
 		line = std::string(45, '-');
 		if (i + 1 != saved_contacts)
