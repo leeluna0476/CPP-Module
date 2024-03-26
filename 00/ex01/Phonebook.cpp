@@ -1,6 +1,6 @@
 #include "Phonebook.hpp"
-#include <cstdio>
 #include "manipulator.hpp"
+#include <cstdio>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
