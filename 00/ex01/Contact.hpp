@@ -14,7 +14,7 @@ class Contact
 
 	public:
 		Contact();
-		Contact(std::string arguments[5]);
+		Contact(const std::string arguments[5]);
 		~Contact();
 		// getter
 		std::string	get_first_name();

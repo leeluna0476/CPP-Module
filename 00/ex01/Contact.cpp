@@ -5,7 +5,7 @@ Contact::Contact(void)
 {
 }
 
-Contact::Contact(std::string arguments[5])
+Contact::Contact(const std::string arguments[5])
 {
 	first_name = arguments[0];
 	last_name = arguments[1];
