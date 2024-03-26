@@ -16,7 +16,7 @@ class Contact
 		Contact();
 		Contact(const std::string arguments[5]);
 		~Contact();
-		// getter
+
 		std::string	get_first_name();
 		std::string	get_last_name();
 		std::string	get_nickname();
