@@ -11,10 +11,7 @@ class Contact
 		std::string nickname;
 		std::string phone_number;
 		std::string darkest_secret;
-		std::string	get_input(const std::string &msg);
 
-	// remove getter, setter
-	// add constructor
 	public:
 		Contact();
 		Contact(std::string arguments[5]);
@@ -25,8 +22,6 @@ class Contact
 		std::string	get_nickname();
 		std::string	get_phone_number();
 		std::string	get_darkest_secret();
-
-		void	print_errmsg(const std::string &str, const bool num_checked);
 };
 
 #endif
