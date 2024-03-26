@@ -95,9 +95,11 @@ void	PhoneBook::search_contacts(void)
 	{
 		std::cout << "Enter an index between 1 ~ " << saved_contacts << ": ";
 		getline(std::cin, str);
-		if (std::cin.eof())
+		if (std::cin.eof() || str.empty())
 		{
-			std::cout << "  \nEnter a value" << std::endl;
+			if (std::cin.eof())
+				std::cout << "  \n";
+			std::cout << "Enter a value" << std::endl;
 			std::cin.clear();
 			clearerr(stdin);
 			continue;
