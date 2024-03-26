@@ -9,32 +9,38 @@ std::string	sed(std::string &line, const std::string &s1, const std::string &s2)
 	size_t		s2_len;
 	size_t		pos;
 
-	line_len = line.len();
-	s1_len = s1.len();
-	s2_len = s2.len();
+	line_len = line.length();
+	s1_len = s1.length();
+	s2_len = s2.length();
 	pos = 0;
 	while ((pos = line.find(s1, pos)) != std::string::npos)
 	{
 		substr = line.substr(0, pos);
-		line = substr + s2 + line[pos];
-		pos += s2_len;
+		std::cout << line[pos + s1_len] << std::endl;
+		line = substr + s2 + line[pos + s1_len];
+		std::cout << "After: " << line << std::endl;
+		pos = substr.length() + s2_len;
 	}
 	return line;
 }
 
-void	replace_str(const std::ofstream &fout, std::string s1, std::string s2)
+void	replace_str(std::ifstream &fin, std::ofstream &fout, std::string s1, std::string s2)
 {
 	std::string	line;
 
-	for (;;)
+	while (getline(fin, line))
 	{
-		getline(fout, line);
+		std::cout << "Before: " << line << std::endl;
+		if (fin.eof())
+			return ;
 		line = sed(line, s1, s2);
+		fout << line;
 	}
 }
 
 int	main(int ac, char **av)
 {
+	std::ifstream	fin;
 	std::ofstream	fout;
 	std::string		filename;
 	std::string		s1;
@@ -50,7 +56,17 @@ int	main(int ac, char **av)
 	s1 = av[2];
 	s2 = av[3];
 
-	fout.open(filename);
+	fin.open(filename);
+	if (!fin.is_open())
+		return 1;
+	fout.open(filename + ".replace");
+	if (!fout.is_open())
+	{
+		fin.close();
+		return 1;
+	}
 
+	replace_str(fin, fout, s1, s2);
+	fin.close();
 	fout.close();
 }
