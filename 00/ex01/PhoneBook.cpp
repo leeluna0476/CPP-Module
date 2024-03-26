@@ -63,9 +63,10 @@ void	PhoneBook::print_contacts(void)
 {
 	std::string	line;
 
-	std::cout << "---------------------------------------------\n";
+	line = std::string(45, '-');
+	std::cout << line << '\n';
 	std::cout << "|     Index|First name| Last name|  Nickname|\n";
-	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << line << std::endl;
 
 	for (int i = 0; i < saved_contacts; i++)
 	{
@@ -81,7 +82,6 @@ void	PhoneBook::print_contacts(void)
 		// print Nickname
 		std::cout << '|' << align_width << get_printable_data(contacts[i].get_nickname()) << '|' << std::endl;
 
-		line = std::string(45, '-');
 		if (i + 1 != saved_contacts)
 		{
 			*(line.begin()) = '|';
@@ -91,7 +91,6 @@ void	PhoneBook::print_contacts(void)
 	}
 }
 
-// << operator overload
 void	PhoneBook::search_contacts(void)
 {
 	int					idx;
