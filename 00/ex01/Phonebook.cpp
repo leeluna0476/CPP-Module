@@ -85,7 +85,7 @@ void	PhoneBook::print_contacts(void)
 		if (i + 1 != saved_contacts)
 		{
 			*(line.begin()) = '|';
-			*(line.end() + 1) = '|';
+			*(line.end() - 1) = '|';
 		}
 		std::cout << line << std::endl;
 	}
@@ -94,8 +94,8 @@ void	PhoneBook::print_contacts(void)
 // << operator overload
 void	PhoneBook::search_contacts(void)
 {
-	int			idx;
-	std::string	str;
+	int					idx;
+	std::string			str;
 
 	for (;;)
 	{
@@ -125,14 +125,16 @@ void	PhoneBook::search_contacts(void)
 	}
 }
 
-// remove this?
 void	PhoneBook::add(void)
 {
-	contacts[curr_contact].set_first_name(get_input("[First name]: "));
-	contacts[curr_contact].set_last_name(get_input("[Last name]: "));
-	contacts[curr_contact].set_nickname(get_input("[Nickname]: "));
-	contacts[curr_contact].set_phone_number(get_input("[Phone number]: "));
-	contacts[curr_contact].set_darkest_secret(get_input("[Darkest secret]: "));
+	std::string			arguments[5];
+	const std::string	msg[5] = { "[First name]: ", "[Last name]: ", "[Nickname]: ", "[Phone number]: ", "[Darkest secret]: " };
+
+	for (int i = 0; i < 5; i++)
+		arguments[i] = get_input(msg[i]);
+
+	Contact	temp(arguments);
+	contacts[curr_contact] = temp;
 
 	if (saved_contacts < max_contacts)
 		saved_contacts++;
