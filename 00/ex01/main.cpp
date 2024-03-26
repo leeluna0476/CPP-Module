@@ -10,7 +10,7 @@ int	main(void)
 
 	if (!isatty(0))
 	{
-		std::cerr << "GUESS YOU ARE ATTEMPTING TO GIVE AN INPUT THROUGH A NON-TTY FILE! MERONG!" << std::endl;
+		std::cerr << "GUESS YOU ARE ATTEMPTING TO GIVE AN INPUT THROUGH A NON-TTY FILE!" << std::endl;
 		return 1;
 	}
 

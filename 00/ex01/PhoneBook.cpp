@@ -64,6 +64,7 @@ void	PhoneBook::print_contacts(void)
 	std::string	line;
 
 	line = std::string(45, '-');
+
 	std::cout << line << '\n';
 	std::cout << "|     Index|First name| Last name|  Nickname|\n";
 	std::cout << line << std::endl;
@@ -71,11 +72,8 @@ void	PhoneBook::print_contacts(void)
 	for (int i = 0; i < saved_contacts; i++)
 	{
 		std::cout << '|' << align_width << i + 1;
-
 		std::cout << '|' << align_width << get_printable_data(contacts[i].get_first_name());
-
 		std::cout << '|' << align_width << get_printable_data(contacts[i].get_last_name());
-
 		std::cout << '|' << align_width << get_printable_data(contacts[i].get_nickname()) << '|' << std::endl;
 
 		if (i + 1 != saved_contacts)
