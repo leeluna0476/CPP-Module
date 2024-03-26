@@ -1,4 +1,4 @@
-NAME="HI THIS IS BRAIN"
+NAME=HI\ THIS\ IS\ BRAIN
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror --std=c++98
 SRCS=main.cpp
