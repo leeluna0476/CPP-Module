@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cstring>
 
 std::string	sed(std::string &line, const std::string &s1, const std::string &s2)
 {
@@ -37,7 +38,6 @@ int	main(int ac, char **av)
 {
 	std::ifstream	fin;
 	std::ofstream	fout;
-	std::string		filename;
 	std::string		s1;
 	std::string		s2;
 
@@ -47,20 +47,18 @@ int	main(int ac, char **av)
 		return 1;
 	}
 
-	filename = av[1];
-	s1 = av[2];
-	s2 = av[3];
-
-	fin.open(filename);
+	fin.open(av[1]);
 	if (!fin.is_open())
 		return 1;
-	fout.open(filename + ".replace");
+	fout.open(strcat(av[1], ".replace"));
 	if (!fout.is_open())
 	{
 		fin.close();
 		return 1;
 	}
 
+	s1 = av[2];
+	s2 = av[3];
 	replace_str(fin, fout, s1, s2);
 
 	fin.close();
