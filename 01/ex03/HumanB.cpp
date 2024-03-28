@@ -1,13 +1,13 @@
 #include "HumanB.hpp"
 #include <iostream>
 
-HumanB::HumanB() : name(""), weapon(NULL)
+HumanB::HumanB() : __name(""), __weapon(NULL)
 {
 }
 
-HumanB::HumanB(const std::string &_name) : weapon(NULL)
+HumanB::HumanB(const std::string &_name) : __weapon(NULL)
 {
-	name = _name;
+	__name = _name;
 }
 
 HumanB::~HumanB()
@@ -16,15 +16,13 @@ HumanB::~HumanB()
 
 void	HumanB::setWeapon(Weapon &_weapon)
 {
-	weapon = &_weapon;
+	__weapon = &_weapon;
 }
 
 void	HumanB::attack(void)
 {
-	if (weapon)
-	{
-		std::cout << name << ": attacks with their " << weapon->getType() << std::endl;
-	}
+	if (__weapon)
+		std::cout << __name << ": attacks with their " << __weapon->getType() << std::endl;
 	else
 		std::cout << "No weapon set" << std::endl;
 }

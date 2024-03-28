@@ -4,10 +4,10 @@
 
 Harl::Harl()
 {
-	levels[0] = "Debug";
-	levels[1] = "Info";
-	levels[2] = "Warning";
-	levels[3] = "Error";
+	__levels[0] = "Debug";
+	__levels[1] = "Info";
+	__levels[2] = "Warning";
+	__levels[3] = "Error";
 }
 
 Harl::~Harl()
@@ -39,7 +39,7 @@ void	Harl::announce_valid_args(void)
 	std::cout << ">>> Invalid argument! Enter one of the followings: " << std::endl;
 
 	for (int i = 0; i < 4; i++)
-		std::cout << levels[i] << std::endl;
+		std::cout << __levels[i] << std::endl;
 }
 
 void	Harl::complain(std::string level)
@@ -53,7 +53,7 @@ void	Harl::complain(std::string level)
 
 	for (i = 0; i < 4; i++)
 	{
-		if (level == levels[i])
+		if (level == __levels[i])
 			break;
 	}
 
