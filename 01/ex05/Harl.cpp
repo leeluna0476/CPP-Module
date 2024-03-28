@@ -41,7 +41,7 @@ void	Harl::error(void)
 
 void	Harl::announce_valid_args(void)
 {
-	std::cout << "ARGUMENTS: " << std::endl;
+	std::cout << ">>> Invalid argument! Enter one of the followings: " << std::endl;
 
 	for (int i = 0; i < 4; i++)
 		std::cout << levels[i] << std::endl;
