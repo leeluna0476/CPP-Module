@@ -4,10 +4,10 @@
 
 Harl::Harl()
 {
-	__levels[0] = "Debug";
-	__levels[1] = "Info";
-	__levels[2] = "Warning";
-	__levels[3] = "Error";
+	__levels[0] = "DEBUG";
+	__levels[1] = "INFO";
+	__levels[2] = "WARNING";
+	__levels[3] = "ERROR";
 }
 
 Harl::~Harl()
