@@ -43,17 +43,22 @@ int	main(int ac, char **av)
 
 	if (ac != 4)
 	{
-		std::cerr << "Please give at least three arguments" << std::endl;
+		std::cerr << "Please give three arguments" << std::endl;
 		return 1;
 	}
 
-	filename = av[1];
 	s1 = av[2];
 	s2 = av[3];
+	if (s1.empty())
+	{
+		std::cerr << "Please provide a valid string" << std::endl;
+		return 1;
+	}
 
 	fin.open(av[1]);
 	if (!fin.is_open())
 		return 1;
+	filename = av[1];
 	fout.open((filename + ".replace").c_str());
 	if (!fout.is_open())
 	{

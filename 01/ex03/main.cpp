@@ -21,6 +21,11 @@ int	main(void)
 		club.setType("some other type of club");
 		jim.attack();
 	}
+//	std::string에서 segmentation fault 발생
+//	{
+//		Weapon club = Weapon("crude spiked club");
+//		HumanA haley(NULL, club);
+//	}
 	{
 		// HumanB without weapon set
 		HumanB mike("Mike");

@@ -5,9 +5,8 @@ Zombie::Zombie() : __name("zombie")
 {
 }
 
-Zombie::Zombie(const std::string &_name)
+Zombie::Zombie(const std::string &_name) : __name(_name)
 {
-	__name = _name;
 }
 
 Zombie::~Zombie()
