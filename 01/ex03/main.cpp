@@ -13,7 +13,7 @@ int	main(void)
 	}
 	// HumanB may not always take a weapon
 	{
-		// HumanB with weapon set
+		// HumanB with weapon
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
 		jim.setWeapon(club);
@@ -21,13 +21,8 @@ int	main(void)
 		club.setType("some other type of club");
 		jim.attack();
 	}
-//	std::string에서 segmentation fault 발생
-//	{
-//		Weapon club = Weapon("crude spiked club");
-//		HumanA haley(NULL, club);
-//	}
 	{
-		// HumanB without weapon set
+		// HumanB without weapon
 		HumanB mike("Mike");
 		mike.attack();
 	}

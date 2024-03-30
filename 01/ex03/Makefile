@@ -1,15 +1,19 @@
+.DEFAULT_GOAL=all
+
 NAME=violence
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror --std=c++98
 SRCS=Weapon.cpp HumanA.cpp HumanB.cpp main.cpp
 OBJS=$(SRCS:.cpp=.o)
+DEPS=$(SRCS:.cpp=.d)
+-include $(DEPS)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $^
 
-%.o: %.cpp %.hpp
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

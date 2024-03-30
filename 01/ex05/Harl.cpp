@@ -8,6 +8,10 @@ Harl::Harl()
 	__levels[1] = "INFO";
 	__levels[2] = "WARNING";
 	__levels[3] = "ERROR";
+	f[0] = &Harl::debug;
+	f[1] = &Harl::info;
+	f[2] = &Harl::warning;
+	f[3] = &Harl::error;
 }
 
 Harl::~Harl()
@@ -46,16 +50,18 @@ void	Harl::complain(std::string level)
 {
 	int	i;
 
-	f[0] = &Harl::debug;
-	f[1] = &Harl::info;
-	f[2] = &Harl::warning;
-	f[3] = &Harl::error;
-
 	for (i = 0; i < 4; i++)
 	{
 		if (level == __levels[i])
 			break;
 	}
 
-	i < 4 ? (this->*f[i])() : announce_valid_args();
+	switch (int(i < 4))
+	{
+		case 0:
+			announce_valid_args();
+			break;
+		case 1:
+			(this->*f[i])();
+	}
 }

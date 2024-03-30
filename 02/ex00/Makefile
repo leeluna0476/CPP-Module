@@ -1,6 +1,6 @@
 .DEFAULT_GOAL = all
 
-NAME=ocf
+NAME=occf
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror --std=c++98 -MMD -MP
 SRCS= \
@@ -20,7 +20,7 @@ $(NAME): $(OBJS)
 
 
 clean:
-	rm -fr $(OBJS)
+	rm -fr $(OBJS) $(DEPS)
 
 fclean: clean
 	rm -fr $(NAME)
