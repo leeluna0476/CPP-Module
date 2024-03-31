@@ -2,7 +2,7 @@
 
 NAME=violence
 CXX=c++
-CXXFLAGS=-Wall -Wextra -Werror --std=c++98
+CXXFLAGS=-Wall -Wextra -Werror --std=c++98 -MMD -MP
 SRCS=Weapon.cpp HumanA.cpp HumanB.cpp main.cpp
 OBJS=$(SRCS:.cpp=.o)
 DEPS=$(SRCS:.cpp=.d)
@@ -18,7 +18,7 @@ $(NAME): $(OBJS)
 
 
 clean:
-	rm -fr $(OBJS)
+	rm -fr $(OBJS) $(DEPS)
 
 fclean: clean
 	rm -fr $(NAME)
