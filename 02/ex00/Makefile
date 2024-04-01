@@ -4,8 +4,8 @@ NAME=occf
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror --std=c++98 -MMD -MP
 SRCS= \
-	 main.cpp
-#	 Fixed.cpp
+	 main.cpp \
+	 Fixed.cpp
 OBJS=$(SRCS:.cpp=.o)
 DEPS=$(SRCS:.cpp=.d)
 -include $(DEPS)

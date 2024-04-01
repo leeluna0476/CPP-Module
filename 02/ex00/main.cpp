@@ -1,6 +1,9 @@
-#include <iostream>
+#include "Fixed.hpp"
 
 int	main(void)
 {
-	std::cout << "Hello minjungk\n";
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
+	c = b;
 }
