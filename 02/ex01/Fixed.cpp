@@ -25,7 +25,7 @@ Fixed &Fixed::operator =(const Fixed &fixed)
 Fixed::Fixed(const int &_int)
 {
 	std::cout << "Int constructor called" << std::endl;
-	value = _int * (1 << bit);
+	value = _int << bit;
 }
 
 Fixed::Fixed(const float &_float)
