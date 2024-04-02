@@ -137,3 +137,27 @@ Fixed	Fixed::operator --(int)
 	operator--();
 	return old;
 }
+
+Fixed	&Fixed::min(Fixed &fixed1, Fixed &fixed2)
+{
+	std::cout << "min: ";
+	return fixed1 < fixed2 ? fixed1 : fixed2;
+}
+
+Fixed	&Fixed::max(Fixed &fixed1, Fixed &fixed2)
+{
+	std::cout << "max: ";
+	return fixed1 > fixed2 ? fixed1 : fixed2;
+}
+
+const Fixed	&Fixed::min(const Fixed &fixed1, const Fixed &fixed2)
+{
+	std::cout << "const min: ";
+	return fixed1.getRawBits() < fixed2.getRawBits() ? fixed1 : fixed2;
+}
+
+const Fixed	&Fixed::max(const Fixed &fixed1, const Fixed &fixed2)
+{
+	std::cout << "const max: ";
+	return fixed1.getRawBits() > fixed2.getRawBits() ? fixed1 : fixed2;
+}

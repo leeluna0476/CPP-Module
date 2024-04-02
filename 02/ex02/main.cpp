@@ -4,7 +4,7 @@
 int main(void)
 {
 	Fixed a(Fixed(5.05f) * Fixed(2));
-	Fixed b(2);
+	Fixed const b(2);
 
 	std::cout << "-----Logical operation-----" << std::endl;
 	std::cout << a << " > " << b << ": " << std::boolalpha << (a > b) << std::endl;
@@ -29,6 +29,10 @@ int main(void)
 	std::cout << "--" << a << ": " << --a << std::endl;
 	std::cout << a << "--" << ": " << a-- << std::endl;
 	std::cout << a << ": " << a << std::endl;
+
+	std::cout << "-----min/max comparison-----" << std::endl;
+	std::cout << a << ", " << b << ": " << Fixed::min(a, b) << std::endl;
+	std::cout << a << ", " << b << ": " << Fixed::max(a, b) << std::endl;
 
 	return 0;
 }
