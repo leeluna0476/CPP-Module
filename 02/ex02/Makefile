@@ -1,6 +1,6 @@
 .DEFAULT_GOAL = all
 
-NAME=fixed2
+NAME=fixed3
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror --std=c++98 -MMD -MP
 SRCS= \
