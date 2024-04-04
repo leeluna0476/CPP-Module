@@ -126,14 +126,14 @@ Fixed	&Fixed::operator --(void)
 const Fixed	Fixed::operator ++(int)
 {
 	Fixed	old = *this;
-	operator++();
+	operator ++();
 	return old;
 }
 
 const Fixed	Fixed::operator --(int)
 {
 	Fixed	old = *this;
-	operator--();
+	operator --();
 	return old;
 }
 
