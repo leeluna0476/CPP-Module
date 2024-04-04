@@ -5,6 +5,7 @@ int main(void)
 {
 	Fixed a(Fixed(5.05f) * Fixed(2));
 	Fixed const b(2);
+	Fixed c(3);
 
 	std::cout << "-----Logical operation-----" << std::endl;
 	std::cout << a << " > " << b << ": " << std::boolalpha << (a > b) << std::endl;
@@ -15,7 +16,7 @@ int main(void)
 	std::cout << a << " != " << b << ": " <<  std::boolalpha << (a != b) << std::endl;
 
 	std::cout << "-----4 arithmetic operation-----" << std::endl;
-	std::cout << a << " + " << b << ": " <<  a + b << std::endl;
+	std::cout << a << " + " << b << " - " << c << ": " <<  a + b - c << std::endl;
 	std::cout << a << " - " << b << ": " <<  a - b << std::endl;
 	std::cout << a << " * " << b << ": " << a * b << std::endl;
 	std::cout << a << " / " << b << ": " << a / b << std::endl;

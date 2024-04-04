@@ -88,27 +88,27 @@ std::ostream	&operator <<(std::ostream &os, const Fixed &fixed)
 	return os;
 }
 
-float	Fixed::operator +(const Fixed &fixed) const
+Fixed	Fixed::operator +(const Fixed &fixed) const
 {
-	return toFloat() + fixed.toFloat();
+	return Fixed(toFloat() + fixed.toFloat());
 }
 
-float	Fixed::operator -(const Fixed &fixed) const
+Fixed	Fixed::operator -(const Fixed &fixed) const
 {
-	return toFloat() - fixed.toFloat();
+	return Fixed(toFloat() - fixed.toFloat());
 }
 
-float	Fixed::operator *(const Fixed &fixed) const
+Fixed	Fixed::operator *(const Fixed &fixed) const
 {
-	return toFloat() * fixed.toFloat();
+	return Fixed(toFloat() * fixed.toFloat());
 }
 
-float	Fixed::operator /(const Fixed &fixed) const
+Fixed	Fixed::operator /(const Fixed &fixed) const
 {
 	float	f_rawbit;
 
 	f_rawbit = fixed.toFloat();
-	return f_rawbit == 0 ? 0 : toFloat() / f_rawbit;
+	return f_rawbit == 0 ? Fixed(0) : Fixed(toFloat() / f_rawbit);
 }
 
 Fixed	&Fixed::operator ++(void)
