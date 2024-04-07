@@ -3,10 +3,12 @@
 int	main (void)
 {
 	FragTrap	a("hyeongsh");
-	FragTrap	b(a);
-	FragTrap	c;
-
-	c = a;
+	FragTrap	b("minjungk");
+	FragTrap	c("jjhang");
+//	FragTrap	b(a);
+//	FragTrap	c;
+//
+//	c = a;
 	c.attack("hyeongsh");
 	a.takeDamage(c.getAttackValue());
 	b.attack("hyeongsh");

@@ -2,14 +2,16 @@
 
 int	main (void)
 {
-	ScavTrap	a("semjeong");
-	ScavTrap	b(a);
-	ScavTrap	c;
-
-	c = a;
-	c.attack("semjeong");
+	ScavTrap	a("jungyeok");
+	ScavTrap	b("semjeong");
+	ScavTrap	c("chunsik");
+//	ScavTrap	b(a);
+//	ScavTrap	c;
+//
+//	c = a;
+	c.attack("jungyeok");
 	a.takeDamage(c.getAttackValue());
-	b.attack("semjeong");
+	b.attack("jungyeok");
 	a.takeDamage(c.getAttackValue());
 
 	c.guardGate();
