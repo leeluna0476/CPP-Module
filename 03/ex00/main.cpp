@@ -4,6 +4,9 @@ int	main (void)
 {
 	ClapTrap	a("younghoc");
 	ClapTrap	b("sungyoon");
+	ClapTrap	c;
+
+	c = a;
 
 	a.attack("sungyoon");
 	b.takeDamage(a.getAttackValue());

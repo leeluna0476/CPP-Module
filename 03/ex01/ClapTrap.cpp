@@ -1,24 +1,24 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap(void) : _name("seojilee"), _hit(10), _energy(10), _attack(0)
+ClapTrap::ClapTrap(void) : _name("seojilee"), _hit(100), _energy(50), _attack(20)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &claptrap) : _name(claptrap._name), _hit(claptrap._hit), _energy(claptrap._energy), _attack(claptrap._attack)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string &name) : _name(name), _hit(10), _energy(10), _attack(0)
+ClapTrap::ClapTrap(const std::string &name) : _name(name), _hit(100), _energy(50), _attack(20)
 {
-	std::cout << "Conversion constructor called" << std::endl;
+	std::cout << "ClapTrap conversion constructor called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator =(const ClapTrap &claptrap)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "ClapTrap copy assignment operator called" << std::endl;
 	this->_name = claptrap._name;
 	this->_hit = claptrap._hit;
 	this->_energy = claptrap._energy;
@@ -28,7 +28,7 @@ ClapTrap &ClapTrap::operator =(const ClapTrap &claptrap)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 void	ClapTrap::attack(const std::string &target)
@@ -44,7 +44,8 @@ void	ClapTrap::attack(const std::string &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	_hit -= amount;
+	if (_hit >= amount)
+		_hit -= amount;
 	std::cout << _name << ": " << amount << " points have been damaged and " << _hit << " hit points are left" << std::endl;
 }
 
@@ -60,7 +61,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << _name << ": " << "No energy to repair" << std::endl;
 }
 
-unsigned int	ClapTrap::getAttackValue(void)
+unsigned int	ClapTrap::getAttackValue(void) const
 {
 	return _attack;
 }
