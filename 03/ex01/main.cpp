@@ -17,5 +17,10 @@ int	main (void)
 
 	c.guardGate();
 
+	ClapTrap	*d = new ScavTrap("sanglee2");
+	c.attack("sanglee2");
+	d->takeDamage(c.getAttackValue());
+	delete d;
+
 	return 0;
 }

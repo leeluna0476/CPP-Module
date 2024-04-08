@@ -16,5 +16,9 @@ int	main (void)
 
 	c.highFiveGuys();
 
+//	FragTrap *d = new FragTrap("chungyeom");
+//
+//	delete d;
+
 	return 0;
 }
