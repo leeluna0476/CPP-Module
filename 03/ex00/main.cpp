@@ -8,6 +8,7 @@ int	main (void)
 //
 //	c = a;
 
+	a.takeDamage(10);
 	a.attack("sungyoon");
 	b.takeDamage(a.getAttackValue());
 	b.beRepaired(a.getAttackValue());

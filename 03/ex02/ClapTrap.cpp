@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap(void) : _name("seojilee"), _hit(100), _energy(100), _attack(30)
+ClapTrap::ClapTrap(void) : _name("seojilee"), _hit(10), _energy(10), _attack(0)
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
@@ -11,14 +11,14 @@ ClapTrap::ClapTrap(const ClapTrap &claptrap) : _name(claptrap._name), _hit(clapt
 	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string &name) : _name(name), _hit(100), _energy(100), _attack(30)
+ClapTrap::ClapTrap(const std::string &name) : _name(name), _hit(10), _energy(10), _attack(0)
 {
 	std::cout << "ClapTrap conversion constructor called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator =(const ClapTrap &claptrap)
 {
-	std::cout << "ClapTrap copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	this->_name = claptrap._name;
 	this->_hit = claptrap._hit;
 	this->_energy = claptrap._energy;
@@ -33,21 +33,22 @@ ClapTrap::~ClapTrap(void)
 
 void	ClapTrap::attack(const std::string &target)
 {
-	if (_energy)
+	if (_hit && _energy)
 	{
 		std::cout << _name << " attacks " << target << ", causing " << _attack << " points of damage!" << std::endl;
 		--_energy;
 	}
 	else
-		std::cout << _name << ": " << "No energy to attack" << std::endl;
+	{
+		if (!_hit) std::cout << _name << ": " << "No health to attack" << std::endl;
+		else if (!_energy) std::cout << _name << ": " << "No energy to attack" << std::endl;
+	}
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (_hit >= amount)
-		_hit -= amount;
-	else
-		_hit = 0;
+	if (_hit >= amount) _hit -= amount;
+	else _hit = 0;
 	std::cout << _name << ": " << amount << " points have been damaged and " << _hit << " hit points are left" << std::endl;
 }
 
@@ -55,7 +56,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (_energy)
 	{
-		_hit += amount;
+		if (~(unsigned int)0 - amount >= _hit) _hit += amount;
+		else _hit = ~(unsigned int)0;
 		--_energy;
 		std::cout << _name << ": " << amount << " points have been restored and " << _hit << " hit points are left" << std::endl;
 	}
