@@ -39,7 +39,7 @@ FragTrap::~FragTrap()
 
 void	FragTrap::attack(const std::string &target)
 {
-	std::cout << "ScavTrap: ";
+	std::cout << "FragTrap: ";
 	if (_hit && _energy)
 	{
 		std::cout << _name << " attacks " << target << ", causing " << _attack << " points of damage!" << std::endl;
