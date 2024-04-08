@@ -2,9 +2,13 @@
 # define CAT_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
-class Cat : public Animal
+class Cat : public Animal, public Brain
 {
+	private:
+		Brain	*brain;
+
 	public:
 		Cat(void);
 		Cat(const Cat& other);
@@ -16,4 +20,3 @@ class Cat : public Animal
 };
 
 #endif // !CAT_HPP
-	   //
