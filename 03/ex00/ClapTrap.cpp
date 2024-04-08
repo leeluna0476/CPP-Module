@@ -46,6 +46,8 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (_hit >= amount)
 		_hit -= amount;
+	else
+		_hit = 0;
 	std::cout << _name << ": " << amount << " points have been damaged and " << _hit << " hit points are left" << std::endl;
 }
 
@@ -61,7 +63,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << _name << ": " << "No energy to repair" << std::endl;
 }
 
-unsigned int	ClapTrap::getAttackValue(void)
+unsigned int	ClapTrap::getAttackValue(void) const
 {
 	return _attack;
 }
