@@ -22,7 +22,7 @@ class ClapTrap
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 		
-		unsigned int	getAttackValue(void);
+		unsigned int	getAttackValue(void) const;
 };
 
 #endif
