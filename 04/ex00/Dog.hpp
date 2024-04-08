@@ -16,4 +16,3 @@ class Dog : public Animal
 };
 
 #endif // !DOG_HPP
-	   //

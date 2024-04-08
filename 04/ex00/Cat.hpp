@@ -16,4 +16,3 @@ class Cat : public Animal
 };
 
 #endif // !CAT_HPP
-	   //
