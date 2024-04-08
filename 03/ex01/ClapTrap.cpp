@@ -33,6 +33,7 @@ ClapTrap::~ClapTrap(void)
 
 void	ClapTrap::attack(const std::string &target)
 {
+	std::cout << "ClapTrap: ";
 	if (_hit && _energy)
 	{
 		std::cout << _name << " attacks " << target << ", causing " << _attack << " points of damage!" << std::endl;
