@@ -1,7 +1,6 @@
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include <iostream>
-#include <ostream>
 
 int main (void)
 {
