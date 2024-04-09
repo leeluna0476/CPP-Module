@@ -5,7 +5,7 @@
 
 int main (void)
 {
-//	cannot instanciate an abstract class
+	//	cannot instanciate an abstract class
 //	Animal	a;
 //	Animal	*ptr = new Animal();
 
