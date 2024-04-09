@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 #include <iostream>
 
-Animal::Animal(void) : type("Parastratiosphecomyia stratiosphecomyioides")
+Animal::Animal(void) : type("")
 {
 	std::cout << "Animal default constructor called" << std::endl;
 }
