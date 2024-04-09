@@ -33,4 +33,4 @@ The program elements written to operate on elements of the supertype, can also o
 
 If *S* is a subtype of *T*, the subtyping relation means that any term of type *S* can safely be used in any context where a term of type *T* is expected.
 
-In a number of object-oriented languages, subtyping is called **interface inheritance**, with inheritance reffered as implementation inheritance.
+In a number of object-oriented languages, subtyping is called **interface inheritance**, with inheritance referred as implementation inheritance.
