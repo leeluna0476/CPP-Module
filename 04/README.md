@@ -1,4 +1,5 @@
 # CPP-Module 04
+> Subtype polymorphism, abstract classes, interfaces
 
 - virtual
   - 가상함수를 선언할 때 사용하는 키워드이다.
