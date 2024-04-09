@@ -1,13 +1,16 @@
 #include "Animal.hpp"
 #include <iostream>
 
-Animal::Animal(void) : type("Parastratiosphecomyia stratiosphecomyioides")
+Animal::Animal(void) : type("")
 {
 	std::cout << "Animal default constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal& other) : type(other.type) {
+Animal::Animal(const Animal& other)
+{
 	std::cout << "Animal copy constructor called" << std::endl;
+	if (this != &other)
+		this->type = other.type;
 }
 
 Animal& Animal::operator=(const Animal& other)

@@ -8,8 +8,8 @@ int main (void)
 //	Animal	a;
 //	Animal	*ptr = new Animal();
 
-	Animal	*uptr = new Dog();
-	std::cout << uptr->getType() << ": ";
-	uptr->makeSound();
-	delete uptr;
+	Animal	*handler = new Dog();
+	std::cout << handler->getType() << ": ";
+	handler->makeSound();
+	delete handler;
 }

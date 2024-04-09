@@ -6,8 +6,11 @@ Animal::Animal(void) : type("")
 	std::cout << "Animal default constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal& other) : type(other.type) {
+Animal::Animal(const Animal& other)
+{
 	std::cout << "Animal copy constructor called" << std::endl;
+	if (this != &other)
+		this->type = other.type;
 }
 
 Animal& Animal::operator=(const Animal& other)
@@ -21,10 +24,6 @@ Animal& Animal::operator=(const Animal& other)
 Animal::~Animal(void)
 {
 	std::cout << "Animal destructor called" << std::endl;
-}
-
-void	Animal::makeSound(void) const
-{
 }
 
 std::string	Animal::getType(void) const
