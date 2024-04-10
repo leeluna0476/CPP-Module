@@ -20,8 +20,7 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		this->type = other.type;
-		delete brain;
-		brain = new Brain(*(other.brain));
+		*brain = *(other.brain);
 	}
 	return *this;
 }
@@ -35,9 +34,4 @@ Dog::~Dog(void)
 void	Dog::makeSound(void) const
 {
 	std::cout << "A dog barks" << std::endl;
-}
-
-std::string	Dog::getType(void) const
-{
-	return type;
 }

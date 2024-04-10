@@ -5,7 +5,7 @@
 
 class	Brain
 {
-	protected:
+	private:
 		std::string	ideas[100];
 	
 	public:

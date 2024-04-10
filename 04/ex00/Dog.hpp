@@ -12,7 +12,6 @@ class Dog : public Animal
 		~Dog(void);
 
 		void		makeSound(void) const;
-		std::string	getType(void) const;
 };
 
 #endif // !DOG_HPP

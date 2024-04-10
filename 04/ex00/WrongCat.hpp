@@ -12,7 +12,6 @@ class WrongCat : public WrongAnimal
 		~WrongCat(void);
 
 		void		makeSound(void) const;
-		std::string	getType(void) const;
 };
 
 #endif // !WRONG_CAT_HPP

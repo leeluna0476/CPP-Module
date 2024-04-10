@@ -16,7 +16,6 @@ class Cat : public Animal
 		~Cat(void);
 
 		void		makeSound(void) const;
-		std::string	getType(void) const;
 };
 
 #endif // !CAT_HPP
