@@ -17,6 +17,7 @@ Cat& Cat::operator=(const Cat& other)
 {
 	std::cout << "Cat copy assignment operator called" << std::endl;
 	Animal::operator=(other);
+	*brain = *(other.brain);
 	return *this;
 }
 

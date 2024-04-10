@@ -17,6 +17,7 @@ Dog& Dog::operator=(const Dog& other)
 {
 	std::cout << "Dog copy assignment operator called" << std::endl;
 	Animal::operator=(other);
+	*brain = *(other.brain);
 	return *this;
 }
 
