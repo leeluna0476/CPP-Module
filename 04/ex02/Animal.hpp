@@ -15,7 +15,7 @@ class Animal
 		virtual ~Animal(void);
 
 		virtual void		makeSound(void) const = 0;
-		std::string	getType(void) const;
+		const std::string&	getType(void) const;
 };
 
 #endif // !ANIMAL_HPP

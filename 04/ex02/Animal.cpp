@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 #include <iostream>
 
-Animal::Animal(void) : type("")
+Animal::Animal(void)
 {
 	std::cout << "Animal default constructor called" << std::endl;
 }
@@ -9,8 +9,7 @@ Animal::Animal(void) : type("")
 Animal::Animal(const Animal& other)
 {
 	std::cout << "Animal copy constructor called" << std::endl;
-	if (this != &other)
-		this->type = other.type;
+	this->type = other.type;
 }
 
 Animal& Animal::operator=(const Animal& other)
@@ -26,7 +25,7 @@ Animal::~Animal(void)
 	std::cout << "Animal destructor called" << std::endl;
 }
 
-std::string	Animal::getType(void) const
+const std::string&	Animal::getType(void) const
 {
 	return type;
 }
