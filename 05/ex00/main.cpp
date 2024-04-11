@@ -7,26 +7,18 @@ int	main(void)
 {
 	std::set_terminate(terminateProgram);
 
-	Bureaucrat	a;
-	Bureaucrat	b;
-
 	try
 	{
+		Bureaucrat	a("wocheon", 2);
+		Bureaucrat	b("jasong", 160);
 		--a;
 		++b;
 	}
-	catch (Bureaucrat::GradeTooLowException& e)
+	catch (std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 		return 1;
 	}
-	catch (Bureaucrat::GradeTooHighException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return 1;
-	}
-
-	std::cout << a << b << std::endl;
 
 	return 0;
 }
