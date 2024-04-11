@@ -6,29 +6,13 @@ void	terminateProgram(void);
 int	main(void)
 {
 	std::set_terminate(terminateProgram);
-//	Bureaucrat	a;
-//
-//	try
-//	{
-//		--a; // current grade == 150
-//	}
-//	catch (Bureaucrat::GradeTooLowException& e)
-//	{
-//		std::cerr << e.what() << std::endl;
-//		return 1;
-//	}
-//	catch (Bureaucrat::GradeTooHighException& e)
-//	{
-//		std::cerr << e.what() << std::endl;
-//		return 1;
-//	}
-//
-//	std::cout << a << std::endl;
 
-	Bureaucrat b;
+	Bureaucrat	a;
+	Bureaucrat	b;
 
 	try
 	{
+		--a;
 		++b;
 	}
 	catch (Bureaucrat::GradeTooLowException& e)
@@ -42,7 +26,7 @@ int	main(void)
 		return 1;
 	}
 
-	std::cout << b << std::endl;
+	std::cout << a << b << std::endl;
 
 	return 0;
 }
