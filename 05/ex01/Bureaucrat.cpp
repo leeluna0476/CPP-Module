@@ -58,7 +58,7 @@ Bureaucrat&	Bureaucrat::operator--(void)
 	return *this;
 }
 
-void	signForm(const Form& f)
+void	Bureaucrat::signForm(Form& f)
 {
 	try
 	{
@@ -66,7 +66,7 @@ void	signForm(const Form& f)
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << name << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
+		std::cerr << name << " couldn't sign " << f.getName() << " because of " << e.what() << std::endl;
 		return ;
 	}
 

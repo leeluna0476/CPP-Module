@@ -5,6 +5,8 @@
 # include <iostream>
 # include "Form.hpp"
 
+class	Form;
+
 class	Bureaucrat
 {
 	private:
@@ -24,7 +26,7 @@ class	Bureaucrat
 		Bureaucrat&	operator++(void);
 		Bureaucrat&	operator--(void);
 
-		void	signForm(const Form& f);
+		void	signForm(Form& f);
 
 		class	GradeTooHighException : public std::exception
 		{
