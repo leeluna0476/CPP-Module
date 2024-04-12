@@ -1,10 +1,13 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 void	terminateProgram(void);
 
 int	main(void)
 {
+	Form		form("form", 10, 15);
+	Bureaucrat	minjungk("minjungk", 3);
 	return 0;
 }
 

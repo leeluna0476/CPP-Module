@@ -58,6 +58,21 @@ Bureaucrat&	Bureaucrat::operator--(void)
 	return *this;
 }
 
+void	signForm(const Form& f)
+{
+	try
+	{
+		f.beSigned(*this);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << name << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
+		return ;
+	}
+
+	std::cout << name << " signed " << f.getName() << std::endl;
+}
+
 const char*	Bureaucrat::GradeTooHighException::what(void) const throw()
 {
 	return "GradeTooHighException";

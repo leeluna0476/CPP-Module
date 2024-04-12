@@ -16,6 +16,7 @@ class	Form
 	public:
 		// occf
 		Form(void);
+		Form(const std::string& name, const int grade_to_sign, const int grade_to_exec);
 		Form(const Form& other);
 		Form& operator=(const Form& other);
 		~Form(void);

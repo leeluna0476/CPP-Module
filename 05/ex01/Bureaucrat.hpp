@@ -3,6 +3,7 @@
 
 # include <string>
 # include <iostream>
+# include "Form.hpp"
 
 class	Bureaucrat
 {
@@ -22,6 +23,8 @@ class	Bureaucrat
 
 		Bureaucrat&	operator++(void);
 		Bureaucrat&	operator--(void);
+
+		void	signForm(const Form& f);
 
 		class	GradeTooHighException : public std::exception
 		{
