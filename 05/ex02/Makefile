@@ -8,6 +8,7 @@ SRCS= \
 	 Bureaucrat.cpp \
 	 AForm.cpp \
 	 ShrubberyCreationForm.cpp \
+	 RobotomyRequestForm.cpp \
 
 OBJS=$(SRCS:.cpp=.o)
 DEPS=$(SRCS:.cpp=.d)

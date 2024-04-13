@@ -7,9 +7,11 @@
 class	ShrubberyCreationForm : public AForm
 {
 	private:
-		mutable std::ofstream	target_shrubbery;
-		std::string		filename;
+		mutable std::ofstream	target_file;
+		std::string				target_name;
+
 		void	drawASCIITree(void) const;
+
 	public:
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(const std::string& target);

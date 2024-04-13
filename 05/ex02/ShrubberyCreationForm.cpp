@@ -1,33 +1,32 @@
 #include "ShrubberyCreationForm.hpp"
 
-// name = "ShrubberyCreation"
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("Shrubbery", 145, 137), filename("seojilee_shrubbery")
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("Shrubbery", 145, 137), target_name("seojilee_shrubbery")
 {
-	target_shrubbery.open(filename.c_str());
+	target_file.open(target_name.c_str());
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("Shrubbery", 145, 137), filename(target + "_shrubbery")
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("Shrubbery", 145, 137), target_name(target + "_shrubbery")
 {
-	target_shrubbery.open(filename.c_str());
+	target_file.open(target_name.c_str());
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), filename(other.filename)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), target_name(other.target_name)
 {
-	target_shrubbery.open(filename.c_str());
+	target_file.open(target_name.c_str());
 }
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
 	AForm::operator=(other);
-	filename = other.filename;
-	target_shrubbery.close();
-	target_shrubbery.open(filename.c_str());
+	target_name = other.target_name;
+	target_file.close();
+	target_file.open(target_name.c_str());
 	return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-	target_shrubbery.close();
+	target_file.close();
 }
 
 // check that the form is signed
@@ -73,5 +72,5 @@ void	ShrubberyCreationForm::drawASCIITree(void) const
                                ;%@@@@%::;.\n\
                               ;%@@@@%%:;;;.\n\
                           ...;%@@@@@%%:;;;;,..";
-	target_shrubbery << tree << std::endl;
+	target_file << tree << std::endl;
 }
