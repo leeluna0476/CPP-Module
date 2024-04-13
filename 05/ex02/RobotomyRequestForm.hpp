@@ -9,7 +9,7 @@ class	RobotomyRequestForm : public AForm
 		std::string		target_name;
 
 		void	drillNoise(void) const;
-		void	informSuccess(void) const;
+		void	informRobotomized(void) const;
 
 	public:
 		RobotomyRequestForm(void);

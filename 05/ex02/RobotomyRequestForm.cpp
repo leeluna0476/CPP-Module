@@ -34,7 +34,7 @@ void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 		throw GradeTooLowException();
 
 	drillNoise();
-	informSuccess();
+	informRobotomized();
 }
 
 void	RobotomyRequestForm::drillNoise(void) const
@@ -42,7 +42,7 @@ void	RobotomyRequestForm::drillNoise(void) const
 	std::cout << "Whirrrrr... clank, clank, clank... Whirrrrr... clank, clank, clank..." << std::endl;
 }
 
-void	RobotomyRequestForm::informSuccess(void) const
+void	RobotomyRequestForm::informRobotomized(void) const
 {
 	std::cout << "The " << target_name << " has been robotomized successfully 50% of the time" << std::endl;
 }
