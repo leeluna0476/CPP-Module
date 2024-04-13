@@ -1,6 +1,6 @@
 .DEFAULT_GOAL = all
 
-NAME=bureaucrat
+NAME=bureaucratSignForm
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror --std=c++98 -MMD -MP
 SRCS= \
