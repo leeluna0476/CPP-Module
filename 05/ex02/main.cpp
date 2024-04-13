@@ -8,11 +8,11 @@ int	main(void)
 {
 	std::set_terminate(terminateProgram);
 
-	Bureaucrat	b("bb", 1);
 	ShrubberyCreationForm	a("tree");
+	Bureaucrat	jisokang("jisokang", 1);
 
-	b.signForm(a);
-	b.executeForm(a);
+	jisokang.signForm(a);
+	jisokang.executeForm(a);
 }
 
 void	terminateProgram(void)
