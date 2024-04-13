@@ -9,6 +9,7 @@ SRCS= \
 	 AForm.cpp \
 	 ShrubberyCreationForm.cpp \
 	 RobotomyRequestForm.cpp \
+	 PresidentialPardonForm.cpp \
 
 OBJS=$(SRCS:.cpp=.o)
 DEPS=$(SRCS:.cpp=.d)
