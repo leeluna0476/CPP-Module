@@ -1,6 +1,6 @@
 #include "AForm.hpp"
 
-AForm::AForm(void) : \
+AForm::AForm(void) :  \
 		name("seojilee"),   \
 		sign(false),        \
 		grade_to_sign(150), \
@@ -9,7 +9,7 @@ AForm::AForm(void) : \
 }
 
 AForm::AForm(const std::string& _name, const int _grade_to_sign, const int _grade_to_exec) : \
-		name(_name),              \
+		name(_name),                   \
 		sign(false),                   \
 		grade_to_sign(_grade_to_sign), \
 		grade_to_exec(_grade_to_exec)
@@ -20,7 +20,7 @@ AForm::AForm(const std::string& _name, const int _grade_to_sign, const int _grad
 		throw GradeTooLowException();
 }
 
-AForm::AForm(const AForm& other) : \
+AForm::AForm(const AForm& other) :    \
 		name(other.name),                   \
 		sign(other.sign),                   \
 		grade_to_sign(other.grade_to_sign), \
