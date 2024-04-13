@@ -1,7 +1,6 @@
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <iostream>
 
 void	terminateProgram(void);
@@ -10,22 +9,29 @@ int	main(void)
 {
 	std::set_terminate(terminateProgram);
 
-//	ShrubberyCreationForm	a("tree");
 	Bureaucrat	jisokang("jisokang", 1);
-//	Bureaucrat	jisokang("jisokang", 6);
-//	Bureaucrat	jisokang("jisokang", 60);
-//	Bureaucrat	jisokang("jisokang", 100);
 
-//	jisokang.signForm(a);
-//	jisokang.executeForm(a);
+	Intern	seojilee;
+	std::string	form1 = "RobotomyRequestForm";
+	std::string	form2 = "SaveSeoileeForm";
 
-	RobotomyRequestForm	b("cadet");
-	jisokang.signForm(b);
-	jisokang.executeForm(b);
+	try
+	{
+		AForm*	d = seojilee.makeForm(form1, "member");
+		AForm*	e = seojilee.makeForm(form2, "nooo");
 
-	PresidentialPardonForm	c("prisoner");
-	jisokang.signForm(c);
-	jisokang.executeForm(c);
+		jisokang.signForm(*d);
+		jisokang.executeForm(*d);
+		jisokang.signForm(*e);
+		jisokang.executeForm(*e);
+
+		delete d;
+		delete e;
+	}
+	catch (const Intern::NoSuchForm& e)
+	{
+		std::cout << e.what() << ": The intern couldn't find [" << e.getFormName() << "]" << std::endl;
+	}
 }
 
 void	terminateProgram(void)
