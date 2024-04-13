@@ -14,7 +14,7 @@ DEPS=$(SRCS:.cpp=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) -o $(NAME) $^
+	$(CXX) -o $@ $^
 
 %.o: %.cpp
 	$(COMPILE.cpp) -c $< -o $@
