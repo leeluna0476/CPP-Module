@@ -10,16 +10,16 @@ int	main(void)
 {
 	std::set_terminate(terminateProgram);
 
-	ShrubberyCreationForm	a("tree");
+//	ShrubberyCreationForm	a("tree");
 	Bureaucrat	jisokang("jisokang", 1);
 //	Bureaucrat	jisokang("jisokang", 6);
 //	Bureaucrat	jisokang("jisokang", 60);
 //	Bureaucrat	jisokang("jisokang", 100);
 
-	jisokang.signForm(a);
-	jisokang.executeForm(a);
+//	jisokang.signForm(a);
+//	jisokang.executeForm(a);
 
-	RobotomyRequestForm	b("robot");
+	RobotomyRequestForm	b("cadet");
 	jisokang.signForm(b);
 	jisokang.executeForm(b);
 
