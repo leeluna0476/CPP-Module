@@ -11,10 +11,11 @@ int	main(void)
 	{
 		Form		form("jungyeok", 10, 15);
 //		Form		form("jungyeok", -1, 15);
-		Bureaucrat	minjungk("minjungk", 60);
+		Bureaucrat	minjungk("minjungk", 5);
 //		Bureaucrat	yonghyle("minjungk", -1);
 
 		std::cout << minjungk << std::endl;
+		minjungk.signForm(form);
 		minjungk.signForm(form);
 	}
 	catch (const std::exception& e)

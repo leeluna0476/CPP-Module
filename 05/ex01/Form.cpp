@@ -69,11 +69,17 @@ const int&	Form::getGradeToExec(void) const
 	return grade_to_exec;
 }
 
-void	Form::beSigned(const Bureaucrat& b)
+bool	Form::beSigned(const Bureaucrat& bureaucrat)
 {
-	if (b.getGrade() > grade_to_sign)
+	bool	ret = sign;
+
+	if (bureaucrat.getGrade() > grade_to_sign)
 		throw GradeTooLowException();
-	sign = true;
+
+	if (sign == false) sign = true;
+	else std::cout << "[" << name << "]: It is already signed" << std::endl;
+
+	return ret;
 }
 
 std::ostream&	operator<<(std::ostream& os, const Form& f)

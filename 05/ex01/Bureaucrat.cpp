@@ -58,19 +58,20 @@ Bureaucrat&	Bureaucrat::operator--(void)
 	return *this;
 }
 
-void	Bureaucrat::signForm(Form& f)
+void	Bureaucrat::signForm(Form& form)
 {
+	bool	previously_signed;
+
 	try
 	{
-		f.beSigned(*this);
+		previously_signed = form.beSigned(*this);
+		if (!previously_signed) std::cout << "[" << name << "] signed the form [" << form.getName() << "]" << std::endl;
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << e.what() << ": [" << name << "] couldn't sign the form [" << f.getName() << "]" << std::endl;
+		std::cerr << e.what() << ": [" << name << "] couldn't sign the form [" << form.getName() << "]" << std::endl;
 		return ;
 	}
-
-	std::cout << name << " signed " << f.getName() << std::endl;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what(void) const throw()
