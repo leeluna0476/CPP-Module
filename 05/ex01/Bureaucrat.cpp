@@ -66,7 +66,7 @@ void	Bureaucrat::signForm(Form& f)
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << name << " couldn't sign " << f.getName() << " because of " << e.what() << std::endl;
+		std::cerr << e.what() << ": [" << name << "] couldn't sign the form [" << f.getName() << "]" << std::endl;
 		return ;
 	}
 
@@ -75,12 +75,12 @@ void	Bureaucrat::signForm(Form& f)
 
 const char*	Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return "GradeTooHighException";
+	return "Bureaucrat::GradeTooHighException";
 }
 
 const char*	Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return "GradeTooLowException";
+	return "Bureaucrat::GradeTooLowException";
 }
 
 std::ostream&	operator <<(std::ostream& os, const Bureaucrat& bureaucrat)

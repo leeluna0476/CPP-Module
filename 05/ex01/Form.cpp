@@ -14,6 +14,10 @@ Form::Form(const std::string& _name, const int _grade_to_sign, const int _grade_
 		grade_to_sign(_grade_to_sign), \
 		grade_to_exec(_grade_to_exec)
 {
+	if (_grade_to_sign < 1 || _grade_to_exec < 1)
+		throw GradeTooHighException();
+	else if (_grade_to_sign > 150 || _grade_to_sign > 150)
+		throw GradeTooLowException();
 }
 
 Form::Form(const Form& other) : \
@@ -37,12 +41,12 @@ Form::~Form(void)
 
 const char*	Form::GradeTooHighException::what(void) const throw()
 {
-	return "GradeTooHighException";
+	return "Form::GradeTooHighException";
 }
 
 const char*	Form::GradeTooLowException::what(void) const throw()
 {
-	return "GradeTooLowException";
+	return "Form::GradeTooLowException";
 }
 
 const std::string&	Form::getName(void) const
