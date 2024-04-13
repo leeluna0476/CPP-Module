@@ -44,5 +44,5 @@ void	RobotomyRequestForm::drillNoise(void) const
 
 void	RobotomyRequestForm::informSuccess(void) const
 {
-	std::cout << "The " << target_name << "has been robotomized successfully 50% of the time." << std::endl;
+	std::cout << "The " << target_name << " has been robotomized successfully 50% of the time" << std::endl;
 }
