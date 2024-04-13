@@ -13,6 +13,7 @@ class	Intern
 		~Intern(void);
 
 		AForm*	makeForm(const std::string& form_name, const std::string& target) const;
+
 		class	NoSuchForm : public std::exception
 		{
 			private:
