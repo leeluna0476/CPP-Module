@@ -15,7 +15,8 @@ class	Bureaucrat
 	
 	public:
 		Bureaucrat(void);
-		Bureaucrat(const std::string& _name, int _grade);
+		Bureaucrat(const std::string& _name, int _grade) \
+			throw(GradeTooHighException, GradeTooLowException);
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat&	operator=(const Bureaucrat& other);
 		~Bureaucrat(void);
@@ -23,8 +24,8 @@ class	Bureaucrat
 		const std::string&	getName(void) const;
 		const int&			getGrade(void) const;
 
-		Bureaucrat&	operator++(void);
-		Bureaucrat&	operator--(void);
+		Bureaucrat&	operator++(void) throw(GradeTooHighException);
+		Bureaucrat&	operator--(void) throw(GradeTooLowException);
 
 		void	signForm(Form& form);
 
