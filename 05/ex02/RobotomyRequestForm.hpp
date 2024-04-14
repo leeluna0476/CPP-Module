@@ -18,7 +18,8 @@ class	RobotomyRequestForm : public AForm
 		RobotomyRequestForm&	operator=(const RobotomyRequestForm& other);
 		~RobotomyRequestForm(void);
 
-		void	execute(const Bureaucrat& executor) const;
+		void	execute(const Bureaucrat& executor) const \
+			throw(FormNotSigned, GradeTooLowException);
 };
 
 #endif

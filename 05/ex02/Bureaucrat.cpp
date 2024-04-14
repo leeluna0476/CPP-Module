@@ -5,7 +5,9 @@ Bureaucrat::Bureaucrat(void) : name("seojilee"), grade(150)
 {
 }
 
-Bureaucrat::Bureaucrat(const std::string& _name, int _grade) : name(_name)
+Bureaucrat::Bureaucrat(const std::string& _name, int _grade) \
+		throw(GradeTooHighException, GradeTooLowException)   \
+		: name(_name)
 {
 	if (_grade < 1)
 		throw GradeTooHighException();
@@ -40,7 +42,8 @@ const int&	Bureaucrat::getGrade(void) const
 	return grade;
 }
 
-Bureaucrat&	Bureaucrat::operator++(void)
+Bureaucrat&	Bureaucrat::operator++(void) \
+		throw(GradeTooHighException)
 {
 	// add exception handling
 	if (grade == 1)
@@ -49,7 +52,8 @@ Bureaucrat&	Bureaucrat::operator++(void)
 	return *this;
 }
 
-Bureaucrat&	Bureaucrat::operator--(void)
+Bureaucrat&	Bureaucrat::operator--(void) \
+		throw(GradeTooLowException)
 {
 	// add exception handling
 	if (grade == 150)

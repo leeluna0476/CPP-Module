@@ -26,7 +26,8 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 // check that the form is signed
 // check that the grade of the bureaucrat is high enough
 // otherwise, throw an appropriate exception
-void	PresidentialPardonForm::execute(const Bureaucrat& executor) const
+void	PresidentialPardonForm::execute(const Bureaucrat& executor) const \
+			throw(FormNotSigned, GradeTooLowException)
 {
 	if (sign == false)
 		throw FormNotSigned();
