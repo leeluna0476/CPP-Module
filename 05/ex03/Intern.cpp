@@ -67,6 +67,11 @@ Intern::NoSuchForm::~NoSuchForm(void) _NOEXCEPT
 {
 }
 
+const std::string&	Intern::NoSuchForm::getName(void) const
+{
+	return name;
+}
+
 const char*	Intern::NoSuchForm::what(void) const throw()
 {
 	return "NoSuchForm";

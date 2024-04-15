@@ -33,6 +33,7 @@ class	Intern
 				NoSuchForm(const std::string& _name);
 				~NoSuchForm(void) _NOEXCEPT;
 
+				const std::string&	getName(void) const;
 				const char*	what(void) const throw();
 		};
 };
