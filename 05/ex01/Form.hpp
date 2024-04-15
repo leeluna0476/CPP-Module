@@ -2,6 +2,7 @@
 # define FORM_HPP
 
 # include <string>
+# include <iostream>
 # include <exception>
 # include "Bureaucrat.hpp"
 

@@ -1,12 +1,11 @@
 #include "Bureaucrat.hpp"
-#include <exception>
 
 Bureaucrat::Bureaucrat(void) : name("seojilee"), grade(150)
 {
 }
 
 Bureaucrat::Bureaucrat(const std::string& _name, int _grade) \
-		throw(GradeTooHighException, GradeTooLowException)   \
+		throw(GradeTooHighException, GradeTooLowException) \
 		: name(_name)
 {
 	if (_grade < 1)
@@ -44,7 +43,6 @@ const int&	Bureaucrat::getGrade(void) const
 
 Bureaucrat&	Bureaucrat::operator++(void) throw(GradeTooHighException)
 {
-	// add exception handling
 	if (grade == 1)
 		throw GradeTooHighException();
 	--grade;
@@ -53,7 +51,6 @@ Bureaucrat&	Bureaucrat::operator++(void) throw(GradeTooHighException)
 
 Bureaucrat&	Bureaucrat::operator--(void) throw(GradeTooLowException)
 {
-	// add exception handling
 	if (grade == 150)
 		throw GradeTooLowException();
 	++grade;
@@ -67,7 +64,7 @@ void	Bureaucrat::signForm(Form& form)
 	try
 	{
 		previously_signed = form.beSigned(*this);
-		if (!previously_signed)
+		if (previously_signed == false)
 			std::cout << "[" << name << "] signed the form [" << form.getName() << "]" << std::endl;
 	}
 	catch (const std::exception& e)

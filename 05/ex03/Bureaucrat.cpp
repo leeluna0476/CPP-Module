@@ -1,5 +1,4 @@
 #include "Bureaucrat.hpp"
-#include <exception>
 
 Bureaucrat::Bureaucrat(void) : name("seojilee"), grade(150)
 {
@@ -44,7 +43,6 @@ const int&	Bureaucrat::getGrade(void) const
 
 Bureaucrat&	Bureaucrat::operator++(void) throw(GradeTooHighException)
 {
-	// add exception handling
 	if (grade == 1)
 		throw GradeTooHighException();
 	--grade;
@@ -53,7 +51,6 @@ Bureaucrat&	Bureaucrat::operator++(void) throw(GradeTooHighException)
 
 Bureaucrat&	Bureaucrat::operator--(void) throw(GradeTooLowException)
 {
-	// add exception handling
 	if (grade == 150)
 		throw GradeTooLowException();
 	++grade;
