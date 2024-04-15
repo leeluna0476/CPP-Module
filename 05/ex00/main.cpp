@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
+#include <cstdlib>
 
 void	terminateProgram(void);
 
