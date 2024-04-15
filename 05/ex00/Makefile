@@ -19,7 +19,6 @@ $(NAME): $(OBJS)
 %.o: %.cpp
 	$(COMPILE.cpp) -c $< -o $@
 
-
 clean:
 	rm -fr $(OBJS) $(DEPS)
 
