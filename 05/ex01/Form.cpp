@@ -8,8 +8,9 @@ Form::Form(void) : \
 {
 }
 
-Form::Form(const std::string& _name, const int _grade_to_sign, const int _grade_to_exec) : \
-		name(_name),                   \
+Form::Form(const std::string& _name, const int _grade_to_sign, const int _grade_to_exec) \
+		throw(GradeTooHighException, GradeTooLowException) \
+		: name(_name),                   \
 		sign(false),                   \
 		grade_to_sign(_grade_to_sign), \
 		grade_to_exec(_grade_to_exec)
@@ -69,7 +70,8 @@ const int&	Form::getGradeToExec(void) const
 	return grade_to_exec;
 }
 
-bool	Form::beSigned(const Bureaucrat& bureaucrat)
+bool	Form::beSigned(const Bureaucrat& bureaucrat) \
+		throw(GradeTooLowException)
 {
 	bool	ret = sign;
 
