@@ -28,7 +28,7 @@ enum FormType	Intern::getFormType(const std::string& name) const throw(NoSuchFor
 	const std::string	forms[3] = \
 		{ "ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm" };
 	
-	for (size_t	i = 0; i < 3; i++)
+	for (size_t i = 0; i < 3; i++)
 	{
 		if (forms[i] == name)
 			return (enum FormType)i;
