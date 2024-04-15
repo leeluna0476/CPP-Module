@@ -14,9 +14,6 @@ enum	FormType
 
 class	Intern
 {
-	private:
-		enum FormType	getFormType(const std::string& name) const throw(NoSuchForm);
-
 	public:
 		class	NoSuchForm : public std::exception
 		{
@@ -25,7 +22,7 @@ class	Intern
 
 			public:
 				NoSuchForm(const std::string& _name);
-				~NoSuchForm(void) _NOEXCEPT;
+				~NoSuchForm(void) throw();
 
 				const std::string&	getName(void) const;
 				const char*	what(void) const throw();
@@ -37,6 +34,9 @@ class	Intern
 		~Intern(void);
 
 		AForm*	makeForm(const std::string& name, const std::string& target) const;
+	private:
+		enum FormType	getFormType(const std::string& name) const throw(NoSuchForm);
+
 };
 
 #endif

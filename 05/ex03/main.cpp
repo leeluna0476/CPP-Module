@@ -2,6 +2,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "Intern.hpp"
 #include <iostream>
+#include <cstdlib>
 
 void	terminateProgram(void);
 //void	leaks(void);

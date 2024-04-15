@@ -1,6 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include <iostream>
+#include <cstdlib>
 
 void	terminateProgram(void);
 

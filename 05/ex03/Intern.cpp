@@ -63,7 +63,7 @@ Intern::NoSuchForm::NoSuchForm(const std::string& _name) : name(_name)
 {
 }
 
-Intern::NoSuchForm::~NoSuchForm(void) _NOEXCEPT
+Intern::NoSuchForm::~NoSuchForm(void) throw()
 {
 }
 
