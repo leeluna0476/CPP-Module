@@ -71,7 +71,7 @@ const int&	Form::getGradeToExec(void) const
 }
 
 bool	Form::beSigned(const Bureaucrat& bureaucrat) \
-		throw(GradeTooLowException)
+			throw(GradeTooLowException)
 {
 	bool	ret = sign;
 
