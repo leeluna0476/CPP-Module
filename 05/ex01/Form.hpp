@@ -23,7 +23,8 @@ class	Form
 		};
 
 		Form(void);
-		Form(const std::string& name, const int grade_to_sign, const int grade_to_exec);
+		Form(const std::string& name, const int grade_to_sign, const int grade_to_exec) \
+			throw(GradeTooHighException, GradeTooLowException);
 		Form(const Form& other);
 		Form& operator=(const Form& other);
 		~Form(void);
@@ -33,7 +34,8 @@ class	Form
 		const int&			getGradeToSign(void) const;
 		const int&			getGradeToExec(void) const;
 
-		bool	beSigned(const Bureaucrat& bureaucrat);
+		bool	beSigned(const Bureaucrat& bureaucrat) \
+			throw(GradeTooLowException);
 
 	private:
 		const std::string	name;
