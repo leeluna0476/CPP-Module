@@ -76,8 +76,10 @@ bool	Form::beSigned(const Bureaucrat& bureaucrat)
 	if (bureaucrat.getGrade() > grade_to_sign)
 		throw GradeTooLowException();
 
-	if (sign == false) sign = true;
-	else std::cout << "[" << name << "]: It is already signed" << std::endl;
+	if (sign == false)
+		sign = true;
+	else
+		std::cout << "[" << name << "]: It is already signed" << std::endl;
 
 	return ret;
 }
