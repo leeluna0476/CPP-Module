@@ -5,12 +5,6 @@
 
 class	RobotomyRequestForm : public AForm
 {
-	private:
-		std::string		target_name;
-
-		void	drillNoise(void) const;
-		void	informRobotomized(void) const;
-
 	public:
 		RobotomyRequestForm(void);
 		RobotomyRequestForm(const std::string& target);
@@ -20,6 +14,12 @@ class	RobotomyRequestForm : public AForm
 
 		void	execute(const Bureaucrat& executor) const \
 			throw(FormNotSigned, GradeTooLowException);
+
+	private:
+		std::string		target_name;
+
+		void	drillNoise(void) const;
+		void	informRobotomized(void) const;
 };
 
 #endif

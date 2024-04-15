@@ -34,6 +34,7 @@ class	Intern
 		~Intern(void);
 
 		AForm*	makeForm(const std::string& name, const std::string& target) const;
+
 	private:
 		enum FormType	getFormType(const std::string& name) const throw(NoSuchForm);
 

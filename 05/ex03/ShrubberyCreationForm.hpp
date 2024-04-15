@@ -6,12 +6,6 @@
 
 class	ShrubberyCreationForm : public AForm
 {
-	private:
-		mutable std::ofstream	target_file;
-		std::string				target_name;
-
-		void	drawASCIITree(void) const;
-
 	public:
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(const std::string& target);
@@ -21,6 +15,12 @@ class	ShrubberyCreationForm : public AForm
 
 		void	execute(const Bureaucrat& executor) const \
 			throw(FormNotSigned, GradeTooLowException);
+
+	private:
+		mutable std::ofstream	target_file;
+		std::string				target_name;
+
+		void	drawASCIITree(void) const;
 };
 
 #endif
