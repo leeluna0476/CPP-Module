@@ -17,7 +17,8 @@ class	PresidentialPardonForm : public AForm
 		PresidentialPardonForm&	operator=(const PresidentialPardonForm& other);
 		~PresidentialPardonForm(void);
 
-		void	execute(const Bureaucrat& executor) const;
+		void	execute(const Bureaucrat& executor) const \
+			throw(FormNotSigned, GradeTooLowException);
 };
 
 #endif

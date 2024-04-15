@@ -19,7 +19,8 @@ class	ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm(void);
 
-		void	execute(const Bureaucrat& executor) const;
+		void	execute(const Bureaucrat& executor) const \
+			throw(FormNotSigned, GradeTooLowException);
 };
 
 #endif

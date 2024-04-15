@@ -17,7 +17,8 @@ class	AForm
 
 	public:
 		AForm(void);
-		AForm(const std::string& _name, const int _grade_to_sign, const int _grade_to_exec);
+		AForm(const std::string& _name, const int _grade_to_sign, const int _grade_to_exec) \
+			throw(GradeTooHighException, GradeTooLowException);
 		AForm(const AForm& other);
 		AForm& operator=(const AForm& other);
 		virtual ~AForm(void);
@@ -28,9 +29,11 @@ class	AForm
 		const int&			getGradeToSign(void) const;
 		const int&			getGradeToExec(void) const;
 
-		bool	beSigned(const Bureaucrat& bureaucrat);
+		bool	beSigned(const Bureaucrat& bureaucrat) \
+			throw(GradeTooLowException);
 
-		virtual void	execute(const Bureaucrat& executor) const throw(FormNotSigned, GradeTooLowException)= 0;
+		virtual void	execute(const Bureaucrat& executor) const \
+			throw(FormNotSigned, GradeTooLowException) = 0;
 
 		// exception classes
 		class	GradeTooHighException : public std::exception

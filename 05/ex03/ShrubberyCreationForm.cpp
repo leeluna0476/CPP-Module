@@ -32,7 +32,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 // check that the form is signed
 // check that the grade of the bureaucrat is high enough
 // otherwise, throw an appropriate exception
-void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const \
+			throw(FormNotSigned, GradeTooLowException)
 {
 	if (sign == false)
 		throw FormNotSigned();
