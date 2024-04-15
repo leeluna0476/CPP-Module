@@ -5,11 +5,6 @@
 
 class	PresidentialPardonForm : public AForm
 {
-	private:
-		std::string		target_name;
-
-		void	informPardoned(void) const;
-
 	public:
 		PresidentialPardonForm(void);
 		PresidentialPardonForm(const std::string& target);
@@ -19,6 +14,11 @@ class	PresidentialPardonForm : public AForm
 
 		void	execute(const Bureaucrat& executor) const \
 			throw(FormNotSigned, GradeTooLowException);
+
+	private:
+		std::string		target_name;
+
+		void	informPardoned(void) const;
 };
 
 #endif

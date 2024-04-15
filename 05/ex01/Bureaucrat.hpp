@@ -9,10 +9,6 @@ class	Form;
 
 class	Bureaucrat
 {
-	private:
-		const std::string	name;
-		int					grade;
-	
 	public:
 		class	GradeTooHighException : public std::exception
 		{
@@ -40,6 +36,10 @@ class	Bureaucrat
 		Bureaucrat&	operator--(void) throw(GradeTooLowException);
 
 		void	signForm(Form& form);
+
+	private:
+		const std::string	name;
+		int					grade;
 };
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat);

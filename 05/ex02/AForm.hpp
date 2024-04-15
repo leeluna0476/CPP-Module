@@ -9,12 +9,6 @@ class	Bureaucrat;
 
 class	AForm
 {
-	protected:
-		const std::string	name;
-		bool				sign;
-		const int			grade_to_sign;
-		const int			grade_to_exec;
-
 	public:
 		class	GradeTooHighException : public std::exception
 		{
@@ -51,6 +45,12 @@ class	AForm
 
 		virtual void	execute(const Bureaucrat& executor) const \
 			throw(FormNotSigned, GradeTooLowException) = 0;
+
+	protected:
+		const std::string	name;
+		bool				sign;
+		const int			grade_to_sign;
+		const int			grade_to_exec;
 };
 
 std::ostream&	operator<<(std::ostream& os, const AForm& f);

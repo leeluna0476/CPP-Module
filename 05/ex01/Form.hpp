@@ -9,28 +9,7 @@ class	Bureaucrat;
 
 class	Form
 {
-	private:
-		const std::string	name;
-		bool				sign;
-		const int			grade_to_sign;
-		const int			grade_to_exec;
-
 	public:
-		Form(void);
-		Form(const std::string& name, const int grade_to_sign, const int grade_to_exec);
-		Form(const Form& other);
-		Form& operator=(const Form& other);
-		~Form(void);
-
-		// getters for each attribute
-		const std::string&	getName(void) const;
-		const bool&			getSign(void) const;
-		const int&			getGradeToSign(void) const;
-		const int&			getGradeToExec(void) const;
-
-		bool	beSigned(const Bureaucrat& bureaucrat);
-
-		// exception classes
 		class	GradeTooHighException : public std::exception
 		{
 			public:
@@ -42,6 +21,25 @@ class	Form
 			public:
 				const char*	what(void) const throw();
 		};
+
+		Form(void);
+		Form(const std::string& name, const int grade_to_sign, const int grade_to_exec);
+		Form(const Form& other);
+		Form& operator=(const Form& other);
+		~Form(void);
+
+		const std::string&	getName(void) const;
+		const bool&			getSign(void) const;
+		const int&			getGradeToSign(void) const;
+		const int&			getGradeToExec(void) const;
+
+		bool	beSigned(const Bureaucrat& bureaucrat);
+
+	private:
+		const std::string	name;
+		bool				sign;
+		const int			grade_to_sign;
+		const int			grade_to_exec;
 };
 
 std::ostream&	operator<<(std::ostream& os, const Form& f);
