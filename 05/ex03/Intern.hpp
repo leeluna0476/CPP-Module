@@ -37,7 +37,6 @@ class	Intern
 
 	private:
 		enum FormType	getType(const std::string& name) const throw(NoSuchForm);
-
 };
 
 #endif
