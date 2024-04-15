@@ -23,7 +23,7 @@ Intern::~Intern(void)
 {
 }
 
-enum FormType	Intern::getFormType(const std::string& name) const throw(NoSuchForm)
+enum FormType	Intern::getType(const std::string& name) const throw(NoSuchForm)
 {
 	const std::string	forms[3] = \
 		{ "ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm" };
@@ -41,7 +41,7 @@ AForm*	Intern::makeForm(const std::string& name, const std::string& target) cons
 {
 	AForm*	form = NULL;
 
-	switch (getFormType(name))
+	switch (getType(name))
 	{
 		case SHRUBBERYCREATION:
 			form = new ShrubberyCreationForm(target);
