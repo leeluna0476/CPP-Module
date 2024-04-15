@@ -16,26 +16,6 @@ class	AForm
 		const int			grade_to_exec;
 
 	public:
-		AForm(void);
-		AForm(const std::string& _name, const int _grade_to_sign, const int _grade_to_exec) \
-			throw(GradeTooHighException, GradeTooLowException);
-		AForm(const AForm& other);
-		AForm& operator=(const AForm& other);
-		virtual ~AForm(void);
-
-		// getters for each attribute
-		const std::string&	getName(void) const;
-		const bool&			getSign(void) const;
-		const int&			getGradeToSign(void) const;
-		const int&			getGradeToExec(void) const;
-
-		bool	beSigned(const Bureaucrat& bureaucrat) \
-			throw(GradeTooLowException);
-
-		virtual void	execute(const Bureaucrat& executor) const \
-			throw(FormNotSigned, GradeTooLowException) = 0;
-
-		// exception classes
 		class	GradeTooHighException : public std::exception
 		{
 			public:
@@ -53,6 +33,24 @@ class	AForm
 			public:
 				const char*	what(void) const throw();
 		};
+
+		AForm(void);
+		AForm(const std::string& _name, const int _grade_to_sign, const int _grade_to_exec) \
+			throw(GradeTooHighException, GradeTooLowException);
+		AForm(const AForm& other);
+		AForm& operator=(const AForm& other);
+		virtual ~AForm(void);
+
+		const std::string&	getName(void) const;
+		const bool&			getSign(void) const;
+		const int&			getGradeToSign(void) const;
+		const int&			getGradeToExec(void) const;
+
+		bool	beSigned(const Bureaucrat& bureaucrat) \
+			throw(GradeTooLowException);
+
+		virtual void	execute(const Bureaucrat& executor) const \
+			throw(FormNotSigned, GradeTooLowException) = 0;
 };
 
 std::ostream&	operator<<(std::ostream& os, const AForm& f);
