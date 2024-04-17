@@ -1,5 +1,10 @@
 #include "Bureaucrat.hpp"
 
+/**
+ * A constructor
+ *
+ * test
+ */
 Bureaucrat::Bureaucrat(void) : name("seojilee"), grade(150)
 {
 }
