@@ -64,16 +64,27 @@ Bureaucrat::~Bureaucrat(void)
 {
 }
 
+/**
+ * @brief A getter that returns the name
+ */
 const std::string&	Bureaucrat::getName(void) const
 {
 	return name;
 }
 
+/**
+ * @brief A getter that returns the grade
+ */
 const int&	Bureaucrat::getGrade(void) const
 {
 	return grade;
 }
 
+/**
+ * @brief An operator that increments the grade
+ *
+ * Throws GradeTooHighException if grade is the highest and cannot be incremented.
+ */
 Bureaucrat&	Bureaucrat::operator++(void) throw(GradeTooHighException)
 {
 	if (grade == 1)
@@ -82,6 +93,11 @@ Bureaucrat&	Bureaucrat::operator++(void) throw(GradeTooHighException)
 	return *this;
 }
 
+/**
+ * @brief An operator that decrements the grade
+ *
+ * Throws GradeTooLowException if grade is the lowest and cannot be decremented.
+ */
 Bureaucrat&	Bureaucrat::operator--(void) throw(GradeTooLowException)
 {
 	if (grade == 150)
@@ -90,16 +106,28 @@ Bureaucrat&	Bureaucrat::operator--(void) throw(GradeTooLowException)
 	return *this;
 }
 
+/**
+ * @brief A function that returns GradeTooHighException in const c_string
+ */
 const char*	Bureaucrat::GradeTooHighException::what(void) const throw()
 {
 	return "GradeTooHighException";
 }
 
+/**
+ * @brief A function that returns GradeTooLowException in const c_string
+ */
 const char*	Bureaucrat::GradeTooLowException::what(void) const throw()
 {
 	return "GradeTooLowException";
 }
 
+/**
+ * @brief An output operator overloaded to print the attributes of bureaucrat in format
+ *
+ * @param os A reference to std::cout
+ * @param bureaucrat A const reference to the bureaucrat to print out
+ */
 std::ostream&	operator <<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();

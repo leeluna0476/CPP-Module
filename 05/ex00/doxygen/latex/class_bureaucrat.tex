@@ -23,16 +23,14 @@ class \mbox{\hyperlink{class_bureaucrat_1_1_grade_too_low_exception}{Grade\+Too\
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 \Hypertarget{class_bureaucrat_a5cd9242e718f50074833fd0da6dbafc2}\label{class_bureaucrat_a5cd9242e718f50074833fd0da6dbafc2} 
 const std\+::string \& {\bfseries get\+Name} (void) const
-\item 
+\begin{DoxyCompactList}\small\item\em A getter that returns the name. \end{DoxyCompactList}\item 
 \Hypertarget{class_bureaucrat_a703fff18e4042716390f9bb61b342cfe}\label{class_bureaucrat_a703fff18e4042716390f9bb61b342cfe} 
 const int \& {\bfseries get\+Grade} (void) const
-\item 
-\Hypertarget{class_bureaucrat_a1ece8c769f383b826724661903418ff3}\label{class_bureaucrat_a1ece8c769f383b826724661903418ff3} 
-\mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \& {\bfseries operator++} (void)  throw (\mbox{\hyperlink{class_bureaucrat_1_1_grade_too_high_exception}{Grade\+Too\+High\+Exception}})
-\item 
-\Hypertarget{class_bureaucrat_a77ba4c77ca7590f09c1bd5cb9bd2beca}\label{class_bureaucrat_a77ba4c77ca7590f09c1bd5cb9bd2beca} 
-\mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \& {\bfseries operator-\/-\/} (void)  throw (\mbox{\hyperlink{class_bureaucrat_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}})
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A getter that returns the grade. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \& \mbox{\hyperlink{class_bureaucrat_a1ece8c769f383b826724661903418ff3}{operator++}} (void)  throw (\mbox{\hyperlink{class_bureaucrat_1_1_grade_too_high_exception}{Grade\+Too\+High\+Exception}})
+\begin{DoxyCompactList}\small\item\em An operator that increments the grade. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \& \mbox{\hyperlink{class_bureaucrat_a77ba4c77ca7590f09c1bd5cb9bd2beca}{operator-\/-\/}} (void)  throw (\mbox{\hyperlink{class_bureaucrat_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}})
+\begin{DoxyCompactList}\small\item\em An operator that decrements the grade. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -85,7 +83,27 @@ Copies another Bureucrat object at construction.
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_bureaucrat_abb982f3a03d9f8dad05b2f817aab88f1}\label{class_bureaucrat_abb982f3a03d9f8dad05b2f817aab88f1} 
+\Hypertarget{class_bureaucrat_a1ece8c769f383b826724661903418ff3}\label{class_bureaucrat_a1ece8c769f383b826724661903418ff3} 
+\index{Bureaucrat@{Bureaucrat}!operator++@{operator++}}
+\index{operator++@{operator++}!Bureaucrat@{Bureaucrat}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \& Bureaucrat\+::operator++ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) throw ( \mbox{\hyperlink{class_bureaucrat_1_1_grade_too_high_exception}{Grade\+Too\+High\+Exception}}) }
+
+
+
+An operator that increments the grade. 
+
+Throws \doxylink{class_bureaucrat_1_1_grade_too_high_exception}{Grade\+Too\+High\+Exception} if grade is the highest and cannot be incremented. \Hypertarget{class_bureaucrat_a77ba4c77ca7590f09c1bd5cb9bd2beca}\label{class_bureaucrat_a77ba4c77ca7590f09c1bd5cb9bd2beca} 
+\index{Bureaucrat@{Bureaucrat}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!Bureaucrat@{Bureaucrat}}
+\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \& Bureaucrat\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) throw ( \mbox{\hyperlink{class_bureaucrat_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}}) }
+
+
+
+An operator that decrements the grade. 
+
+Throws \doxylink{class_bureaucrat_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception} if grade is the lowest and cannot be decremented. \Hypertarget{class_bureaucrat_abb982f3a03d9f8dad05b2f817aab88f1}\label{class_bureaucrat_abb982f3a03d9f8dad05b2f817aab88f1} 
 \index{Bureaucrat@{Bureaucrat}!operator=@{operator=}}
 \index{operator=@{operator=}!Bureaucrat@{Bureaucrat}}
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}

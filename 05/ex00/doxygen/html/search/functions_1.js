@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../class_bureaucrat.html#abb982f3a03d9f8dad05b2f817aab88f1',1,'Bureaucrat']]]
+  ['getgrade_0',['getGrade',['../class_bureaucrat.html#a703fff18e4042716390f9bb61b342cfe',1,'Bureaucrat']]],
+  ['getname_1',['getName',['../class_bureaucrat.html#a5cd9242e718f50074833fd0da6dbafc2',1,'Bureaucrat']]]
 ];
