@@ -1,0 +1,29 @@
+\doxysection{Presidential\+Pardon\+Form.\+hpp}
+\hypertarget{_presidential_pardon_form_8hpp_source}{}\label{_presidential_pardon_form_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PRESIDENTIALPARDONFORM\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#\ define\ PRESIDENTIALPARDONFORM\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#\ include\ "{}AForm.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ \ \ }\mbox{\hyperlink{class_presidential_pardon_form}{PresidentialPardonForm}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_a_form}{AForm}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_presidential_pardon_form_a2a73d8273d1700db9f95791a5b051588}{PresidentialPardonForm}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_presidential_pardon_form_a2a73d8273d1700db9f95791a5b051588}{PresidentialPardonForm}}(\textcolor{keyword}{const}\ std::string\&\ target);}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_presidential_pardon_form_a2a73d8273d1700db9f95791a5b051588}{PresidentialPardonForm}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_presidential_pardon_form}{PresidentialPardonForm}}\&\ other);}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_presidential_pardon_form}{PresidentialPardonForm}}\&\ \ \ \mbox{\hyperlink{class_presidential_pardon_form_a18b5ceecc72ab691eb7cbd7c3a0d86fe}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_presidential_pardon_form}{PresidentialPardonForm}}\&\ other);}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_presidential_pardon_form_a149b95102e8912e0f2e3c78fa0bc3252}{\string~PresidentialPardonForm}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \ \ \ \mbox{\hyperlink{class_presidential_pardon_form_ab331484975786c59c05d5d3e6db92c59}{execute}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}}\&\ executor)\ const\ \(\backslash\)}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ throw(\mbox{\hyperlink{class_a_form_1_1_form_not_signed}{FormNotSigned}},\ \mbox{\hyperlink{class_a_form_1_1_grade_too_low_exception}{GradeTooLowException}});}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::string\ \ \ \ \ target\_name;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \ \ \ informPardoned(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

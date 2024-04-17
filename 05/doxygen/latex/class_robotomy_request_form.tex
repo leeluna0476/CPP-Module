@@ -1,0 +1,153 @@
+\doxysection{Robotomy\+Request\+Form Class Reference}
+\hypertarget{class_robotomy_request_form}{}\label{class_robotomy_request_form}\index{RobotomyRequestForm@{RobotomyRequestForm}}
+Inheritance diagram for Robotomy\+Request\+Form\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_robotomy_request_form}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robotomy_request_form_ab2b8670ed2932507de89398ed765abf6}{Robotomy\+Request\+Form}} (void)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robotomy_request_form_a03d473ecb6f3581638e2d6b86400bc35}{Robotomy\+Request\+Form}} (const std\+::string \&target)
+\begin{DoxyCompactList}\small\item\em Single-\/parameter constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robotomy_request_form_a3877a3ad8bd1f4ba203a6cf70ef1c4b2}{Robotomy\+Request\+Form}} (const \mbox{\hyperlink{class_robotomy_request_form}{Robotomy\+Request\+Form}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robotomy_request_form}{Robotomy\+Request\+Form}} \& \mbox{\hyperlink{class_robotomy_request_form_a7a8569332b3a65364b59d25904aa10f8}{operator=}} (const \mbox{\hyperlink{class_robotomy_request_form}{Robotomy\+Request\+Form}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+\Hypertarget{class_robotomy_request_form_a39ec05eba5ff7ee832041e681f319fa0}\label{class_robotomy_request_form_a39ec05eba5ff7ee832041e681f319fa0} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Robotomy\+Request\+Form} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robotomy_request_form_af052164b291c5b28d9663c16d28b8f06}{execute}} (const \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \&executor) const  throw (\mbox{\hyperlink{class_a_form_1_1_form_not_signed}{Form\+Not\+Signed}}, \mbox{\hyperlink{class_a_form_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}})
+\begin{DoxyCompactList}\small\item\em A function that executes the form. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_a_form}{AForm}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_form_adacf60d90c3406bc8ad042ac9f35c7f1}{AForm}} (void)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_a_form_aea369a3ac1513b43064a3ccdcabfef0d}{AForm}} (const std\+::string \&\+\_\+name, const int \+\_\+grade\+\_\+to\+\_\+sign, const int \+\_\+grade\+\_\+to\+\_\+exec)  throw (\mbox{\hyperlink{class_a_form_1_1_grade_too_high_exception}{Grade\+Too\+High\+Exception}}, \mbox{\hyperlink{class_a_form_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}})
+\begin{DoxyCompactList}\small\item\em Multi-\/parameter constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_a_form_a4720ec29121a3885cf9b97e6d1e6d5b8}{AForm}} (const \mbox{\hyperlink{class_a_form}{AForm}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_a_form}{AForm}} \& \mbox{\hyperlink{class_a_form_ad40d763583e19540cc5bcd4b10ba2119}{operator=}} (const \mbox{\hyperlink{class_a_form}{AForm}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+AForm} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+const std\+::string \& {\bfseries get\+Name} (void) const
+\begin{DoxyCompactList}\small\item\em A getter that returns the name. \end{DoxyCompactList}\item 
+const bool \& {\bfseries get\+Sign} (void) const
+\begin{DoxyCompactList}\small\item\em A getter that returns the sign state. \end{DoxyCompactList}\item 
+const int \& {\bfseries get\+Grade\+To\+Sign} (void) const
+\begin{DoxyCompactList}\small\item\em A getter that returns the grade to sign the form. \end{DoxyCompactList}\item 
+const int \& {\bfseries get\+Grade\+To\+Exec} (void) const
+\begin{DoxyCompactList}\small\item\em A getter that returns the grade to execute the form. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_form_ab1bc0786a152d84372ff98a96d9c8a8d}{be\+Signed}} (const \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \&bureaucrat)  throw (\mbox{\hyperlink{class_a_form_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}})
+\begin{DoxyCompactList}\small\item\em A function that sets itself to be signed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_a_form}{AForm}}}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string {\bfseries name}
+\item 
+bool {\bfseries sign}
+\item 
+const int {\bfseries grade\+\_\+to\+\_\+sign}
+\item 
+const int {\bfseries grade\+\_\+to\+\_\+exec}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_robotomy_request_form_ab2b8670ed2932507de89398ed765abf6}\label{class_robotomy_request_form_ab2b8670ed2932507de89398ed765abf6} 
+\index{RobotomyRequestForm@{RobotomyRequestForm}!RobotomyRequestForm@{RobotomyRequestForm}}
+\index{RobotomyRequestForm@{RobotomyRequestForm}!RobotomyRequestForm@{RobotomyRequestForm}}
+\doxysubsubsection{\texorpdfstring{RobotomyRequestForm()}{RobotomyRequestForm()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Robotomy\+Request\+Form\+::\+Robotomy\+Request\+Form (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Initializes the name to "{}\+Robotomy"{}, the grade to sign to 72, the grade to execute to 45, and the target name to "{}seojilee"{} Calls a multi-\/parameter constructor of \doxylink{class_a_form}{AForm} to initialize its members. \Hypertarget{class_robotomy_request_form_a03d473ecb6f3581638e2d6b86400bc35}\label{class_robotomy_request_form_a03d473ecb6f3581638e2d6b86400bc35} 
+\index{RobotomyRequestForm@{RobotomyRequestForm}!RobotomyRequestForm@{RobotomyRequestForm}}
+\index{RobotomyRequestForm@{RobotomyRequestForm}!RobotomyRequestForm@{RobotomyRequestForm}}
+\doxysubsubsection{\texorpdfstring{RobotomyRequestForm()}{RobotomyRequestForm()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Robotomy\+Request\+Form\+::\+Robotomy\+Request\+Form (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Single-\/parameter constructor. 
+
+Initializes the name to "{}\+Robotomy"{}, the grade to sign to 72, the grade to execute to 45, and the target name to target given as a parameter. Calls a multi-\/parameter constructor of \doxylink{class_a_form}{AForm} to initialize its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & name of the target of the form \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_robotomy_request_form_a3877a3ad8bd1f4ba203a6cf70ef1c4b2}\label{class_robotomy_request_form_a3877a3ad8bd1f4ba203a6cf70ef1c4b2} 
+\index{RobotomyRequestForm@{RobotomyRequestForm}!RobotomyRequestForm@{RobotomyRequestForm}}
+\index{RobotomyRequestForm@{RobotomyRequestForm}!RobotomyRequestForm@{RobotomyRequestForm}}
+\doxysubsubsection{\texorpdfstring{RobotomyRequestForm()}{RobotomyRequestForm()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Robotomy\+Request\+Form\+::\+Robotomy\+Request\+Form (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_robotomy_request_form}{Robotomy\+Request\+Form}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+Copies another \doxylink{class_robotomy_request_form}{Robotomy\+Request\+Form} object at construction. Calls a copy constructor of \doxylink{class_a_form}{AForm} to copy its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the target of the copy \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_robotomy_request_form_af052164b291c5b28d9663c16d28b8f06}\label{class_robotomy_request_form_af052164b291c5b28d9663c16d28b8f06} 
+\index{RobotomyRequestForm@{RobotomyRequestForm}!execute@{execute}}
+\index{execute@{execute}!RobotomyRequestForm@{RobotomyRequestForm}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Robotomy\+Request\+Form\+::execute (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \&}]{executor }\end{DoxyParamCaption}) const throw ( \mbox{\hyperlink{class_a_form_1_1_form_not_signed}{Form\+Not\+Signed}}, \mbox{\hyperlink{class_a_form_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}}) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A function that executes the form. 
+
+Overrided from AForm\+::execute(). Robotomizes the target. Checks the form is signed. Checks the grade of the bureaucrat given as a parameter is high enough to execute the form. Otherwise, throws an appropriate exception.
+
+
+\begin{DoxyParams}{Parameters}
+{\em executor} & A bureaucrat that tries to execute the form \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_a_form}{AForm}}.
+
+\Hypertarget{class_robotomy_request_form_a7a8569332b3a65364b59d25904aa10f8}\label{class_robotomy_request_form_a7a8569332b3a65364b59d25904aa10f8} 
+\index{RobotomyRequestForm@{RobotomyRequestForm}!operator=@{operator=}}
+\index{operator=@{operator=}!RobotomyRequestForm@{RobotomyRequestForm}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_robotomy_request_form}{Robotomy\+Request\+Form}} \& Robotomy\+Request\+Form\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_robotomy_request_form}{Robotomy\+Request\+Form}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+Copies another \doxylink{class_robotomy_request_form}{Robotomy\+Request\+Form} object after construction. Calls a copy assignment operator of \doxylink{class_a_form}{AForm} to copy its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the target of the copy \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Robotomy\+Request\+Form.\+hpp\item 
+Robotomy\+Request\+Form.\+cpp\end{DoxyCompactItemize}

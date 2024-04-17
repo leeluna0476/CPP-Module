@@ -154,6 +154,7 @@ bool	AForm::beSigned(const Bureaucrat& bureaucrat) \
  */
 std::ostream&	operator<<(std::ostream& os, const AForm& f)
 {
-	os << "Form: " << f.getName() << ", " << f.getSign() << ", " << f.getGradeToSign() << ", " << f.getGradeToExec() << ", " << std::endl;
+	os << "AForm: " << f.getName() << ", " << f.getSign() << ", " << f.getGradeToSign() << ", " << f.getGradeToExec() << ", " << std::endl;
+
 	return os;
 }

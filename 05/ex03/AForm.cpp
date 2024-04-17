@@ -1,5 +1,12 @@
 #include "AForm.hpp"
 
+// @brief Implementation to an abstract class AForm
+
+/**
+ * @brief Default constructor
+ *
+ * Initializes the name to "seojilee", the sign to false, the grades to 150.
+ */
 AForm::AForm(void) :  \
 		name("seojilee"),   \
 		sign(false),        \
@@ -8,6 +15,11 @@ AForm::AForm(void) :  \
 {
 }
 
+/**
+ * @brief Multi-parameter constructor
+ *
+ * Initializes the name to _name, the grades to each corresponding.
+ */
 AForm::AForm(const std::string& _name, const int _grade_to_sign, const int _grade_to_exec) \
 		throw(GradeTooHighException, GradeTooLowException) \
 		: name(_name),                   \
@@ -21,6 +33,13 @@ AForm::AForm(const std::string& _name, const int _grade_to_sign, const int _grad
 		throw GradeTooLowException();
 }
 
+/**
+ * @brief Copy constructor
+ *
+ * Copies another Form object at construction.
+ *
+ * @param other the target of the copy
+ */
 AForm::AForm(const AForm& other) :    \
 		name(other.name),                   \
 		sign(other.sign),                   \
@@ -29,6 +48,13 @@ AForm::AForm(const AForm& other) :    \
 {
 }
 
+/**
+ * @brief Copy assignment operator
+ *
+ * Copies another Form object after construction.
+ *
+ * @param other the target of the copy
+ */
 AForm& AForm::operator=(const AForm& other)
 {
 	if (this != &other)
@@ -36,45 +62,77 @@ AForm& AForm::operator=(const AForm& other)
 	return *this;
 }
 
+/**
+ * @brief Destructor
+ */
 AForm::~AForm(void)
 {
 }
 
+/**
+ * @brief A function that returns GradeTooHighException in const c_string
+ */
 const char*	AForm::GradeTooHighException::what(void) const throw()
 {
 	return "GradeTooHighException";
 }
 
+/**
+ * @brief A function that returns GradeTooLowException in const c_string
+ */
 const char*	AForm::GradeTooLowException::what(void) const throw()
 {
 	return "GradeTooLowException";
 }
 
+/**
+ * @brief A function that returns FormNotSigned in const c_string
+ */
 const char*	AForm::FormNotSigned::what(void) const throw()
 {
 	return "FormNotSigned";
 }
 
+/**
+ * @brief A getter that returns the name
+ */
 const std::string&	AForm::getName(void) const
 {
 	return name;
 }
 
+/**
+ * @brief A getter that returns the sign state
+ */
 const bool&	AForm::getSign(void) const
 {
 	return sign;
 }
 
+/**
+ * @brief A getter that returns the grade to sign the form
+ */
 const int&	AForm::getGradeToSign(void) const
 {
 	return grade_to_sign;
 }
 
+/**
+ * @brief A getter that returns the grade to execute the form
+ */
 const int&	AForm::getGradeToExec(void) const
 {
 	return grade_to_exec;
 }
 
+/**
+ * @brief A function that sets itself to be signed
+ *
+ * If the grade of the bureaucrat is high enough, set the sign state true.
+ * If not, throws GradeTooLowException.
+ *
+ * @param bureaucrat A bureaucrat that tries to sign the form.
+ */
 bool	AForm::beSigned(const Bureaucrat& bureaucrat) \
 			throw(GradeTooLowException)
 {
@@ -91,6 +149,12 @@ bool	AForm::beSigned(const Bureaucrat& bureaucrat) \
 	return ret;
 }
 
+/**
+ * @brief An output operator overloaded to print the attributes of bureaucrat in format
+ *
+ * @param os A reference to std::cout
+ * @param f A form to print out
+ */
 std::ostream&	operator<<(std::ostream& os, const AForm& f)
 {
 	os << "AForm: " << f.getName() << ", " << f.getSign() << ", " << f.getGradeToSign() << ", " << f.getGradeToExec() << ", " << std::endl;

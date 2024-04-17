@@ -1,0 +1,153 @@
+\doxysection{Presidential\+Pardon\+Form Class Reference}
+\hypertarget{class_presidential_pardon_form}{}\label{class_presidential_pardon_form}\index{PresidentialPardonForm@{PresidentialPardonForm}}
+Inheritance diagram for Presidential\+Pardon\+Form\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_presidential_pardon_form}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_presidential_pardon_form_a2a73d8273d1700db9f95791a5b051588}{Presidential\+Pardon\+Form}} (void)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_presidential_pardon_form_a6af2671863d6f827dd5d68d8f05bb6fa}{Presidential\+Pardon\+Form}} (const std\+::string \&target)
+\begin{DoxyCompactList}\small\item\em Single-\/parameter constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_presidential_pardon_form_a8f885448bc95e18cf6f90bbc2afdd914}{Presidential\+Pardon\+Form}} (const \mbox{\hyperlink{class_presidential_pardon_form}{Presidential\+Pardon\+Form}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_presidential_pardon_form}{Presidential\+Pardon\+Form}} \& \mbox{\hyperlink{class_presidential_pardon_form_a18b5ceecc72ab691eb7cbd7c3a0d86fe}{operator=}} (const \mbox{\hyperlink{class_presidential_pardon_form}{Presidential\+Pardon\+Form}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+\Hypertarget{class_presidential_pardon_form_a149b95102e8912e0f2e3c78fa0bc3252}\label{class_presidential_pardon_form_a149b95102e8912e0f2e3c78fa0bc3252} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Presidential\+Pardon\+Form} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_presidential_pardon_form_ab331484975786c59c05d5d3e6db92c59}{execute}} (const \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \&executor) const  throw (\mbox{\hyperlink{class_a_form_1_1_form_not_signed}{Form\+Not\+Signed}}, \mbox{\hyperlink{class_a_form_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}})
+\begin{DoxyCompactList}\small\item\em A function that executes the form. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_a_form}{AForm}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_form_adacf60d90c3406bc8ad042ac9f35c7f1}{AForm}} (void)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_a_form_aea369a3ac1513b43064a3ccdcabfef0d}{AForm}} (const std\+::string \&\+\_\+name, const int \+\_\+grade\+\_\+to\+\_\+sign, const int \+\_\+grade\+\_\+to\+\_\+exec)  throw (\mbox{\hyperlink{class_a_form_1_1_grade_too_high_exception}{Grade\+Too\+High\+Exception}}, \mbox{\hyperlink{class_a_form_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}})
+\begin{DoxyCompactList}\small\item\em Multi-\/parameter constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_a_form_a4720ec29121a3885cf9b97e6d1e6d5b8}{AForm}} (const \mbox{\hyperlink{class_a_form}{AForm}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_a_form}{AForm}} \& \mbox{\hyperlink{class_a_form_ad40d763583e19540cc5bcd4b10ba2119}{operator=}} (const \mbox{\hyperlink{class_a_form}{AForm}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+AForm} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+const std\+::string \& {\bfseries get\+Name} (void) const
+\begin{DoxyCompactList}\small\item\em A getter that returns the name. \end{DoxyCompactList}\item 
+const bool \& {\bfseries get\+Sign} (void) const
+\begin{DoxyCompactList}\small\item\em A getter that returns the sign state. \end{DoxyCompactList}\item 
+const int \& {\bfseries get\+Grade\+To\+Sign} (void) const
+\begin{DoxyCompactList}\small\item\em A getter that returns the grade to sign the form. \end{DoxyCompactList}\item 
+const int \& {\bfseries get\+Grade\+To\+Exec} (void) const
+\begin{DoxyCompactList}\small\item\em A getter that returns the grade to execute the form. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_form_ab1bc0786a152d84372ff98a96d9c8a8d}{be\+Signed}} (const \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \&bureaucrat)  throw (\mbox{\hyperlink{class_a_form_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}})
+\begin{DoxyCompactList}\small\item\em A function that sets itself to be signed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_a_form}{AForm}}}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string {\bfseries name}
+\item 
+bool {\bfseries sign}
+\item 
+const int {\bfseries grade\+\_\+to\+\_\+sign}
+\item 
+const int {\bfseries grade\+\_\+to\+\_\+exec}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_presidential_pardon_form_a2a73d8273d1700db9f95791a5b051588}\label{class_presidential_pardon_form_a2a73d8273d1700db9f95791a5b051588} 
+\index{PresidentialPardonForm@{PresidentialPardonForm}!PresidentialPardonForm@{PresidentialPardonForm}}
+\index{PresidentialPardonForm@{PresidentialPardonForm}!PresidentialPardonForm@{PresidentialPardonForm}}
+\doxysubsubsection{\texorpdfstring{PresidentialPardonForm()}{PresidentialPardonForm()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Presidential\+Pardon\+Form\+::\+Presidential\+Pardon\+Form (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Initializes the name to "{}\+Pardon"{}, the grade to sign to 25, the grade to execute to 5, and the target name to "{}seojilee"{} Calls a multi-\/parameter constructor of \doxylink{class_a_form}{AForm} to initialize its members. \Hypertarget{class_presidential_pardon_form_a6af2671863d6f827dd5d68d8f05bb6fa}\label{class_presidential_pardon_form_a6af2671863d6f827dd5d68d8f05bb6fa} 
+\index{PresidentialPardonForm@{PresidentialPardonForm}!PresidentialPardonForm@{PresidentialPardonForm}}
+\index{PresidentialPardonForm@{PresidentialPardonForm}!PresidentialPardonForm@{PresidentialPardonForm}}
+\doxysubsubsection{\texorpdfstring{PresidentialPardonForm()}{PresidentialPardonForm()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Presidential\+Pardon\+Form\+::\+Presidential\+Pardon\+Form (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Single-\/parameter constructor. 
+
+Initializes the name to "{}\+Pardon"{}, the grade to sign to 25, the grade to execute to 5, and the target name to target given as a parameter. Calls a multi-\/parameter constructor of \doxylink{class_a_form}{AForm} to initialize its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & name of the target of the form \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_presidential_pardon_form_a8f885448bc95e18cf6f90bbc2afdd914}\label{class_presidential_pardon_form_a8f885448bc95e18cf6f90bbc2afdd914} 
+\index{PresidentialPardonForm@{PresidentialPardonForm}!PresidentialPardonForm@{PresidentialPardonForm}}
+\index{PresidentialPardonForm@{PresidentialPardonForm}!PresidentialPardonForm@{PresidentialPardonForm}}
+\doxysubsubsection{\texorpdfstring{PresidentialPardonForm()}{PresidentialPardonForm()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Presidential\+Pardon\+Form\+::\+Presidential\+Pardon\+Form (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_presidential_pardon_form}{Presidential\+Pardon\+Form}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+Copies another \doxylink{class_presidential_pardon_form}{Presidential\+Pardon\+Form} object at construction. Calls a copy constructor of \doxylink{class_a_form}{AForm} to copy its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the target of the copy \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_presidential_pardon_form_ab331484975786c59c05d5d3e6db92c59}\label{class_presidential_pardon_form_ab331484975786c59c05d5d3e6db92c59} 
+\index{PresidentialPardonForm@{PresidentialPardonForm}!execute@{execute}}
+\index{execute@{execute}!PresidentialPardonForm@{PresidentialPardonForm}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Presidential\+Pardon\+Form\+::execute (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}} \&}]{executor }\end{DoxyParamCaption}) const throw ( \mbox{\hyperlink{class_a_form_1_1_form_not_signed}{Form\+Not\+Signed}}, \mbox{\hyperlink{class_a_form_1_1_grade_too_low_exception}{Grade\+Too\+Low\+Exception}}) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A function that executes the form. 
+
+Overrided from AForm\+::execute(). Informs the target has been pardoned. Checks the form is signed. Checks the grade of the bureaucrat given as a parameter is high enough to execute the form. Otherwise, throws an appropriate exception.
+
+
+\begin{DoxyParams}{Parameters}
+{\em executor} & A bureaucrat that tries to execute the form \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_a_form}{AForm}}.
+
+\Hypertarget{class_presidential_pardon_form_a18b5ceecc72ab691eb7cbd7c3a0d86fe}\label{class_presidential_pardon_form_a18b5ceecc72ab691eb7cbd7c3a0d86fe} 
+\index{PresidentialPardonForm@{PresidentialPardonForm}!operator=@{operator=}}
+\index{operator=@{operator=}!PresidentialPardonForm@{PresidentialPardonForm}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_presidential_pardon_form}{Presidential\+Pardon\+Form}} \& Presidential\+Pardon\+Form\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_presidential_pardon_form}{Presidential\+Pardon\+Form}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+Copies another \doxylink{class_presidential_pardon_form}{Presidential\+Pardon\+Form} object after construction. Calls a copy assignment operator of \doxylink{class_a_form}{AForm} to copy its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the target of the copy \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Presidential\+Pardon\+Form.\+hpp\item 
+Presidential\+Pardon\+Form.\+cpp\end{DoxyCompactItemize}
