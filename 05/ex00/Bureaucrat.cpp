@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 
 /**
- * A constructor
+ * @brief A constructor
  *
  * test
  */
