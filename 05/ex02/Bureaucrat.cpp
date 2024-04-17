@@ -170,7 +170,7 @@ const char*	Bureaucrat::GradeTooLowException::what(void) const throw()
  * @brief An output operator overloaded to print the attributes of bureaucrat in format
  *
  * @param os A reference to std::cout
- * @param bureaucrat A const reference to the bureaucrat to print out
+ * @param bureaucrat A bureaucrat to print out
  */
 std::ostream&	operator <<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
