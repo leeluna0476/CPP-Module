@@ -73,7 +73,7 @@ enum FormType	Intern::getType(const std::string& name) const throw(NoSuchForm)
  * The user must delete the returned object after use.
  *
  * @param name A form to generate
- * @param target A target that will be given as a parameter to the form
+ * @param target A target to be given as a parameter to the form
  */
 AForm*	Intern::makeForm(const std::string& name, const std::string& target) const
 {
