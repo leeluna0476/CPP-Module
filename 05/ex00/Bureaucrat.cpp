@@ -1,22 +1,26 @@
 #include "Bureaucrat.hpp"
 
 /**
- * \brief A default constructor
+ * @brief Default constructor
  *
- * Initializes the name to "seojilee", the grade to 150
+ * Initializes the name to "seojilee", the grade to 150.
  */
 Bureaucrat::Bureaucrat(void) : name("seojilee"), grade(150)
 {
 }
 
 /**
- * \brief A multi-parameter constructor
+ * @brief Multi-parameter constructor
+ *
+ * Initializes the name to _name, the grade to _grade.
+ * The grade must not be greater than 1, or lesser than 150.
+ * If so, throws either GradeTooHighException or GradeTooLowException.
  *
  * @param _name bureaucrat's name (constant)
  * @param _grade bureaucrat's grade
  */
-Bureaucrat::Bureaucrat(const std::string& _name, int _grade) \
-		throw(GradeTooHighException, GradeTooLowException) \
+Bureaucrat::Bureaucrat(const std::string& _name, int _grade) @
+		throw(GradeTooHighException, GradeTooLowException) @
 		: name(_name)
 {
 	if (_grade < 1)
@@ -26,10 +30,25 @@ Bureaucrat::Bureaucrat(const std::string& _name, int _grade) \
 	grade = _grade;
 }
 
+/**
+ * @brief Copy constructor
+ *
+ * Copies another Bureucrat object at construction.
+ *
+ * @param the target of the copy
+ */
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), grade(other.grade)
 {
 }
 
+/**
+ * @brief Copy assignment operator overloaded
+ *
+ * Copies another Bureaucrat object.
+ * Does not copy any constants.
+ *
+ * @param the target of the copy
+ */
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other)
 {
 	if (this != &other)
@@ -38,6 +57,9 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other)
 	return *this;
 }
 
+/**
+ * @brief Destructor
+ */
 Bureaucrat::~Bureaucrat(void)
 {
 }
