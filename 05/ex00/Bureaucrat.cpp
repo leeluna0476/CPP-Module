@@ -1,14 +1,20 @@
 #include "Bureaucrat.hpp"
 
 /**
- * @brief A constructor
+ * \brief A default constructor
  *
- * test
+ * Initializes the name to "seojilee", the grade to 150
  */
 Bureaucrat::Bureaucrat(void) : name("seojilee"), grade(150)
 {
 }
 
+/**
+ * \brief A multi-parameter constructor
+ *
+ * @param _name bureaucrat's name (constant)
+ * @param _grade bureaucrat's grade
+ */
 Bureaucrat::Bureaucrat(const std::string& _name, int _grade) \
 		throw(GradeTooHighException, GradeTooLowException) \
 		: name(_name)
