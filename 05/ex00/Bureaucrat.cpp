@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include <exception>
 
 /**
  * @brief Default constructor

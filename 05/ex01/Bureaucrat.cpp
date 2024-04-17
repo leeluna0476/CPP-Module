@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include <exception>
 
 /**
  * @brief Default constructor
@@ -107,11 +108,11 @@ Bureaucrat&	Bureaucrat::operator--(void) throw(GradeTooLowException)
 }
 
 /**
- * @brief A function that signs to the form given as a parameter
+ * @brief A function that signs the form given as a parameter
  *
- * Signs to the form if it is not previously signed.
+ * Signs the form if it is not previously signed.
  * If successful, informs that the form is signed.
- * If not, informs the error.
+ * If not, informs error.
  */
 void	Bureaucrat::signForm(Form& form)
 {
