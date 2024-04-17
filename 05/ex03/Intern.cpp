@@ -52,7 +52,7 @@ Intern::~Intern(void)
  *
  * @param name A form to generate
  */
-enum FormType	Intern::getType(const std::string& name) const throw(NoSuchForm)
+enum Intern::FormType	Intern::getType(const std::string& name) const throw(NoSuchForm)
 {
 	const std::string	forms[3] = \
 		{ "ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm" };

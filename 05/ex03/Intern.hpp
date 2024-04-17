@@ -5,13 +5,6 @@
 # include <exception>
 # include "AForm.hpp"
 
-enum	FormType
-{
-	SHRUBBERYCREATION = 0,
-	ROBOTOMYREQUEST,
-	PRESIDENTIALPARDON
-};
-
 class	Intern
 {
 	public:
@@ -36,7 +29,14 @@ class	Intern
 		AForm*	makeForm(const std::string& name, const std::string& target) const;
 
 	private:
-		enum FormType	getType(const std::string& name) const throw(NoSuchForm);
+		enum	FormType
+		{
+			SHRUBBERYCREATION = 0,
+			ROBOTOMYREQUEST,
+			PRESIDENTIALPARDON
+		};
+
+		enum Intern::FormType	getType(const std::string& name) const throw(NoSuchForm);
 };
 
 #endif
