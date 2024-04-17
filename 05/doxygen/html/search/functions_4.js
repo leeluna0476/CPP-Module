@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['intern_0',['Intern',['../class_intern.html#ac033490adf8db4266d019a3ce0d38a84',1,'Intern::Intern(void)'],['../class_intern.html#a1c1122d9d2e7246d11531063ec7dd7ec',1,'Intern::Intern(const Intern &amp;other)']]]
+  ['getgradetoexec_0',['getGradeToExec',['../class_a_form.html#ae4501e17e7bbecf5acc94dbb40a36531',1,'AForm']]],
+  ['getgradetosign_1',['getGradeToSign',['../class_a_form.html#a64dccba542bf551557031dfcf1d68aae',1,'AForm']]],
+  ['getname_2',['getName',['../class_a_form.html#ae890fe5b556a86fba2ad09fb2cc0ebd0',1,'AForm::getName()'],['../class_intern_1_1_no_such_form.html#a85f9320e27d796d41e09a4fc38e02b1e',1,'Intern::NoSuchForm::getName()']]],
+  ['getsign_3',['getSign',['../class_a_form.html#a6026b88ae0e4ef9899ff5e79e1ea1df9',1,'AForm']]],
+  ['gettype_4',['getType',['../class_intern.html#a8bd4f6bd3c92dd99ecc6898d7dac80b7',1,'Intern']]]
 ];

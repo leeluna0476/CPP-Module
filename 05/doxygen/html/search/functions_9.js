@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['robotomyrequestform_0',['RobotomyRequestForm',['../class_robotomy_request_form.html#ab2b8670ed2932507de89398ed765abf6',1,'RobotomyRequestForm::RobotomyRequestForm(void)'],['../class_robotomy_request_form.html#a03d473ecb6f3581638e2d6b86400bc35',1,'RobotomyRequestForm::RobotomyRequestForm(const std::string &amp;target)'],['../class_robotomy_request_form.html#a3877a3ad8bd1f4ba203a6cf70ef1c4b2',1,'RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &amp;other)']]]
+  ['presidentialpardonform_0',['PresidentialPardonForm',['../class_presidential_pardon_form.html#a2a73d8273d1700db9f95791a5b051588',1,'PresidentialPardonForm::PresidentialPardonForm(void)'],['../class_presidential_pardon_form.html#a6af2671863d6f827dd5d68d8f05bb6fa',1,'PresidentialPardonForm::PresidentialPardonForm(const std::string &amp;target)'],['../class_presidential_pardon_form.html#a8f885448bc95e18cf6f90bbc2afdd914',1,'PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &amp;other)']]]
 ];

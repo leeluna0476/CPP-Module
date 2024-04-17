@@ -73,6 +73,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_shrubbery_creation_form-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ShrubberyCreationForm Class Reference</div></div>
 </div><!--header-->
@@ -144,6 +146,21 @@ const int &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getGradeTo
 <tr class="memitem:ab1bc0786a152d84372ff98a96d9c8a8d inherit pub_methods_class_a_form" id="r_ab1bc0786a152d84372ff98a96d9c8a8d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_form.html#ab1bc0786a152d84372ff98a96d9c8a8d">beSigned</a> (const <a class="el" href="class_bureaucrat.html">Bureaucrat</a> &amp;bureaucrat)  throw (<a class="el" href="class_a_form_1_1_grade_too_low_exception.html">GradeTooLowException</a>)</td></tr>
 <tr class="memdesc:ab1bc0786a152d84372ff98a96d9c8a8d inherit pub_methods_class_a_form"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function that sets itself to be signed.  <br /></td></tr>
 <tr class="separator:ab1bc0786a152d84372ff98a96d9c8a8d inherit pub_methods_class_a_form"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a9fe77d052c3d02a07aa87a1409d968ed" id="r_a9fe77d052c3d02a07aa87a1409d968ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fe77d052c3d02a07aa87a1409d968ed">drawASCIITree</a> (void) const</td></tr>
+<tr class="memdesc:a9fe77d052c3d02a07aa87a1409d968ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function that prints an ASCII tree to the target file.  <br /></td></tr>
+<tr class="separator:a9fe77d052c3d02a07aa87a1409d968ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a3aa710dfa2fb7d8459417db3cc9ee40f" id="r_a3aa710dfa2fb7d8459417db3cc9ee40f"><td class="memItemLeft" align="right" valign="top"><a id="a3aa710dfa2fb7d8459417db3cc9ee40f" name="a3aa710dfa2fb7d8459417db3cc9ee40f"></a>
+std::ofstream&#160;</td><td class="memItemRight" valign="bottom"><b>target_file</b></td></tr>
+<tr class="separator:a3aa710dfa2fb7d8459417db3cc9ee40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fefc5a256f668b20d76c4dd91bc577f" id="r_a1fefc5a256f668b20d76c4dd91bc577f"><td class="memItemLeft" align="right" valign="top"><a id="a1fefc5a256f668b20d76c4dd91bc577f" name="a1fefc5a256f668b20d76c4dd91bc577f"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>target_name</b></td></tr>
+<tr class="separator:a1fefc5a256f668b20d76c4dd91bc577f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -235,6 +252,34 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>grade_to_exec</b
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9fe77d052c3d02a07aa87a1409d968ed" name="a9fe77d052c3d02a07aa87a1409d968ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fe77d052c3d02a07aa87a1409d968ed">&#9670;&#160;</a></span>drawASCIITree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShrubberyCreationForm::drawASCIITree </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A function that prints an ASCII tree to the target file. </p>
+<p>Generates an ASCII tree in a string. Prints it to the target file. </p>
+
+</div>
+</div>
 <a id="ac9eb6db1922ac0dd52ac108e792a08e3" name="ac9eb6db1922ac0dd52ac108e792a08e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac9eb6db1922ac0dd52ac108e792a08e3">&#9670;&#160;</a></span>execute()</h2>
 

@@ -74,6 +74,8 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_intern-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Intern Class Reference</div></div>
 </div><!--header-->
@@ -103,6 +105,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5b8079ecbdb5ea34932052d6ef718631" id="r_a5b8079ecbdb5ea34932052d6ef718631"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_form.html">AForm</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b8079ecbdb5ea34932052d6ef718631">makeForm</a> (const std::string &amp;name, const std::string &amp;target) const</td></tr>
 <tr class="memdesc:a5b8079ecbdb5ea34932052d6ef718631"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function that returns a form that matches the name given as a parameter.  <br /></td></tr>
 <tr class="separator:a5b8079ecbdb5ea34932052d6ef718631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:adca5513add5f290ef1a7a760627e9cbd" id="r_adca5513add5f290ef1a7a760627e9cbd"><td class="memItemLeft" align="right" valign="top"><a id="adca5513add5f290ef1a7a760627e9cbd" name="adca5513add5f290ef1a7a760627e9cbd"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>FormType</b> { <b>SHRUBBERYCREATION</b> = 0
+, <b>ROBOTOMYREQUEST</b>
+, <b>PRESIDENTIALPARDON</b>
+ }</td></tr>
+<tr class="separator:adca5513add5f290ef1a7a760627e9cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a8bd4f6bd3c92dd99ecc6898d7dac80b7" id="r_a8bd4f6bd3c92dd99ecc6898d7dac80b7"><td class="memItemLeft" align="right" valign="top">enum Intern::FormType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bd4f6bd3c92dd99ecc6898d7dac80b7">getType</a> (const std::string &amp;name) const  throw (<a class="el" href="class_intern_1_1_no_such_form.html">NoSuchForm</a>)</td></tr>
+<tr class="memdesc:a8bd4f6bd3c92dd99ecc6898d7dac80b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A getter that returns the type of the form that matches the name given as a parameter.  <br /></td></tr>
+<tr class="separator:a8bd4f6bd3c92dd99ecc6898d7dac80b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1c1122d9d2e7246d11531063ec7dd7ec" name="a1c1122d9d2e7246d11531063ec7dd7ec"></a>
@@ -132,6 +148,43 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8bd4f6bd3c92dd99ecc6898d7dac80b7" name="a8bd4f6bd3c92dd99ecc6898d7dac80b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bd4f6bd3c92dd99ecc6898d7dac80b7">&#9670;&#160;</a></span>getType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum Intern::FormType Intern::getType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"><a class="el" href="class_intern_1_1_no_such_form.html">NoSuchForm</a>&#160;)</td><td></td><td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A getter that returns the type of the form that matches the name given as a parameter. </p>
+<p>If no such form, throws <a class="el" href="class_intern_1_1_no_such_form.html">NoSuchForm</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>A form to generate </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a5b8079ecbdb5ea34932052d6ef718631" name="a5b8079ecbdb5ea34932052d6ef718631"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b8079ecbdb5ea34932052d6ef718631">&#9670;&#160;</a></span>makeForm()</h2>
 
