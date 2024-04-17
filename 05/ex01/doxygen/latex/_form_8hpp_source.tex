@@ -1,0 +1,55 @@
+\doxysection{Form.\+hpp}
+\hypertarget{_form_8hpp_source}{}\label{_form_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FORM\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#\ define\ FORM\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#\ include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#\ include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#\ include\ <exception>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#\ include\ "{}Bureaucrat.hpp"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ \ \ }\mbox{\hyperlink{class_bureaucrat}{Bureaucrat}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ \ \ }\mbox{\hyperlink{class_form}{Form}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ \ \ }\mbox{\hyperlink{class_form_1_1_grade_too_high_exception}{GradeTooHighException}}\ :\ \textcolor{keyword}{public}\ std::exception}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ what(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const}\ \textcolor{keywordflow}{throw}();}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ \ \ }\mbox{\hyperlink{class_form_1_1_grade_too_low_exception}{GradeTooLowException}}\ :\ \textcolor{keyword}{public}\ std::exception}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ what(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const}\ \textcolor{keywordflow}{throw}();}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_form}{Form}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_form}{Form}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ grade\_to\_sign,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ grade\_to\_exec)\ \(\backslash\)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ throw(\mbox{\hyperlink{class_form_1_1_grade_too_high_exception}{GradeTooHighException}},\ \mbox{\hyperlink{class_form_1_1_grade_too_low_exception}{GradeTooLowException}});}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_form}{Form}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_form}{Form}}\&\ other);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_form}{Form}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_form}{Form}}\&\ other);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_form}{\string~Form}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \ getName(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\&\ \ \ \ \ \ \ \ \ getSign(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \ \ \ \ \ \ \ \ \ getGradeToSign(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \ \ \ \ \ \ \ \ \ getGradeToExec(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ beSigned(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_bureaucrat}{Bureaucrat}}\&\ bureaucrat)\ \(\backslash\)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ throw(\mbox{\hyperlink{class_form_1_1_grade_too_low_exception}{GradeTooLowException}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \ \ name;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sign;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ grade\_to\_sign;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ grade\_to\_exec;}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ std::ostream\&\ \ \ operator<<(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_form}{Form}}\&\ f);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
