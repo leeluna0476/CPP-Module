@@ -35,7 +35,7 @@ Bureaucrat::Bureaucrat(const std::string& _name, int _grade) @
  *
  * Copies another Bureucrat object at construction.
  *
- * @param the target of the copy
+ * @param other the target of the copy
  */
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), grade(other.grade)
 {
@@ -47,7 +47,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), grade(other.
  * Copies another Bureaucrat object.
  * Does not copy any constants.
  *
- * @param the target of the copy
+ * @param other the target of the copy
  */
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other)
 {
