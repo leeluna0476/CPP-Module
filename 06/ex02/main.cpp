@@ -32,6 +32,8 @@ Base*	generate()
 // It prints the actual type of the object pointed to by p: "A", "B" or "C".
 void	identify(Base* p)
 {
+	std::cout << "[Ptr]: ";
+
 	if (dynamic_cast<A*>(p) != NULL)
 	{
 		std::cout << "The actual type is <A>.";
@@ -46,53 +48,47 @@ void	identify(Base* p)
 	}
 	else
 	{
-		std::cout << "The actual type is not any of { A, B, C }.";
+		std::cout << "Cannot identify the type.";
 	}
 	
 	std::cout << std::endl;
 }
 
+static void	checkA(Base& p)
+{
+	A	a = dynamic_cast<A&>(p);
+}
+
+static void	checkB(Base& p)
+{
+	B	b = dynamic_cast<B&>(p);
+}
+
+static void	checkC(Base& p)
+{
+	C	c = dynamic_cast<C&>(p);
+}
+
 // It prints the actual type of the object pointed to by p: "A", "B" or "C".
 void	identify(Base& p)
 {
-	A	a;
-	B	b;
-	C	c;
+	static void	(*checkABC[3])(Base&) = { checkA, checkB, checkC };
 
-	int i = 0;
-	for (; i < 3; i++)
+	std::cout << "[Ref]: ";
+	for (int i = 0; i < 3; i++)
 	{
 		try
 		{
-			switch (i)
-			{
-				case 0:
-					a = dynamic_cast<A&>(p);
-					break;
-				case 1:
-					b = dynamic_cast<B&>(p);
-					break;
-				case 2:
-					c = dynamic_cast<C&>(p);
-					break;
-			}
-			break;
+			checkABC[i](p);
+			std::cout << "The actual type is <" << "ABC"[i] << ">." << std::endl;
+			return ;
 		}
 		catch (const std::bad_cast& e)
 		{
 		}
 	}
-	
-	if (i == 3)
-	{
-		std::cout << "The actual type is not any of { A, B, C }.";
-	}
-	else
-	{
-		std::cout << "The actual type is <" << "ABC"[i] << ">.";
-	}
 
-	std::cout << std::endl;
+	std::cout << "Cannot identify the type." << std::endl;
 }
 
 int	main(void)
