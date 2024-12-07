@@ -210,7 +210,7 @@ void	Serializer::displayOption(Data& data, enum optionDisplayMode mode, int8_t o
 		}
 	};
 
-	uint32_t	tab_vert = 10;
+	uint32_t	tab_vert = 5;
 	uint32_t	tab_horiz = 0;
 	if (mode == PALETTE_TYPE)
 	{
@@ -302,7 +302,7 @@ void	Serializer::setColorIndex(Data& data)
 
 uint32_t	Serializer::setConfig(Data& data)
 {
-	std::cout << "\033[6;0H";
+//	std::cout << "\033[6;0H";
 
 	data.magic_number = 0x4D42;
 
@@ -522,7 +522,7 @@ uintptr_t	Serializer::serialize(Data* ptr)
 	uint8_t*		color_table = NULL;
 	uint8_t*		pixel_data = NULL;
 	std::ofstream	outfile;
-	uintptr_t		ret;
+	uintptr_t		ret = reinterpret_cast<uintptr_t>(ptr);
 
 	try
 	{
@@ -577,7 +577,6 @@ uintptr_t	Serializer::serialize(Data* ptr)
 /////GENERATE///////IMAGE///////////////////////////////
 
 		const char*	_filename = ptr->filename.c_str();
-		ret = reinterpret_cast<uintptr_t>(_filename);
 		outfile.open(_filename, std::ios::binary);
 		if (outfile.is_open() == 0)
 		{
@@ -626,7 +625,9 @@ uintptr_t	Serializer::serialize(Data* ptr)
 // raw == draft filename
 Data*	Serializer::deserialize(uintptr_t raw)
 {
-	char*	_filename = reinterpret_cast<char*>(raw);
+	Data*	ptr = reinterpret_cast<Data*>(raw);
+	freeTerminalData(ptr);
+	const char*	_filename = ptr->filename.c_str();
 	struct BmpFileHeader	file_header;
 	struct BmpInfoHeader	info_header;
 
@@ -671,7 +672,6 @@ Data*	Serializer::deserialize(uintptr_t raw)
 	uint32_t	matrix_size = info_header.height * info_header.width;
 
 	uint8_t*	pixel_data = NULL;
-	Data*	ptr = NULL;
 	try
 	{
 		pixel_data = new uint8_t[matrix_size];
@@ -720,7 +720,7 @@ Data*	Serializer::deserialize(uintptr_t raw)
 		}
 
 // DESERIALIZE
-		ptr = new Data();
+//		ptr = new Data();
 		ptr->magic_number = 0x4D42;
 		ptr->image_width = info_header.width;
 		ptr->image_height = info_header.height;

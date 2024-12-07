@@ -1,66 +1,46 @@
 #include "Serializer.hpp"
 #include <iostream>
-
-static void	bootSerialization(Data* data)
-{
-	char*	generated_file = reinterpret_cast<char*>(Serializer::serialize(data));
-
-	if (generated_file == NULL)
-	{
-		std::cerr << "Cannot serialize the file." << std::endl;
-	}
-	else
-	{
-		std::cout << "[" << data->filename << "]" << std::endl;
-	}
-}
+#include <unistd.h>
 
 int	main(void)
 {
 	// serialize
-	Data*	data;
-	if (Serializer::chooseSD() == FIRST)
-	{
-		data = Serializer::generateImgData();
+	std::cout << CLEAR_SCREEN;
 
-		if (data == NULL)
-		{
-			std::cerr << "Cannot generate data." << std::endl;
-		}
-		else
-		{
-			bootSerialization(data);
-			freeTerminalData(data);
-			delete data;
-		}
+	Data*	data = Serializer::generateImgData();
+	if (data == NULL)
+	{
+		std::cerr << "Failed to generate image data." << std::endl;
+		return 0;
 	}
-	else
+
+	for (;;)
 	{
-		std::string	_filename;
-		std::cout << "[Enter filename]: ";
-		std::cout << "\n(<filename>.bmp)" << CURSOR_RIGHT << CURSOR_RIGHT << CURSOR_UP;
-		getline(std::cin, _filename);
-		std::cout << CURSOR_DOWN;
-
-		_filename += ".bmp";
-
-		data = Serializer::deserialize(reinterpret_cast<uintptr_t>(_filename.c_str()));
-		if (data == NULL)
+		uintptr_t	i_ptr = Serializer::serialize(data);
+		if (data->magic_number == 0x4A53)
 		{
-			std::cerr << "Cannot deserialize the file." << std::endl;
-		}
-		else
-		{
-			if (Serializer::reloadTerminalData(data) == 0)
+			Data*	_data = Serializer::deserialize(i_ptr);
+			if (_data == data)
 			{
-				std::cerr << "Cannot load data." << std::endl;
+//				밀당용 코드
+//				std::cout << CLEAR_SCREEN;
+//				for (uint32_t i = 0; i < 3; i++)
+//				{
+//					std::cout << "...reloading drafted data..." << std::endl;
+//					usleep(1000000);
+//				}
+
+				Serializer::reloadTerminalData(_data);
 			}
 			else
 			{
-				bootSerialization(data);
+				std::cerr << "Failed to deserialize the data." << std::endl;
+				break;
 			}
-			freeTerminalData(data);
-			delete data;
+		}
+		else
+		{
+			break;
 		}
 	}
 
