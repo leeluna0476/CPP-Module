@@ -10,7 +10,7 @@ class	Serializer
 		// OCCF
 		Serializer();
 		Serializer(const Serializer&);
-		void	operator=(const Serializer&);
+		Serializer&	operator=(const Serializer&);
 		~Serializer();
 
 		static const uint8_t	palette[][3];
