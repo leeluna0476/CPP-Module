@@ -1,6 +1,7 @@
 #include "iter.hpp"
 #include <iostream>
 #include <cstring>
+#include "TestClass.hpp"
 
 int	main(void)
 {
@@ -15,6 +16,18 @@ int	main(void)
 	iter(const_cast<char*>(str), std::strlen(str), c_print);
 
 	std::cout << std::endl;
+
+	TestClass*	tc_array = new TestClass[10];
+	for (int i = 0; i < 10; i++)
+	{
+		tc_array[i].setData(i);
+	}
+	void	(*tc_print)(TestClass) = print<TestClass>;
+	iter(tc_array, 10, tc_print);
+
+	std::cout << std::endl;
+
+	delete[] tc_array;
 
 	return 0;
 }
