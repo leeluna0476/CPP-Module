@@ -83,7 +83,7 @@ void	identify(Base& p)
 			std::cout << "The actual type is <" << "ABC"[i] << ">." << std::endl;
 			return ;
 		}
-		catch (const std::bad_cast& e)
+		catch (const std::exception& e)
 		{
 		}
 	}
