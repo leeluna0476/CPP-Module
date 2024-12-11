@@ -14,7 +14,18 @@ int	main(void)
 			std::cout << i_array[i] << ' ';
 		}
 		std::cout << std::endl;
-		std::cout << i_array[size] << ' ';
+
+		Array<int>	i_2;
+		std::cout << "i_2: " << i_2.size() << std::endl;
+
+		i_2 = i_array;
+		std::cout << "i_2: " << i_2.size() << std::endl;
+
+		for (unsigned int i = 0; i < size; i++)
+		{
+			std::cout << i_2[i] << ' ';
+		}
+		std::cout << std::endl;
 	}
 	catch (const std::exception& e)
 	{
