@@ -4,13 +4,22 @@
 # include <iostream>
 
 template <typename T>
-void	print(T e)
+void	print(T& e)
 {
 	std::cout << e;
 }
 
 template <typename T, typename F>
-void	iter(T* array, int size, F (*f)(T))
+void	iter(T* array, int size, F (*f)(T&))
+{
+	for (int i = 0; i < size; i++)
+	{
+		f(array[i]);
+	}
+}
+
+template <typename T, typename F>
+void	iter(const T* array, int size, F (*f)(const T&))
 {
 	for (int i = 0; i < size; i++)
 	{

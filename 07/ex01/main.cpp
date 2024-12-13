@@ -6,14 +6,14 @@
 int	main(void)
 {
 	int	i_array[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
-	void	(*i_print)(int) = print<int>;
+	void	(*i_print)(int&) = print<int>;
 	iter(i_array, sizeof(i_array) / sizeof(int), i_print);
 
 	std::cout << std::endl;
 
 	const char*	str = "Hello world";
-	void	(*c_print)(char) = print<char>;
-	iter(const_cast<char*>(str), std::strlen(str), c_print);
+	void	(*c_print)(const char&) = print<const char>;
+	iter(str, std::strlen(str), c_print);
 
 	std::cout << std::endl;
 
@@ -22,7 +22,7 @@ int	main(void)
 	{
 		tc_array[i].setData(i);
 	}
-	void	(*tc_print)(TestClass) = print<TestClass>;
+	void	(*tc_print)(TestClass&) = print<TestClass>;
 	iter(tc_array, 10, tc_print);
 
 	std::cout << std::endl;
