@@ -47,23 +47,26 @@ Array<T>::Array(const Array& other)
 template <typename T>
 Array<T>&	Array<T>::operator=(const Array& other)
 {
-	try
+	if (this != &other)
 	{
-		delete _array;
-		_array = new T[other._size];
-
-		for (unsigned int i = 0; i < other._size; i++)
+		try
 		{
-			_array[i] = other._array[i];
-		}
+			delete _array;
+			_array = new T[other._size];
 
-		_size = other._size;
-	}
-	catch (const std::bad_alloc& e)
-	{
-		_array = NULL;
-		_size = 0;
-		std::cout << e.what();
+			for (unsigned int i = 0; i < other._size; i++)
+			{
+				_array[i] = other._array[i];
+			}
+
+			_size = other._size;
+		}
+		catch (const std::bad_alloc& e)
+		{
+			_array = NULL;
+			_size = 0;
+			std::cout << e.what();
+		}
 	}
 
 	return *this;
