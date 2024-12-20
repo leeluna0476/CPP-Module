@@ -2,11 +2,23 @@
 # define SPAN_HPP
 
 # include <vector>
-# include <type_traits>
+//# include <type_traits>
 
 class   Span
 {
     private:
+        template <typename T, typename U>
+        struct is_same
+        {
+            static const bool value = false;
+        };
+
+        template <typename T>
+        struct is_same<T, T>
+        {
+            static const bool value = true;
+        };
+
         std::vector<int>    _storage;
         const unsigned int  _capacity;
 
@@ -24,7 +36,7 @@ class   Span
         {
             typedef typename std::iterator_traits<T>::value_type    value_type;
 
-            if (!std::is_same<value_type, int>::value)
+            if (!is_same<value_type, int>::value)
             {
                 throw std::logic_error("Can only add <int> data");
             }
