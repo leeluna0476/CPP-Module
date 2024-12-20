@@ -20,8 +20,8 @@ Bureaucrat::Bureaucrat(void) : name("seojilee"), grade(150)
  * @param _name bureaucrat's name (constant)
  * @param _grade bureaucrat's grade
  */
-Bureaucrat::Bureaucrat(const std::string& _name, int _grade) @
-		throw(GradeTooHighException, GradeTooLowException) @
+Bureaucrat::Bureaucrat(const std::string& _name, int _grade)
+		throw(GradeTooHighException, GradeTooLowException)
 		: name(_name)
 {
 	if (_grade < 1)
