@@ -3,7 +3,6 @@
 
 # include <vector>
 # include <stdexcept>
-//# include <type_traits>
 
 class   Span
 {
