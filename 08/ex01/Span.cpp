@@ -80,3 +80,17 @@ int Span::longestSpan() const
 
     return _storage.back() - _storage.front();
 }
+
+void    Span::printElements() const
+{
+    std::vector<int>::const_iterator  it = _storage.begin();
+    std::vector<int>::const_iterator  ite = _storage.end();
+
+    while (it != ite)
+    {
+        std::cout << *it << " ";
+        ++it;
+    }
+
+    std::cout << std::endl;
+}
