@@ -13,7 +13,7 @@ DEPS=$(SRCS:.cpp=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(LINK.cpp) $(OUTPUT_OPTION) $<
+	$(LINK.cpp) $(OUTPUT_OPTION) $(OBJS)
 
 %.o: %.cpp
 	$(COMPILE.cpp) $(OUTPUT_OPTION) $<
