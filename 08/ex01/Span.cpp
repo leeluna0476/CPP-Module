@@ -1,7 +1,6 @@
 #include "Span.hpp"
 #include <iostream>
-#include <stdexcept>
-#include <new>
+#include <algorithm>
 
 Span::Span() : _capacity(0)
 {
