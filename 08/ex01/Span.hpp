@@ -48,8 +48,8 @@ class   Span
             }
         }
 
-        int     shortestSpan() const;
-        int     longestSpan() const;
+        unsigned int    shortestSpan() const;
+        unsigned int    longestSpan() const;
 
         void    printElements() const;
 };

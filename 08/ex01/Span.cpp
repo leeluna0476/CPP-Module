@@ -43,7 +43,7 @@ void    Span::addNumber(int num)
     _storage.insert(it, num);
 }
 
-int Span::shortestSpan() const
+unsigned int Span::shortestSpan() const
 {
     if (_storage.size() <= 1)
     {
@@ -53,12 +53,12 @@ int Span::shortestSpan() const
     std::vector<int>::const_iterator  it = _storage.begin();
     std::vector<int>::const_iterator  ite = _storage.end();
 
-    int span = *(it + 1) - *it;
+    unsigned int span = *(it + 1) - *it;
     ++it;
 
     while (it + 1 != ite)
     {
-        int diff = *(it + 1) - *it;
+        unsigned int diff = *(it + 1) - *it;
         if (diff < span)
         {
             span = diff;
@@ -70,7 +70,7 @@ int Span::shortestSpan() const
     return span;
 }
 
-int Span::longestSpan() const
+unsigned int Span::longestSpan() const
 {
     if (_storage.size() <= 1)
     {

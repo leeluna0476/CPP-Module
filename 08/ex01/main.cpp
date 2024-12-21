@@ -14,6 +14,8 @@ int	main(void)
         s.addNumber(7);
         s.addNumber(5);
         s.addNumber(4);
+        s.addNumber(-1);
+        s.addNumber(2147483647);
 
         s.printElements();
 
