@@ -37,7 +37,6 @@ void    Span::addNumber(int num)
     if (!_capacity || _storage.size() == _capacity)
     {
         throw std::out_of_range("Cannot add element");
-        return;
     }
      
     std::vector<int>::iterator  it = std::upper_bound(_storage.begin(), _storage.end(), num);
