@@ -13,8 +13,17 @@ int	main(void)
 
     mstk.pop();
 
-    std::cout << mstk.size() << std::endl;
-    std::cout << mstk.top() << std::endl;
+    std::cout << "size: " << mstk.size() << std::endl;
+    std::cout << "top: " << mstk.top() << std::endl;
+
+    MutantStack<int, std::vector<int> >::Iterator   it = mstk.begin();
+    MutantStack<int, std::vector<int> >::Iterator   ite = mstk.end();
+
+    while (it != ite)
+    {
+        std::cout << "iterator: " << *it << std::endl;
+        ++it;
+    }
 
 	return 0;
 }

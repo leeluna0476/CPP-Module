@@ -16,17 +16,39 @@ class   MutantStack
         MutantStack &operator=(const MutantStack &other);
         ~MutantStack();
 
-        bool    empty() const;
-        std::size_t  size() const;
-        T       &top();
-        const T &top() const;
+        bool        empty() const;
+        std::size_t size() const;
+        T           &top();
+        const T     &top() const;
 
         void    push(const T &value);
         void    pop();
 
         class   Iterator
         {
+            private:
+                typename Container::iterator _it;
+
+                Iterator();
+
+            public:
+                Iterator(const Iterator &other);
+                Iterator(typename Container::iterator it);
+                Iterator    &operator=(const Iterator &other);
+                ~Iterator();
+
+                T       &operator*();
+                const T &operator*() const;
+
+                void    operator++();
+                void    operator--();
+
+                bool    operator==(const typename MutantStack<T, Container>::Iterator &other) const;
+                bool    operator!=(const typename MutantStack<T, Container>::Iterator &other) const;
         };
+
+        Iterator    begin();
+        Iterator    end();
 };
 
 template <typename T, typename Container>
