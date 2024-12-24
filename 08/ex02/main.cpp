@@ -16,18 +16,22 @@ int	main(void)
     std::cout << "size: " << mstk.size() << std::endl;
     std::cout << "top: " << mstk.top() << std::endl;
 
-    MutantStack<int, std::vector<int> >::Iterator   it = mstk.begin();
-    MutantStack<int, std::vector<int> >::Iterator   ite = mstk.end();
+    MutantStack<int, std::vector<int> >::iterator   it = mstk.begin();
+    MutantStack<int, std::vector<int> >::iterator   ite = mstk.end();
 
     *(it + 3) = 200;
     it += 3;
     *(it - 3) = 100;
     it -= 3;
 
+    if (*it < *(it + 3))
+    {
+        std::cout << *it << " " << *(it + 3) << std::endl;
+    }
+
     while (it != ite)
     {
         std::cout << "iterator: " << *(it++) << std::endl;
-//        ++it;
     }
 
 	return 0;

@@ -24,40 +24,10 @@ class   MutantStack
         void    push(const T &value);
         void    pop();
 
-        class   Iterator
-        {
-            private:
-                typename Container::iterator _it;
+        typedef typename Container::iterator    iterator;
 
-                Iterator();
-
-            public:
-                Iterator(const Iterator &other);
-                Iterator(typename Container::iterator it);
-                Iterator    &operator=(const Iterator &other);
-                ~Iterator();
-
-                T       &operator*();
-                const T &operator*() const;
-
-                void    operator++();
-                void    operator--();
-
-                const Iterator  operator++(int);
-                const Iterator  operator--(int);
-
-                Iterator    &operator+=(int n);
-                Iterator    &operator-=(int n);
-
-                Iterator    operator+(int n) const;
-                Iterator    operator-(int n) const;
-
-                bool    operator==(const typename MutantStack<T, Container>::Iterator &other) const;
-                bool    operator!=(const typename MutantStack<T, Container>::Iterator &other) const;
-        };
-
-        Iterator    begin();
-        Iterator    end();
+        iterator    begin();
+        iterator    end();
 };
 
 template <typename T, typename Container>
