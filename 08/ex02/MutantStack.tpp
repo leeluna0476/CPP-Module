@@ -111,6 +111,12 @@ void    MutantStack<T, Container>::Iterator::operator--()
 }
 
 template <typename T, typename Container>
+typename MutantStack<T, Container>::Iterator MutantStack<T, Container>::Iterator::operator+(int n)
+{
+    return Iterator(_it + n);
+}
+
+template <typename T, typename Container>
 bool    MutantStack<T, Container>::Iterator::operator==(const typename MutantStack<T, Container>::Iterator &other) const
 {
     return _it == other._it;

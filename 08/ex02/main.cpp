@@ -19,6 +19,8 @@ int	main(void)
     MutantStack<int, std::vector<int> >::Iterator   it = mstk.begin();
     MutantStack<int, std::vector<int> >::Iterator   ite = mstk.end();
 
+    *(it + 3) = 200;
+
     while (it != ite)
     {
         std::cout << "iterator: " << *it << std::endl;
