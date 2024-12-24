@@ -3,6 +3,7 @@
 
 # include <vector>
 # include <stdexcept>
+# include <cstdlib>
 
 class   Span
 {
@@ -20,7 +21,7 @@ class   Span
         };
 
         std::vector<int>    _storage;
-        const unsigned int  _capacity;
+        const std::size_t   _capacity;
 
     public:
         Span();
