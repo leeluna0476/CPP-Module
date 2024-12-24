@@ -111,9 +111,45 @@ void    MutantStack<T, Container>::Iterator::operator--()
 }
 
 template <typename T, typename Container>
-typename MutantStack<T, Container>::Iterator MutantStack<T, Container>::Iterator::operator+(int n)
+const typename MutantStack<T, Container>::Iterator  MutantStack<T, Container>::Iterator::operator++(int)
+{
+    Iterator    old = *this;
+    ++_it;
+    return old;
+}
+
+template <typename T, typename Container>
+const typename MutantStack<T, Container>::Iterator  MutantStack<T, Container>::Iterator::operator--(int)
+{
+    Iterator    old = *this;
+    --_it;
+    return old;
+}
+
+template <typename T, typename Container>
+typename MutantStack<T, Container>::Iterator    &MutantStack<T, Container>::Iterator::operator+=(int n)
+{
+    _it += n;
+    return *this;
+}
+
+template <typename T, typename Container>
+typename MutantStack<T, Container>::Iterator    &MutantStack<T, Container>::Iterator::operator-=(int n)
+{
+    _it -= n;
+    return *this;
+}
+
+template <typename T, typename Container>
+typename MutantStack<T, Container>::Iterator    MutantStack<T, Container>::Iterator::operator+(int n) const
 {
     return Iterator(_it + n);
+}
+
+template <typename T, typename Container>
+typename MutantStack<T, Container>::Iterator    MutantStack<T, Container>::Iterator::operator-(int n) const
+{
+    return Iterator(_it - n);
 }
 
 template <typename T, typename Container>

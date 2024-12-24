@@ -43,7 +43,14 @@ class   MutantStack
                 void    operator++();
                 void    operator--();
 
-                Iterator    operator+(int n);
+                const Iterator  operator++(int);
+                const Iterator  operator--(int);
+
+                Iterator    &operator+=(int n);
+                Iterator    &operator-=(int n);
+
+                Iterator    operator+(int n) const;
+                Iterator    operator-(int n) const;
 
                 bool    operator==(const typename MutantStack<T, Container>::Iterator &other) const;
                 bool    operator!=(const typename MutantStack<T, Container>::Iterator &other) const;
