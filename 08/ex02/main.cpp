@@ -4,7 +4,7 @@
 
 int	main(void)
 {
-    MutantStack<int, std::vector<int> >    mstk;
+    MutantStack<int>    mstk;
 
     for (int i = 0; i < 100; ++i)
     {
@@ -16,8 +16,8 @@ int	main(void)
     std::cout << "size: " << mstk.size() << std::endl;
     std::cout << "top: " << mstk.top() << std::endl;
 
-    MutantStack<int, std::vector<int> >::iterator   it = mstk.begin();
-    MutantStack<int, std::vector<int> >::iterator   ite = mstk.end();
+    MutantStack<int>::iterator   it = mstk.begin();
+    MutantStack<int>::iterator   ite = mstk.end();
 
     *(it + 3) = 200;
     it += 3;

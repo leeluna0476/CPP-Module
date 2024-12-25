@@ -2,51 +2,23 @@
 # define MUTANTSTACK_HPP
 
 # include <cstdlib>
+# include <stack>
 # include <deque>
 
-template <typename T, typename Container>
-class   MutantStack
+template <typename T>
+class   MutantStack : public std::stack<T, std::deque<T> >
 {
-    private:
-        Container _storage;
-
     public:
         MutantStack();
         MutantStack(const MutantStack &other);
         MutantStack &operator=(const MutantStack &other);
         ~MutantStack();
 
-        bool        empty() const;
-        std::size_t size() const;
-        T           &top();
-        const T     &top() const;
-
-        void    push(const T &value);
-        void    pop();
-
-        typedef typename Container::iterator    iterator;
+        typedef typename std::stack<T, std::deque<T> >::container_type::iterator  iterator;
 
         iterator    begin();
         iterator    end();
 };
-
-template <typename T, typename Container>
-bool    operator==(const MutantStack<T, Container> &x, const MutantStack<T, Container> &y);
-
-template <typename T, typename Container>
-bool    operator<(const MutantStack<T, Container> &x, const MutantStack<T, Container> &y);
-
-template <typename T, typename Container>
-bool    operator!=(const MutantStack<T, Container> &x, const MutantStack<T, Container> &y);
-
-template <typename T, typename Container>
-bool    operator>(const MutantStack<T, Container> &x, const MutantStack<T, Container> &y);
-
-template <typename T, typename Container>
-bool    operator>=(const MutantStack<T, Container> &x, const MutantStack<T, Container> &y);
-
-template <typename T, typename Container>
-bool    operator<=(const MutantStack<T, Container> &x, const MutantStack<T, Container> &y);
 
 # include "MutantStack.tpp"
 
