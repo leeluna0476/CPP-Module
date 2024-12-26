@@ -59,3 +59,15 @@ typename MutantStack<T, Container>::reverse_iterator    MutantStack<T, Container
 {
     return std::stack<T, Container>::c.rend();
 }
+
+template <typename T, typename Container>
+typename MutantStack<T, Container>::const_reverse_iterator    MutantStack<T, Container>::rbegin() const
+{
+    return std::stack<T, Container>::c.rbegin();
+}
+
+template <typename T, typename Container>
+typename MutantStack<T, Container>::const_reverse_iterator    MutantStack<T, Container>::rend() const
+{
+    return std::stack<T, Container>::c.rend();
+}
