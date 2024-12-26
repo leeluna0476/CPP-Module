@@ -16,7 +16,8 @@ int	main(void)
     {
         try
         {
-            std::cout << easyfind(v, i) << std::endl;
+            std::cout << *(easyfind(const_cast<const std::vector<int> & >(v), i)) << std::endl;
+            std::cout << *(easyfind(v, i)) << std::endl;
         }
         catch (const std::exception& e)
         {
