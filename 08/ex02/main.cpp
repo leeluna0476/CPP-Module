@@ -34,5 +34,29 @@ int	main(void)
         std::cout << "iterator: " << *(it++) << std::endl;
     }
 
+    std::cout << "\n\n===================================\n\n" << std::endl;
+
+    MutantStack<int>    mstk2 = mstk;
+    it = mstk2.begin();
+    ite = mstk2.end();
+
+    while (it != ite)
+    {
+        std::cout << "iterator: " << *(it++) << std::endl;
+    }
+
+    std::cout << "\n\n===================================\n\n" << std::endl;
+
+    MutantStack<int>    mstk3;
+
+    mstk3 = mstk2;
+    it = mstk2.begin();
+    ite = mstk2.end();
+
+    while (it != ite)
+    {
+        std::cout << "iterator: " << *(it++) << std::endl;
+    }
+
 	return 0;
 }
