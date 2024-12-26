@@ -58,5 +58,16 @@ int	main(void)
         std::cout << "iterator: " << *(it++) << std::endl;
     }
 
+    std::cout << "\n\n===================================\n\n" << std::endl;
+
+    const MutantStack<int>  cmstk = mstk;
+    MutantStack<int>::const_iterator   cit = cmstk.begin();
+    MutantStack<int>::const_iterator   cite = cmstk.end();
+
+    while (cit != cite)
+    {
+        std::cout << "const_iterator: " << *(cit++) << std::endl;
+    }
+
 	return 0;
 }
