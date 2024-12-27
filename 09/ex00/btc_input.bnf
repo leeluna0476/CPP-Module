@@ -1,0 +1,13 @@
+file        ::= header_line *(newline data_line) *(newline)
+
+header_line ::= 'date' *(' ') '|' *(' ') 'value'
+data_line   ::= date *(' ') '|' *(' ') value
+
+date    ::= year '-' month '-' day
+value   ::= ( 0, 1000 )
+
+year    ::= ( 0, inf )
+month   ::= '0' [ 1, 9 ] | [ 10, 12 ]
+day     ::= [ 1, 31 ]
+
+newline ::= '\n' ; or '\r\n' for OS specific
