@@ -6,6 +6,7 @@ CXXFLAGS=-Wall -Wextra -Werror --std=c++98 -MMD -MP
 SRCS= \
 	 main.cpp \
 	 BitcoinExchange.cpp \
+	 Error.cpp \
 
 OBJS=$(SRCS:.cpp=.o)
 DEPS=$(SRCS:.cpp=.d)

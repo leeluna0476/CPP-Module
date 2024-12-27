@@ -4,7 +4,7 @@ header_line ::= 'date' *(' ') '|' *(' ') 'value'
 data_line   ::= date *(' ') '|' *(' ') value
 
 date        ::= year '-' month '-' day
-value       ::= ( 0, 1000 )
+value       ::= ( 0, 1000 ) ; floating points
 
 year        ::= ( 0, inf )
 month       ::= '0' [ 1, 9 ] | [ 10, 12 ]
