@@ -2,14 +2,14 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <string>
-# include <list>
+# include <map>
 # include <utility>
 # include "Error.hpp"
 
 class   BitcoinExchange
 {
     private:
-        std::list<std::pair<std::string, double> >    list;
+        std::map<std::string, double>   list;
 
         bool    isGreaterDateThanDatabase(const std::string &date_input, const std::string &date_database, std::string::size_type pos = 0, std::string::size_type count = 4) const;
 

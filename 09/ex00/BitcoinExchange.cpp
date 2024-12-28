@@ -210,13 +210,13 @@ std::pair<std::string, double>    BitcoinExchange::isValidData(const std::string
 
 void    BitcoinExchange::addDataToList(const std::pair<std::string, double> &data)
 {
-    list.push_back(data);
+    list.insert(data);
 }
 
 // infile == data.csv
 void    BitcoinExchange::exchangeBitcoin(std::ifstream &infile)
 {
-    std::list<std::pair<std::string, double> >::iterator data = list.begin();
+    std::map<std::string, double>::iterator data = list.begin();
 
     infile.clear();
     infile.seekg(0, std::ios::beg);
