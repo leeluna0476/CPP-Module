@@ -9,7 +9,7 @@ int	main(void)
     {
         btc.isValidHeader("date|value");
         btc.isValidData("2024-12-31 | 333");
-        btc.isValidData("2023-02-28    | 333");
+        btc.isValidData("2023-02-28    | 1000");
     }
     catch (const Error &e)
     {

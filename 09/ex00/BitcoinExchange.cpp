@@ -91,11 +91,17 @@ bool    BitcoinExchange::isValidDate(const std::string &line)
     return true;
 }
 
-bool    BitcoinExchange::isValidValue(const std::string &line, const std::string::size_type pos_start)
+float   BitcoinExchange::isValidValue(const std::string &line, const std::string::size_type pos_start)
 {
-    (void)line;
-    (void)pos_start;
-    return true;
+    float   value;
+    std::stringstream   ss(line.substr(pos_start));
+    ss >> value;
+    if (value <= 0.0 || value >= 1000.0)
+    {
+        return 0.0;
+    }
+
+    return value;
 }
 
 void    BitcoinExchange::isValidHeader(const std::string &line) throw(Error)
@@ -163,13 +169,13 @@ std::pair<std::string, float>    BitcoinExchange::isValidData(const std::string 
     }
 
     // ( 0, 1000 ) check
-    if (!isValidValue(line, pos))
+    float   value = isValidValue(line, pos);
+    if (!value)
     {
         throw Error("bad input: value => " + line.substr(pos));
     }
 
-    std::stringstream   ss(line.substr(pos));
-    ss >> date_value.second;
+    date_value.second = value;
 
     return date_value;
 }

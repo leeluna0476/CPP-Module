@@ -12,7 +12,7 @@ class   BitcoinExchange
         std::list<std::pair<std::string, float> >    list;
 
         bool    isValidDate(const std::string &line);
-        bool    isValidValue(const std::string &line, const std::string::size_type pos_start);
+        float   isValidValue(const std::string &line, const std::string::size_type pos_start);
 
     public:
         BitcoinExchange();
