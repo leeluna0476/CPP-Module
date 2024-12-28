@@ -1,6 +1,5 @@
 #include "BitcoinExchange.hpp"
 #include <sstream>
-#include <iostream>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -30,8 +29,6 @@ bool    BitcoinExchange::isGreaterDateThanDatabase(const std::string &date_input
     ss.clear();
     ss.str(date_database.substr(pos, count));
     ss >> database;
-
-    std::cout << "input: " << input << " database: " << database << std::endl;
 
     if (input < database)
     {
