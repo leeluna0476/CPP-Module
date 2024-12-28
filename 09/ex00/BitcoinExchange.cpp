@@ -216,50 +216,42 @@ void    BitcoinExchange::addDataToList(const std::pair<std::string, double> &dat
 // infile == data.csv
 void    BitcoinExchange::exchangeBitcoin(std::ifstream &infile)
 {
-    try
+    std::list<std::pair<std::string, double> >::iterator data = list.begin();
+
+    infile.clear();
+    infile.seekg(0, std::ios::beg);
+
+    std::string line;
+    std::string before;
+    std::getline(infile, line);
+
+    // greater = 1
+    // smaller = 0
+    // equal = 2
+    while (!std::getline(infile, line).eof())
     {
-        std::list<std::pair<std::string, double> >::iterator data = list.begin();
-
-        infile.clear();
-        infile.seekg(0, std::ios::beg);
-
-        std::string line;
-        std::string before;
-        std::getline(infile, line);
-
-        // greater = 1
-        // smaller = 0
-        // equal = 2
-        while (!std::getline(infile, line).eof())
+        if (!isGreaterDateThanDatabase(data->first, line))
         {
-            if (!isGreaterDateThanDatabase(data->first, line))
-            {
-                break;
-            }
-
-            before = line;
+            break;
         }
 
-
-        double   exchange_rate;
-        std::string::size_type  pos = before.find(',', 0);
-
-        std::string target = line.substr(pos + 1);
-        if (data->first != line.substr(0, pos))
-        {
-            target = before.substr(pos + 1);
-        }
-
-        std::stringstream   ss(target);
-        ss >> exchange_rate;
-
-        std::cout << data->first << " => " << data->second << " = " << data->second * exchange_rate << std::endl;
-
-        list.erase(data);
+        before = line;
     }
-    catch (const std::exception &e)
+
+
+    double   exchange_rate;
+    std::string::size_type  pos = before.find(',', 0);
+
+    std::string target = line.substr(pos + 1);
+    if (data->first != line.substr(0, pos))
     {
-        std::cout << "exception: ";
-        std::cout << e.what() << std::endl;
+        target = before.substr(pos + 1);
     }
+
+    std::stringstream   ss(target);
+    ss >> exchange_rate;
+
+    std::cout << data->first << " => " << data->second << " = " << data->second * exchange_rate << std::endl;
+
+    list.erase(data);
 }
