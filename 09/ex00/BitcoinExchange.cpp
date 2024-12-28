@@ -124,9 +124,13 @@ double   BitcoinExchange::isValidValue(const std::string &line, const std::strin
     double   value;
     std::stringstream   ss(line.substr(pos_start));
     ss >> value;
-    if (value <= 0.0 || value >= 1000.0)
+    if (value <= 0.0)
     {
         return 0.0;
+    }
+    else if (value >= 1000.0)
+    {
+        return -1.0;
     }
 
     return value;
@@ -200,7 +204,11 @@ std::pair<std::string, double>    BitcoinExchange::isValidData(const std::string
     double   value = isValidValue(line, pos);
     if (!value)
     {
-        throw Error("bad input - value => " + line.substr(pos));
+        throw Error("not a positive number => " + line.substr(pos));
+    }
+    else if (value == -1)
+    {
+        throw Error("too large number => " + line.substr(pos));
     }
 
     date_value.second = value;

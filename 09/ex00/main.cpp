@@ -6,6 +6,7 @@ int	main(int ac, char **av)
 {
     if (ac != 2)
     {
+        std::cerr << "Please give a filename." << std::endl;
         return 0;
     }
 
@@ -16,13 +17,24 @@ int	main(int ac, char **av)
     try
     {
         database.open("data.csv");
+        if (!database.is_open())
+        {
+            std::cerr << "Cannot open file: data.csv" << std::endl;
+            return 0;
+        }
 
         input_txt.open(av[1]);
+        if (!input_txt.is_open())
+        {
+            std::cerr << "Cannot open file: " << av[1] << std::endl;
+            return 0;
+        }
+
         std::string line;
         std::getline(input_txt, line);
         btc.isValidHeader(line);
 
-        while (!std::getline(input_txt, line).eof())
+        while (std::getline(input_txt, line))
         {
             if (!line.size())
             {
@@ -36,13 +48,13 @@ int	main(int ac, char **av)
             }
             catch (const Error &e)
             {
-                std::cout << "Error: " << e.what() << std::endl;
+                std::cerr << "Error: " << e.what() << std::endl;
             }
         }
     }
     catch (const std::exception &e)
     {
-        std::cout << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
 
     input_txt.close();
