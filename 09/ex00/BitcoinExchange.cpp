@@ -1,5 +1,4 @@
 #include "BitcoinExchange.hpp"
-#include <utility>
 #include <sstream>
 #include <iostream>
 
@@ -20,7 +19,35 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-bool    BitcoinExchange::isValidDate(const std::string &line)
+// 정상적인 date format으로 들어온다고 가정한다.
+bool    BitcoinExchange::isGreaterDateThanDatabase(const std::string &date_input, const std::string &date_database, std::string::size_type pos, std::string::size_type count) const
+{
+    unsigned int    input;
+    std::stringstream   ss(date_input.substr(pos, count));
+    ss >> input;
+
+    unsigned int    database;
+    ss.clear();
+    ss.str(date_database.substr(pos, count));
+    ss >> database;
+
+    std::cout << "input: " << input << " database: " << database << std::endl;
+
+    if (input < database)
+    {
+        return false;
+    }
+
+    // day까지 확인 완료.
+    if (pos == 8)
+    {
+        return true;
+    }
+
+    return isGreaterDateThanDatabase(date_input, date_database, pos + count + 1, 2);
+}
+
+bool    BitcoinExchange::isValidDate(const std::string &line) const
 {
     // check year
     std::string::size_type  pos = line.find('-', 0);
@@ -91,7 +118,7 @@ bool    BitcoinExchange::isValidDate(const std::string &line)
     return true;
 }
 
-float   BitcoinExchange::isValidValue(const std::string &line, const std::string::size_type pos_start)
+float   BitcoinExchange::isValidValue(const std::string &line, const std::string::size_type pos_start) const
 {
     float   value;
     std::stringstream   ss(line.substr(pos_start));
@@ -104,7 +131,7 @@ float   BitcoinExchange::isValidValue(const std::string &line, const std::string
     return value;
 }
 
-void    BitcoinExchange::isValidHeader(const std::string &line) throw(Error)
+void    BitcoinExchange::isValidHeader(const std::string &line) const throw(Error)
 {
     std::string::size_type  pos = line.find("date", 0);
     if (pos)
@@ -125,7 +152,7 @@ void    BitcoinExchange::isValidHeader(const std::string &line) throw(Error)
     }
 }
 
-std::pair<std::string, float>    BitcoinExchange::isValidData(const std::string &line) throw(Error)
+std::pair<std::string, float>    BitcoinExchange::isValidData(const std::string &line) const throw(Error)
 {
     std::pair<std::string, float> date_value;
 
