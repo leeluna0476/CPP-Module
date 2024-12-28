@@ -4,6 +4,7 @@
 #include <exception>
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -162,8 +163,8 @@ std::pair<std::string, double>    BitcoinExchange::isValidData(const std::string
     std::pair<std::string, double> date_value;
 
     // find the first space or a pipe
-    std::string::size_type  pos = line.find_first_of(" |", 0);
-    if (pos == std::string::npos)
+    std::string::size_type  pos = line.find_first_not_of("0123456789-", 0);
+    if (pos != 10 || (line[pos] != '|' && line[pos] != ' '))
     {
         throw Error("bad input => " + line);
     }
@@ -194,8 +195,8 @@ std::pair<std::string, double>    BitcoinExchange::isValidData(const std::string
         throw Error("bad input => " + line);
     }
 
-    // 더 이상 공백이 나오면 안된다.
-    if (line.find(' ', pos) != std::string::npos)
+    // 더 이상 숫자 외의 문자가 나오면 안된다.
+    if (line.find_first_not_of("0123456789.-", pos) != std::string::npos || std::count(line.begin() + pos, line.end(), '.') > 1 || std::count(line.begin() + pos, line.end(), '-') > 1)
     {
         throw Error("bad input => " + line);
     }
