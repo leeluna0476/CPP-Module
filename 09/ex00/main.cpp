@@ -10,16 +10,19 @@ int	main(int ac, char **av)
     }
 
     BitcoinExchange btc;
-    std::ifstream   infile;
+    std::ifstream   database;
+    std::ifstream   input_txt;
 
     try
     {
-        infile.open(av[1]);
+        database.open("data.csv");
+
+        input_txt.open(av[1]);
         std::string line;
-        std::getline(infile, line);
+        std::getline(input_txt, line);
         btc.isValidHeader(line);
 
-        while (!std::getline(infile, line).eof())
+        while (!std::getline(input_txt, line).eof())
         {
             if (!line.size())
             {
@@ -29,7 +32,7 @@ int	main(int ac, char **av)
             try
             {
                 btc.addDataToList(btc.isValidData(line));
-                std::cout << line << std::endl;
+                btc.exchangeBitcoin(database);
             }
             catch (const Error &e)
             {
@@ -42,5 +45,8 @@ int	main(int ac, char **av)
         std::cout << e.what() << std::endl;
     }
 
-	return 0;
+    input_txt.close();
+    database.close();
+
+    return 0;
 }

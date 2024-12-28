@@ -1,5 +1,9 @@
 #include "BitcoinExchange.hpp"
 #include <sstream>
+#include <fstream>
+#include <exception>
+#include <iostream>
+#include <iomanip>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -30,15 +34,15 @@ bool    BitcoinExchange::isGreaterDateThanDatabase(const std::string &date_input
     ss.str(date_database.substr(pos, count));
     ss >> database;
 
-    if (input < database)
+    if (input > database)
     {
-        return false;
+        return true;
     }
 
     // day까지 확인 완료.
     if (pos == 8)
     {
-        return true;
+        return false;
     }
 
     return isGreaterDateThanDatabase(date_input, date_database, pos + count + 1, 2);
@@ -115,9 +119,9 @@ bool    BitcoinExchange::isValidDate(const std::string &line) const
     return true;
 }
 
-float   BitcoinExchange::isValidValue(const std::string &line, const std::string::size_type pos_start) const
+double   BitcoinExchange::isValidValue(const std::string &line, const std::string::size_type pos_start) const
 {
-    float   value;
+    double   value;
     std::stringstream   ss(line.substr(pos_start));
     ss >> value;
     if (value <= 0.0 || value >= 1000.0)
@@ -149,9 +153,9 @@ void    BitcoinExchange::isValidHeader(const std::string &line) const throw(Erro
     }
 }
 
-std::pair<std::string, float>    BitcoinExchange::isValidData(const std::string &line) const throw(Error)
+std::pair<std::string, double>    BitcoinExchange::isValidData(const std::string &line) const throw(Error)
 {
-    std::pair<std::string, float> date_value;
+    std::pair<std::string, double> date_value;
 
     // find the first space or a pipe
     std::string::size_type  pos = line.find_first_of(" |", 0);
@@ -193,7 +197,7 @@ std::pair<std::string, float>    BitcoinExchange::isValidData(const std::string 
     }
 
     // ( 0, 1000 ) check
-    float   value = isValidValue(line, pos);
+    double   value = isValidValue(line, pos);
     if (!value)
     {
         throw Error("bad input - value => " + line.substr(pos));
@@ -204,7 +208,58 @@ std::pair<std::string, float>    BitcoinExchange::isValidData(const std::string 
     return date_value;
 }
 
-void    BitcoinExchange::addDataToList(const std::pair<std::string, float> &data)
+void    BitcoinExchange::addDataToList(const std::pair<std::string, double> &data)
 {
     list.push_back(data);
+}
+
+// infile == data.csv
+void    BitcoinExchange::exchangeBitcoin(std::ifstream &infile)
+{
+    try
+    {
+        std::list<std::pair<std::string, double> >::iterator data = list.begin();
+
+        infile.clear();
+        infile.seekg(0, std::ios::beg);
+
+        std::string line;
+        std::string before;
+        std::getline(infile, line);
+
+        // greater = 1
+        // smaller = 0
+        // equal = 2
+        while (!std::getline(infile, line).eof())
+        {
+            if (!isGreaterDateThanDatabase(data->first, line))
+            {
+                break;
+            }
+
+            before = line;
+        }
+
+
+        double   exchange_rate;
+        std::string::size_type  pos = before.find(',', 0);
+
+        std::string target = line.substr(pos + 1);
+        if (data->first != line.substr(0, pos))
+        {
+            target = before.substr(pos + 1);
+        }
+
+        std::stringstream   ss(target);
+        ss >> exchange_rate;
+
+        std::cout << data->first << " => " << data->second << " = " << data->second * exchange_rate << std::endl;
+
+        list.erase(data);
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << "exception: ";
+        std::cout << e.what() << std::endl;
+    }
 }
