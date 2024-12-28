@@ -138,7 +138,7 @@ std::pair<std::string, float>    BitcoinExchange::isValidData(const std::string 
 
     if (!isValidDate(line))
     {
-        throw Error("bad input: date => " + line.substr(0, pos));
+        throw Error("bad input - date => " + line.substr(0, pos));
     }
 
     date_value.first = line.substr(0, pos);
@@ -172,7 +172,7 @@ std::pair<std::string, float>    BitcoinExchange::isValidData(const std::string 
     float   value = isValidValue(line, pos);
     if (!value)
     {
-        throw Error("bad input: value => " + line.substr(pos));
+        throw Error("bad input - value => " + line.substr(pos));
     }
 
     date_value.second = value;

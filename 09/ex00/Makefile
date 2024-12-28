@@ -2,14 +2,20 @@
 
 NAME=btc
 CXX=c++
-CXXFLAGS=-Wall -Wextra -Werror --std=c++98 -MMD -MP
+CXXFLAGS=-Wall -Wextra -Werror --std=c++98
+CPPFLAGS=-MMD -MP -MF $(DEPS_DIR)/$*.d
 SRCS= \
 	 main.cpp \
 	 BitcoinExchange.cpp \
 	 Error.cpp \
 
-OBJS=$(SRCS:.cpp=.o)
-DEPS=$(SRCS:.cpp=.d)
+RM=rm -fr
+
+OBJS_DIR=.objs
+OBJS=$(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
+
+DEPS_DIR=.deps
+DEPS=$(addprefix $(DEPS_DIR)/, $(SRCS:.cpp=.d))
 -include $(DEPS)
 
 all: $(NAME)
@@ -17,16 +23,23 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(LINK.cpp) $(OUTPUT_OPTION) $(OBJS)
 
-%.o: %.cpp
+$(OBJS_DIR)/%.o: %.cpp | $(OBJS_DIR) $(DEPS_DIR)
 	$(COMPILE.cpp) $(OUTPUT_OPTION) $<
 
+$(OBJS_DIR):
+	mkdir -p $(OBJS_DIR)
+
+$(DEPS_DIR):
+	mkdir -p $(DEPS_DIR)
+
 clean:
-	rm -fr $(OBJS) $(DEPS)
+	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(OBJS_DIR) $(DEPS_DIR)
 
 fclean: clean
-	rm -fr $(NAME)
+	$(RM) $(NAME)
 
 re: fclean
-	make all
+	$(MAKE) all
 
 .PHONY: all clean fclean re

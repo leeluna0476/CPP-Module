@@ -26,13 +26,16 @@ int	main(int ac, char **av)
                 continue;
             }
 
-            btc.addDataToList(btc.isValidData(line));
-            std::cout << line << std::endl;
+            try
+            {
+                btc.addDataToList(btc.isValidData(line));
+                std::cout << line << std::endl;
+            }
+            catch (const Error &e)
+            {
+                std::cout << "Error: " << e.what() << std::endl;
+            }
         }
-    }
-    catch (const Error &e)
-    {
-        std::cout << "Error: " << e.what() << std::endl;
     }
     catch (const std::exception &e)
     {
