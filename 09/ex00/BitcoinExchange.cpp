@@ -225,9 +225,6 @@ void    BitcoinExchange::exchangeBitcoin(std::ifstream &infile)
     std::string before;
     std::getline(infile, line);
 
-    // greater = 1
-    // smaller = 0
-    // equal = 2
     while (!std::getline(infile, line).eof())
     {
         if (!isGreaterDateThanDatabase(data->first, line))
