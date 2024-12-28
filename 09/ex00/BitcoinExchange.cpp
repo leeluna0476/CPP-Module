@@ -179,3 +179,8 @@ std::pair<std::string, float>    BitcoinExchange::isValidData(const std::string 
 
     return date_value;
 }
+
+void    BitcoinExchange::addDataToList(const std::pair<std::string, float> &data)
+{
+    list.push_back(data);
+}

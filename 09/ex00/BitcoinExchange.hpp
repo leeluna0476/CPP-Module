@@ -22,6 +22,8 @@ class   BitcoinExchange
 
         void    isValidHeader(const std::string &line) throw(Error);
         std::pair<std::string, float>    isValidData(const std::string &line) throw(Error);
+
+        void    addDataToList(const std::pair<std::string, float> &data);
 };
 
 #endif
