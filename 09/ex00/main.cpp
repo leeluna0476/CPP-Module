@@ -7,8 +7,9 @@ int	main(void)
 
     try
     {
-        btc.isValidHeader("date  value");
-//        btc.parseLine(" | data");
+        btc.isValidHeader("date|value");
+        btc.isValidData("2024-12-31 | 333");
+        btc.isValidData("2023-02-28    | 333");
     }
     catch (const Error &e)
     {
