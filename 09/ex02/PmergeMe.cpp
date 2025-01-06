@@ -43,7 +43,101 @@ void    PmergeMe::rank(const std::vector<int> &players)
     }
 
     Pair    *tree = haveTournament(initial_pairs);
-    printPairTree(tree);
+
+    std::vector<Pair *> main_chain;
+    main_chain.push_back(tree->w_prev);
+    main_chain.push_back(tree->l_prev);
+
+    insertLosers(main_chain, players.size());
+    printVector(main_chain);
+}
+
+void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type end)
+{
+    std::vector<std::vector<Pair *>::iterator>  update_pos;
+    std::vector<Pair *>                         update_val;
+    for (std::vector<Pair *>::size_type i = start; i < end; ++i)
+    {
+        Pair    *loser_to_insert = main_chain[i]->l_prev;
+        if (loser_to_insert)
+        {
+            update_val.push_back(loser_to_insert);
+            update_pos.push_back(binarySearch(main_chain, i + 1, loser_to_insert->winner));
+            main_chain[i] = main_chain[i]->w_prev;
+        }
+        else
+        {
+        }
+    }
+
+    for (std::vector<Pair *>::size_type i = 0; i < update_pos.size(); ++i)
+    {
+        main_chain.insert(update_pos[i], update_val[i]);
+    }
+}
+
+void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size)
+{
+//    printVector(main_chain);
+    if (main_chain.size() == target_size / 2)
+    {
+        return;
+    }
+
+    Pair    *odd_man = main_chain.front()->odd;
+
+    int k = 0;
+    for (std::vector<Pair *>::size_type i = main_chain.size(); i-- > 0; )
+    {
+        std::vector<Pair *>::size_type  revised_idx = main_chain.size() - i;
+        if (revised_idx == (1 << k))
+        {
+            insertInRange(main_chain, i, k > 0 ? 1 << (k - 1) : i + 1);
+            ++k;
+            if (k == 1)
+            {
+                ++k;
+            }
+        }
+    }
+
+    if (odd_man)
+    {
+        // search and insert
+        std::vector<Pair *>::iterator   pos = binarySearch(main_chain, 0, odd_man->winner);
+        main_chain.insert(pos, odd_man->w_prev);
+    }
+    insertInRange(main_chain, 0, 1 << (k - 1));
+
+    insertLosers(main_chain, target_size);
+}
+
+std::vector<Pair *>::iterator   PmergeMe::binarySearch(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, int target)
+{
+    int left = start;
+    int right = main_chain.size() - 1;
+    int mid = (left + right) / 2;
+
+    while (left <= right)
+    {
+        if (main_chain[mid]->winner > target)
+        {
+            left = mid + 1;
+        }
+        else
+        {
+            right = mid - 1;
+        }
+
+        mid = (left + right) / 2;
+    }
+
+    if (static_cast<std::vector<Pair *>::size_type>(left) == main_chain.size())
+    {
+        return main_chain.end();
+    }
+
+    return main_chain.begin() + left;
 }
 
 Pair    *PmergeMe::generateRankedPair(Pair *p1, Pair *p2)
