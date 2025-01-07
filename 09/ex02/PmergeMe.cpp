@@ -8,9 +8,11 @@ void  printVector(const std::vector<Pair *> &v)
 
     while (it != ite)
     {
+//        std::cout << (*it)->winner << " ";
         std::cout << "winner: " << (*it)->winner << " loser: " << (*it)->loser << std::endl;
         ++it;
     }
+    std::cout << std::endl;
 }
 
 PmergeMe::PmergeMe()
@@ -20,7 +22,6 @@ PmergeMe::PmergeMe()
 PmergeMe::PmergeMe(const PmergeMe &)
 {
 }
-
 PmergeMe    &PmergeMe::operator=(const PmergeMe &)
 {
     return *this;
@@ -52,47 +53,50 @@ void    PmergeMe::rank(const std::vector<int> &players)
     printVector(main_chain);
 }
 
-void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type end)
+void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type count)
 {
     std::vector<std::vector<Pair *>::iterator>  update_pos;
     std::vector<Pair *>                         update_val;
-    for (std::vector<Pair *>::size_type i = start; i < end; ++i)
+    for (std::vector<Pair *>::size_type i = start; i < start + count; ++i)
     {
         Pair    *loser_to_insert = main_chain[i]->l_prev;
+        std::vector<Pair *>::iterator   pos;
         if (loser_to_insert)
         {
-            update_val.push_back(loser_to_insert);
-            update_pos.push_back(binarySearch(main_chain, i + 1, loser_to_insert->winner));
+            pos = binarySearch(main_chain, i + 1, loser_to_insert->winner);
             main_chain[i] = main_chain[i]->w_prev;
         }
         else
         {
+            loser_to_insert = generateASingle(main_chain[i]->loser);
+            pos = binarySearch(main_chain, i + 1, loser_to_insert->winner);
         }
-    }
-
-    for (std::vector<Pair *>::size_type i = 0; i < update_pos.size(); ++i)
-    {
-        main_chain.insert(update_pos[i], update_val[i]);
+        main_chain.insert(pos, loser_to_insert);
     }
 }
 
 void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size)
 {
-//    printVector(main_chain);
-    if (main_chain.size() == target_size / 2)
+    printVector(main_chain);
+    if (main_chain.size() >= target_size)
     {
         return;
     }
 
-    Pair    *odd_man = main_chain.front()->odd;
+    Pair    *odd_man = main_chain[0]->odd;
 
     int k = 0;
+    std::vector<Pair *>::size_type  count = 0;
     for (std::vector<Pair *>::size_type i = main_chain.size(); i-- > 0; )
     {
         std::vector<Pair *>::size_type  revised_idx = main_chain.size() - i;
         if (revised_idx == (1 << k))
         {
-            insertInRange(main_chain, i, k > 0 ? 1 << (k - 1) : i + 1);
+            // insert count: 1 << (k - 1)
+            count = k > 0 ? 1 << (k - 1) : 1;
+//            printVector(main_chain);
+//            std::cout << "i: " << i << " count: " << count << std::endl << std::endl;
+            insertInRange(main_chain, i, count);
             ++k;
             if (k == 1)
             {
@@ -103,11 +107,22 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
 
     if (odd_man)
     {
+        std::cout << "not now" << std::endl;
         // search and insert
         std::vector<Pair *>::iterator   pos = binarySearch(main_chain, 0, odd_man->winner);
         main_chain.insert(pos, odd_man->w_prev);
+        // 홀수는 짝이 없으니까 남은 선수들을 삽입할 때 이 홀수가 그들 중에 포함되지 않게 해야 한다.
+        // 한마디로 중복 레벨 다운 방지 필요.
     }
-    insertInRange(main_chain, 0, 1 << (k - 1));
+    else
+    {
+        // 홀수가 없다면 그냥 처음부터 이전 삽입 위치까지 삽입하면 된다.
+        // main_chain.size() - (1 << (k - 1)) 을 하면 i를 복원 가능...하다고 생각했으나 size는 이미 달라졌다.
+        count = main_chain.size() - ((1 << ( k == 2 ? k - 2 : k - 1 )) + count);
+//        printVector(main_chain);
+//        std::cout << "i: " << 0 << " count: " << count << std::endl << std::endl;
+        insertInRange(main_chain, 0, count);
+    }
 
     insertLosers(main_chain, target_size);
 }
@@ -142,7 +157,7 @@ std::vector<Pair *>::iterator   PmergeMe::binarySearch(std::vector<Pair *> &main
 
 Pair    *PmergeMe::generateRankedPair(Pair *p1, Pair *p2)
 {
-    Pair    *new_pair = new Pair;
+    Pair    *new_pair = new Pair();
 
     if (p1->winner > p2->winner)
     {
