@@ -55,11 +55,16 @@ void    PmergeMe::rank(const std::vector<int> &players)
 
 void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type count)
 {
-    std::vector<std::vector<Pair *>::iterator>  update_pos;
-    std::vector<Pair *>                         update_val;
-    for (std::vector<Pair *>::size_type i = start; i < start + count; ++i)
+    std::vector<Pair *>::size_type  range = start + count;
+    Pair    *loser_to_insert = NULL;
+    for (std::vector<Pair *>::size_type i = start; i < range; ++i)
     {
-        Pair    *loser_to_insert = main_chain[i]->l_prev;
+        if (loser_to_insert == main_chain[i])
+        {
+            continue;
+        }
+
+        loser_to_insert = main_chain[i]->l_prev;
         std::vector<Pair *>::iterator   pos;
         if (loser_to_insert)
         {
@@ -71,7 +76,18 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
             loser_to_insert = generateASingle(main_chain[i]->loser);
             pos = binarySearch(main_chain, i + 1, loser_to_insert->winner);
         }
+
+
+        // 왜 자꾸 이미 집어넣은 값이 또 나오지.
+        std::cout << "loser last: " << loser_to_insert->winner << std::endl;
+
         main_chain.insert(pos, loser_to_insert);
+
+        if (pos != main_chain.end() && static_cast<unsigned long>(pos - 1 - main_chain.begin()) < range)
+        {
+            ++range;
+            std::cout << "range: " << range << std::endl;
+        }
     }
 }
 
@@ -95,7 +111,6 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
             // insert count: 1 << (k - 1)
             count = k > 0 ? 1 << (k - 1) : 1;
 //            printVector(main_chain);
-//            std::cout << "i: " << i << " count: " << count << std::endl << std::endl;
             insertInRange(main_chain, i, count);
             ++k;
             if (k == 1)
@@ -118,6 +133,7 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
     {
         // 홀수가 없다면 그냥 처음부터 이전 삽입 위치까지 삽입하면 된다.
         // main_chain.size() - (1 << (k - 1)) 을 하면 i를 복원 가능...하다고 생각했으나 size는 이미 달라졌다.
+        // + count로 해결?
         count = main_chain.size() - ((1 << ( k == 2 ? k - 2 : k - 1 )) + count);
 //        printVector(main_chain);
 //        std::cout << "i: " << 0 << " count: " << count << std::endl << std::endl;
