@@ -103,6 +103,7 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
         // 하아아 이런 짜치는 방법 밖에는 없다는 말인가
         if (inserted.find(main_chain[i]) != inserted.end() || odd_man == main_chain[i])
         {
+            inserted.erase(main_chain[i]);
             continue;
         }
 
