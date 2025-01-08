@@ -23,7 +23,8 @@ class   PmergeMe
         Pair    *haveTournament(std::vector<Pair *> &players);
         std::vector<Pair *>::iterator   binarySearch(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, int target);
 
-        void    insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type end);
+        std::vector<Pair *>::iterator   insertOdd(std::vector<Pair *> &main_chain, Pair *odd_man);
+        void    insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type count, Pair *odd_man);
 
         void    insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size);
 

@@ -22,6 +22,7 @@ PmergeMe::PmergeMe()
 PmergeMe::PmergeMe(const PmergeMe &)
 {
 }
+
 PmergeMe    &PmergeMe::operator=(const PmergeMe &)
 {
     return *this;
@@ -33,35 +34,48 @@ PmergeMe::~PmergeMe()
 
 void    PmergeMe::rank(const std::vector<int> &players)
 {
-    std::vector<int>::const_iterator  it = players.begin();
-    std::vector<int>::const_iterator  ite = players.end();
-
     std::vector<Pair *>   initial_pairs;
-    while (it != ite)
+    std::vector<int>::size_type players_size = players.size();
+
+    for (std::vector<int>::size_type i = 0; i < players_size - 1; i += 2)
     {
-        initial_pairs.push_back(generateRankedPair(*it, *(it + 1)));
-        it += 2;
+        initial_pairs.push_back(generateRankedPair(players[i], players[i + 1]));
+        std::cout << "i: " << i << " players: " << players_size << std::endl;
     }
 
     Pair    *tree = haveTournament(initial_pairs);
 
+
     std::vector<Pair *> main_chain;
     main_chain.push_back(tree->w_prev);
     main_chain.push_back(tree->l_prev);
+    if (tree->odd)
+    {
+        insertOdd(main_chain, tree->odd);
+    }
 
     insertLosers(main_chain, players.size());
     printVector(main_chain);
 }
 
-void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type count)
+std::vector<Pair *>::iterator   PmergeMe::insertOdd(std::vector<Pair *> &main_chain, Pair *odd_man)
+{
+    // search and insert
+    std::vector<Pair *>::iterator   pos = binarySearch(main_chain, 0, odd_man->winner);
+    main_chain.insert(pos, odd_man->w_prev);
+    // 홀수는 짝이 없으니까 남은 선수들을 삽입할 때 이 홀수가 그들 중에 포함되지 않게 해야 한다.
+    // 한마디로 중복 레벨 다운 방지 필요.
+    return pos;
+}
+
+void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type count, Pair *odd_man = NULL)
 {
     std::vector<Pair *>::size_type  range = start + count;
-    printVector(main_chain);
 
     Pair    *loser_to_insert = NULL;
     for (std::vector<Pair *>::size_type i = start; i < range; ++i)
     {
-        if (loser_to_insert == main_chain[i])
+        if (loser_to_insert == main_chain[i] || odd_man == main_chain[i])
         {
             continue;
         }
@@ -79,9 +93,11 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
             pos = binarySearch(main_chain, i + 1, loser_to_insert->winner);
         }
 
+        unsigned long   inserted_pos_idx = pos - main_chain.begin();
+
         main_chain.insert(pos, loser_to_insert);
 
-        if (pos != main_chain.end() && static_cast<unsigned long>(pos - 1 - main_chain.begin()) < range)
+        if (pos != main_chain.end() && inserted_pos_idx < range)
         {
             ++range;
         }
@@ -90,7 +106,7 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
 
 void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size)
 {
-    if (main_chain.size() == target_size)
+    if (main_chain.size() >= target_size)
     {
         return;
     }
@@ -98,7 +114,7 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
     Pair    *odd_man = main_chain[0]->odd;
 
     int k = 0;
-    int before = main_chain.size();
+    std::vector<Pair *>::size_type  before = main_chain.size();
     std::vector<Pair *>::size_type  count = 0;
     for (std::vector<Pair *>::size_type i = main_chain.size(); i-- > 0; )
     {
@@ -118,22 +134,15 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
 
     if (odd_man)
     {
-        std::cout << "not now" << std::endl;
-        // search and insert
-        std::vector<Pair *>::iterator   pos = binarySearch(main_chain, 0, odd_man->winner);
-        main_chain.insert(pos, odd_man->w_prev);
-        // 홀수는 짝이 없으니까 남은 선수들을 삽입할 때 이 홀수가 그들 중에 포함되지 않게 해야 한다.
-        // 한마디로 중복 레벨 다운 방지 필요.
+        std::vector<Pair *>::iterator   pos = insertOdd(main_chain, odd_man);
+        if (pos != main_chain.end() && static_cast<unsigned long>(pos - main_chain.begin()) < before)
+        {
+            ++before;
+        }
+        odd_man = *pos;
     }
-    else
-    {
-        // 홀수가 없다면 그냥 처음부터 이전 삽입 위치까지 삽입하면 된다.
-        // main_chain.size() - (1 << (k - 1)) 을 하면 i를 복원 가능...하다고 생각했으나 size는 이미 달라졌다.
-        // + count로 해결?
-//        count = main_chain.size() - ((1 << ( k == 2 ? k - 2 : k - 1 )) + count);
-        count = before;
-        insertInRange(main_chain, 0, count);
-    }
+    count = before;
+    insertInRange(main_chain, 0, count, odd_man);
 
     insertLosers(main_chain, target_size);
 }
