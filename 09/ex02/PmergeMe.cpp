@@ -1,5 +1,6 @@
 #include "PmergeMe.hpp"
 #include <iostream>
+#include <set>
 
 void  printVector(const std::vector<Pair *> &v)
 {
@@ -8,8 +9,8 @@ void  printVector(const std::vector<Pair *> &v)
 
     while (it != ite)
     {
-          std::cout << (*it)->winner << " ";
-//        std::cout << "winner: " << (*it)->winner << " loser: " << (*it)->loser << std::endl;
+//          std::cout << (*it)->winner << " ";
+        std::cout << "winner: " << (*it)->winner << " loser: " << (*it)->loser << std::endl;
         ++it;
     }
     std::cout << std::endl;
@@ -45,7 +46,6 @@ void    PmergeMe::rank(std::vector<int> &players)
             odd_man = generateASingle(players.back());
         }
 
-//        std::cout << __LINE__ << std::endl;
         for (std::vector<int>::size_type i = 0; i < players_size - 1; i += 2)
         {
             Pair    *new_pair = generateRankedPair(players[i], players[i + 1]);
@@ -74,7 +74,6 @@ void    PmergeMe::rank(std::vector<int> &players)
         insertLosers(main_chain, players_size);
 
         std::vector<Pair *>::size_type  j = 0;
-//        std::cout << __LINE__ << std::endl;
         for (std::vector<Pair *>::size_type i = players_size; i-- > 0; )
         {
             players[j] = main_chain[i]->winner;
@@ -93,13 +92,16 @@ std::vector<Pair *>::iterator   PmergeMe::insertOdd(std::vector<Pair *> &main_ch
 
 void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type count, Pair *odd_man = NULL)
 {
+//    printVector(main_chain);
     std::vector<Pair *>::size_type  range = start + count;
 
+    std::set<Pair *>    inserted;
     Pair    *loser_to_insert = NULL;
-//    std::cout << __LINE__ << " " << count << std::endl;
     for (std::vector<Pair *>::size_type i = start; i < range; ++i)
     {
-        if (loser_to_insert == main_chain[i] || odd_man == main_chain[i])
+        // 바로 다음 칸에 들어간 경우가 아니라 그냥 range 안에 있기만 해도 안됨.
+        // 하아아 이런 짜치는 방법 밖에는 없다는 말인가
+        if (inserted.find(main_chain[i]) != inserted.end() || odd_man == main_chain[i])
         {
             continue;
         }
@@ -120,6 +122,7 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
         unsigned long   inserted_pos_idx = pos - main_chain.begin();
 
         main_chain.insert(pos, loser_to_insert);
+        inserted.insert(loser_to_insert);
 
         if (pos != main_chain.end() && inserted_pos_idx < range)
         {
@@ -130,7 +133,6 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
 
 void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size)
 {
-    std::cout << main_chain.size() << std::endl;
     if (main_chain.size() >= target_size)
     {
         return;
@@ -141,14 +143,12 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
     int k = 0;
     std::vector<Pair *>::size_type  before = main_chain.size();
     std::vector<Pair *>::size_type  count = 0;
-//    std::cout << __LINE__ << std::endl;
     for (std::vector<Pair *>::size_type i = main_chain.size(); i-- > 0; )
     {
         std::vector<Pair *>::size_type  revised_idx = main_chain.size() - i;
         if (revised_idx == (1 << k))
         {
             count = before - i;
-//            std::cout << __LINE__ << std::endl;
             insertInRange(main_chain, i, count);
             before = i;
             ++k;
@@ -170,7 +170,6 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
         odd_man = *pos;
     }
     count = before;
-//    std::cout << __LINE__ << " " << count << std::endl;
     insertInRange(main_chain, 0, count, odd_man);
 
     insertLosers(main_chain, target_size);
@@ -271,7 +270,6 @@ Pair    *PmergeMe::haveTournament(std::vector<Pair *> &players_in_pair)
         oddMan->w_prev = players_in_pair.back();
     }
 
-//    std::cout << __LINE__ << std::endl;
     for (std::vector<Pair *>::size_type i = 0; i < count; i += 2)
     {
         next_pairs.push_back(generateRankedPair(players_in_pair[i], players_in_pair[i + 1]));
