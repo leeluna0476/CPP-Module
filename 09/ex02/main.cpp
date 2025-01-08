@@ -1,60 +1,37 @@
 #include "PmergeMe.hpp"
 #include <iostream>
+#include <sstream>
 
-int	main(void)
+int	main(int ac, char **av)
 {
+    if (ac == 1)
+    {
+        std::cerr << "Please enter arguments" << std::endl;
+        return 1;
+    }
+
+    std::stringstream   ss;
+    std::vector<int>    vec;
+    std::cout << "Before: ";
+    for (int i = 1; i < ac; ++i)
+    {
+        int num;
+        ss.clear();
+        ss.str(av[i]);
+        ss >> num;
+        std::cout << num << " ";
+        vec.push_back(num);
+    }
+    std::cout << std::endl;
+
     PmergeMe    fj;
 
-    std::vector<int> v;
-
-    v.push_back(1);
-    v.push_back(4);
-    v.push_back(7);
-    v.push_back(2);
-    v.push_back(8);
-    v.push_back(3);
-    v.push_back(5);
-    v.push_back(6);
-    v.push_back(10);
-    v.push_back(9);
-    v.push_back(11);
-    v.push_back(12);
-    v.push_back(13);
-    v.push_back(14);
-    v.push_back(15);
-    v.push_back(16);
-    v.push_back(17);
-    v.push_back(18);
-    v.push_back(19);
-    v.push_back(20);
-    v.push_back(21);
-    v.push_back(22);
-    v.push_back(23);
-    v.push_back(24);
-    v.push_back(25);
-    v.push_back(26);
-    v.push_back(27);
-    v.push_back(28);
-    v.push_back(29);
-    v.push_back(30);
-    v.push_back(31);
-//    v.push_back(32);
-
-    std::cout << "Before: ";
-    for (std::vector<int>::size_type i = 0; i < v.size(); ++i)
-    {
-        std::cout << v[i] << " ";
-    }
-    std::cout << std::endl;
-
-    fj.rank(v);
+    fj.rank(vec);
 
     std::cout << "After:  ";
-    for (std::vector<int>::size_type i = 0; i < v.size(); ++i)
+    for (int i = 0; i < ac - 1; ++i)
     {
-        std::cout << v[i] << " ";
+        std::cout << vec[i] << " ";
     }
     std::cout << std::endl;
-
-	return 0;
 }

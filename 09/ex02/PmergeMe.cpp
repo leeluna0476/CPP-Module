@@ -37,36 +37,47 @@ void    PmergeMe::rank(std::vector<int> &players)
     std::vector<Pair *>   initial_pairs;
     std::vector<int>::size_type players_size = players.size();
 
-    Pair    *odd_man = NULL;
-    if (players_size % 2)
+    if (players_size > 1)
     {
-        odd_man = generateASingle(players.back());
-    }
+        Pair    *odd_man = NULL;
+        if (players_size % 2)
+        {
+            odd_man = generateASingle(players.back());
+        }
 
-    for (std::vector<int>::size_type i = 0; i < players_size - 1; i += 2)
-    {
-        Pair    *new_pair = generateRankedPair(players[i], players[i + 1]);
-        new_pair->odd = odd_man;
-        initial_pairs.push_back(new_pair);
-    }
+        for (std::vector<int>::size_type i = 0; i < players_size - 1; i += 2)
+        {
+            Pair    *new_pair = generateRankedPair(players[i], players[i + 1]);
+            new_pair->odd = odd_man;
+            initial_pairs.push_back(new_pair);
+        }
 
-    Pair    *tree = haveTournament(initial_pairs);
+        Pair    *tree = haveTournament(initial_pairs);
+        std::vector<Pair *> main_chain;
+        if (tree->w_prev)
+        {
+            main_chain.push_back(tree->w_prev);
+            main_chain.push_back(tree->l_prev);
+        }
+        else
+        {
+            main_chain.push_back(generateASingle(tree->winner));
+            main_chain.push_back(generateASingle(tree->loser));
+        }
 
-    std::vector<Pair *> main_chain;
-    main_chain.push_back(tree->w_prev);
-    main_chain.push_back(tree->l_prev);
-    if (tree->odd)
-    {
-        insertOdd(main_chain, tree->odd);
-    }
+        if (tree->odd)
+        {
+            insertOdd(main_chain, tree->odd);
+        }
 
-    insertLosers(main_chain, players_size);
+        insertLosers(main_chain, players_size);
 
-    std::vector<Pair *>::size_type  j = 0;
-    for (std::vector<Pair *>::size_type i = players_size; i-- > 0; )
-    {
-        players[j] = main_chain[i]->winner;
-        ++j;
+        std::vector<Pair *>::size_type  j = 0;
+        for (std::vector<Pair *>::size_type i = players_size; i-- > 0; )
+        {
+            players[j] = main_chain[i]->winner;
+            ++j;
+        }
     }
 }
 
