@@ -12,15 +12,24 @@ int	main(int ac, char **av)
 
     std::stringstream   ss;
     std::vector<int>    vec;
-    std::cout << "Before: ";
     for (int i = 1; i < ac; ++i)
     {
         int num;
         ss.clear();
         ss.str(av[i]);
         ss >> num;
-        std::cout << num << " ";
+        if (ss.fail())
+        {
+            std::cerr << "Please enter valid arguments: integers" << std::endl;
+            return 1;
+        }
+
         vec.push_back(num);
+    }
+    std::cout << "Before:  ";
+    for (std::vector<int>::size_type i = 0; i < vec.size(); ++i)
+    {
+        std::cout << vec[i] << " ";
     }
     std::cout << std::endl;
 
@@ -28,10 +37,10 @@ int	main(int ac, char **av)
 
     fj.rank(vec);
 
-    std::cout << "After:  ";
-    for (int i = 0; i < ac - 1; ++i)
-    {
-        std::cout << vec[i] << " ";
-    }
-    std::cout << std::endl;
+//    std::cout << "After:  ";
+//    for (std::vector<int>::size_type i = 0; i < vec.size(); ++i)
+//    {
+//        std::cout << vec[i] << " ";
+//    }
+//    std::cout << std::endl;
 }

@@ -45,6 +45,7 @@ void    PmergeMe::rank(std::vector<int> &players)
             odd_man = generateASingle(players.back());
         }
 
+//        std::cout << __LINE__ << std::endl;
         for (std::vector<int>::size_type i = 0; i < players_size - 1; i += 2)
         {
             Pair    *new_pair = generateRankedPair(players[i], players[i + 1]);
@@ -73,6 +74,7 @@ void    PmergeMe::rank(std::vector<int> &players)
         insertLosers(main_chain, players_size);
 
         std::vector<Pair *>::size_type  j = 0;
+//        std::cout << __LINE__ << std::endl;
         for (std::vector<Pair *>::size_type i = players_size; i-- > 0; )
         {
             players[j] = main_chain[i]->winner;
@@ -94,6 +96,7 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
     std::vector<Pair *>::size_type  range = start + count;
 
     Pair    *loser_to_insert = NULL;
+//    std::cout << __LINE__ << " " << count << std::endl;
     for (std::vector<Pair *>::size_type i = start; i < range; ++i)
     {
         if (loser_to_insert == main_chain[i] || odd_man == main_chain[i])
@@ -127,7 +130,8 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
 
 void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size)
 {
-    if (main_chain.size() == target_size)
+    std::cout << main_chain.size() << std::endl;
+    if (main_chain.size() >= target_size)
     {
         return;
     }
@@ -137,12 +141,14 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
     int k = 0;
     std::vector<Pair *>::size_type  before = main_chain.size();
     std::vector<Pair *>::size_type  count = 0;
+//    std::cout << __LINE__ << std::endl;
     for (std::vector<Pair *>::size_type i = main_chain.size(); i-- > 0; )
     {
         std::vector<Pair *>::size_type  revised_idx = main_chain.size() - i;
         if (revised_idx == (1 << k))
         {
             count = before - i;
+//            std::cout << __LINE__ << std::endl;
             insertInRange(main_chain, i, count);
             before = i;
             ++k;
@@ -164,6 +170,7 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
         odd_man = *pos;
     }
     count = before;
+//    std::cout << __LINE__ << " " << count << std::endl;
     insertInRange(main_chain, 0, count, odd_man);
 
     insertLosers(main_chain, target_size);
@@ -264,6 +271,7 @@ Pair    *PmergeMe::haveTournament(std::vector<Pair *> &players_in_pair)
         oddMan->w_prev = players_in_pair.back();
     }
 
+//    std::cout << __LINE__ << std::endl;
     for (std::vector<Pair *>::size_type i = 0; i < count; i += 2)
     {
         next_pairs.push_back(generateRankedPair(players_in_pair[i], players_in_pair[i + 1]));
