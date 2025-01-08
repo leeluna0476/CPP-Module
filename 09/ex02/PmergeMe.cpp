@@ -8,7 +8,7 @@ void  printVector(const std::vector<Pair *> &v)
 
     while (it != ite)
     {
-        std::cout << (*it)->winner << " ";
+          std::cout << (*it)->winner << " ";
 //        std::cout << "winner: " << (*it)->winner << " loser: " << (*it)->loser << std::endl;
         ++it;
     }
@@ -37,14 +37,22 @@ void    PmergeMe::rank(const std::vector<int> &players)
     std::vector<Pair *>   initial_pairs;
     std::vector<int>::size_type players_size = players.size();
 
+    Pair    *odd_man = NULL;
+    if (players_size % 2)
+    {
+        odd_man = generateASingle(players.back());
+    }
+
     for (std::vector<int>::size_type i = 0; i < players_size - 1; i += 2)
     {
-        initial_pairs.push_back(generateRankedPair(players[i], players[i + 1]));
-        std::cout << "i: " << i << " players: " << players_size << std::endl;
+        Pair    *new_pair = generateRankedPair(players[i], players[i + 1]);
+        new_pair->odd = odd_man;
+        initial_pairs.push_back(new_pair);
     }
 
     Pair    *tree = haveTournament(initial_pairs);
 
+//    printPairTree(tree);
 
     std::vector<Pair *> main_chain;
     main_chain.push_back(tree->w_prev);
@@ -60,11 +68,9 @@ void    PmergeMe::rank(const std::vector<int> &players)
 
 std::vector<Pair *>::iterator   PmergeMe::insertOdd(std::vector<Pair *> &main_chain, Pair *odd_man)
 {
-    // search and insert
     std::vector<Pair *>::iterator   pos = binarySearch(main_chain, 0, odd_man->winner);
-    main_chain.insert(pos, odd_man->w_prev);
-    // 홀수는 짝이 없으니까 남은 선수들을 삽입할 때 이 홀수가 그들 중에 포함되지 않게 해야 한다.
-    // 한마디로 중복 레벨 다운 방지 필요.
+    Pair    *odd_to_insert = odd_man->w_prev ? odd_man->w_prev : odd_man;
+    main_chain.insert(pos, odd_to_insert);
     return pos;
 }
 
@@ -106,6 +112,7 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
 
 void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size)
 {
+//    printVector(main_chain);
     if (main_chain.size() >= target_size)
     {
         return;
@@ -134,8 +141,9 @@ void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair
 
     if (odd_man)
     {
+        std::vector<Pair *>::iterator   begin = main_chain.begin();
         std::vector<Pair *>::iterator   pos = insertOdd(main_chain, odd_man);
-        if (pos != main_chain.end() && static_cast<unsigned long>(pos - main_chain.begin()) < before)
+        if (pos != main_chain.end() && static_cast<unsigned long>(pos - begin) < before)
         {
             ++before;
         }

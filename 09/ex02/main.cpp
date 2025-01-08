@@ -37,7 +37,7 @@ int	main(void)
     v.push_back(29);
     v.push_back(30);
     v.push_back(31);
-//    v.push_back(32);
+    v.push_back(32);
 
     fj.rank(v);
 	return 0;
