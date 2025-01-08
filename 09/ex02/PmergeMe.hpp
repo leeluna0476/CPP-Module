@@ -36,7 +36,7 @@ class   PmergeMe
         PmergeMe    &operator=(const PmergeMe &);
         ~PmergeMe();
 
-        void    rank(const std::vector<int> &players);
+        void    rank(std::vector<int> &players);
 };
 
 #endif

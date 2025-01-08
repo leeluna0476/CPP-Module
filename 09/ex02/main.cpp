@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include <iostream>
 
 int	main(void)
 {
@@ -37,8 +38,23 @@ int	main(void)
     v.push_back(29);
     v.push_back(30);
     v.push_back(31);
-    v.push_back(32);
+//    v.push_back(32);
+
+    std::cout << "Before: ";
+    for (std::vector<int>::size_type i = 0; i < v.size(); ++i)
+    {
+        std::cout << v[i] << " ";
+    }
+    std::cout << std::endl;
 
     fj.rank(v);
+
+    std::cout << "After:  ";
+    for (std::vector<int>::size_type i = 0; i < v.size(); ++i)
+    {
+        std::cout << v[i] << " ";
+    }
+    std::cout << std::endl;
+
 	return 0;
 }

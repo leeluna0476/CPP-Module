@@ -32,7 +32,7 @@ PmergeMe::~PmergeMe()
 {
 }
 
-void    PmergeMe::rank(const std::vector<int> &players)
+void    PmergeMe::rank(std::vector<int> &players)
 {
     std::vector<Pair *>   initial_pairs;
     std::vector<int>::size_type players_size = players.size();
@@ -52,8 +52,6 @@ void    PmergeMe::rank(const std::vector<int> &players)
 
     Pair    *tree = haveTournament(initial_pairs);
 
-//    printPairTree(tree);
-
     std::vector<Pair *> main_chain;
     main_chain.push_back(tree->w_prev);
     main_chain.push_back(tree->l_prev);
@@ -62,8 +60,14 @@ void    PmergeMe::rank(const std::vector<int> &players)
         insertOdd(main_chain, tree->odd);
     }
 
-    insertLosers(main_chain, players.size());
-    printVector(main_chain);
+    insertLosers(main_chain, players_size);
+
+    std::vector<Pair *>::size_type  j = 0;
+    for (std::vector<Pair *>::size_type i = players_size; i-- > 0; )
+    {
+        players[j] = main_chain[i]->winner;
+        ++j;
+    }
 }
 
 std::vector<Pair *>::iterator   PmergeMe::insertOdd(std::vector<Pair *> &main_chain, Pair *odd_man)
@@ -112,8 +116,7 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
 
 void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size)
 {
-//    printVector(main_chain);
-    if (main_chain.size() >= target_size)
+    if (main_chain.size() == target_size)
     {
         return;
     }
