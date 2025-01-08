@@ -90,8 +90,7 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
 
 void    PmergeMe::insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size)
 {
-//    printVector(main_chain);
-    if (main_chain.size() >= target_size)
+    if (main_chain.size() == target_size)
     {
         return;
     }
