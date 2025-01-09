@@ -199,9 +199,13 @@ void    PmergeMe::insertInRange(std::vector<Pair *> &main_chain, std::vector<Pai
     {
         // 바로 다음 칸에 들어간 경우가 아니라 그냥 range 안에 있기만 해도 안됨.
         // 하아아 이런 짜치는 방법 밖에는 없다는 말인가
-        if (inserted.find(main_chain[i]) != inserted.end() || odd_man == main_chain[i])
+        if (inserted.find(main_chain[i]) != inserted.end())
         {
             inserted.erase(main_chain[i]);
+            continue;
+        }
+        else if (odd_man == main_chain[i])
+        {
             continue;
         }
 
@@ -240,9 +244,13 @@ void    PmergeMe::insertInRange(std::deque<Pair *> &main_chain, std::deque<Pair 
     {
         // 바로 다음 칸에 들어간 경우가 아니라 그냥 range 안에 있기만 해도 안됨.
         // 하아아 이런 짜치는 방법 밖에는 없다는 말인가
-        if (inserted.find(main_chain[i]) != inserted.end() || odd_man == main_chain[i])
+        if (inserted.find(main_chain[i]) != inserted.end())
         {
             inserted.erase(main_chain[i]);
+            continue;
+        }
+        else if (odd_man == main_chain[i])
+        {
             continue;
         }
 

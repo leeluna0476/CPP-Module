@@ -34,9 +34,9 @@ int	main(int ac, char **av)
         ss.clear();
         ss.str(av[i]);
         ss >> num;
-        if (ss.fail())
+        if (ss.fail() || num <= 0)
         {
-            std::cerr << "Please enter valid arguments: integers" << std::endl;
+            std::cerr << "Please enter valid arguments: positive integers" << std::endl;
             return 1;
         }
 
