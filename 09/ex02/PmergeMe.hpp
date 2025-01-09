@@ -22,7 +22,6 @@ class   PmergeMe
 
         std::vector<Pair *>::iterator   binarySearch(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, int target);
         std::deque<Pair *>::iterator   binarySearch(std::deque<Pair *> &main_chain, std::deque<Pair *>::size_type start, int target);
-//        std::vector<Pair *>::iterator   insertOdd(std::vector<Pair *> &main_chain, Pair *odd_man);
         std::vector<Pair *>::size_type   insertOdd(std::vector<Pair *> &main_chain, Pair *odd_man);
         std::deque<Pair *>::size_type   insertOdd(std::deque<Pair *> &main_chain, Pair *odd_man);
         void    insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type count, Pair *odd_man);
