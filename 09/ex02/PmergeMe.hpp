@@ -2,7 +2,7 @@
 # define PMERGEME_HPP
 
 # include <vector>
-# include <utility>
+# include <deque>
 
 typedef struct _pair
 {
@@ -20,15 +20,18 @@ class   PmergeMe
         Pair    *generateRankedPair(int p1, int p2);
         Pair    *generateASingle(int p1);
 
-        Pair    *haveTournament(std::vector<Pair *> &players);
         std::vector<Pair *>::iterator   binarySearch(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, int target);
-
-        std::vector<Pair *>::iterator   insertOdd(std::vector<Pair *> &main_chain, Pair *odd_man);
+        std::deque<Pair *>::iterator   binarySearch(std::deque<Pair *> &main_chain, std::deque<Pair *>::size_type start, int target);
+//        std::vector<Pair *>::iterator   insertOdd(std::vector<Pair *> &main_chain, Pair *odd_man);
+        std::vector<Pair *>::size_type   insertOdd(std::vector<Pair *> &main_chain, Pair *odd_man);
+        std::deque<Pair *>::size_type   insertOdd(std::deque<Pair *> &main_chain, Pair *odd_man);
         void    insertInRange(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type start, std::vector<Pair *>::size_type count, Pair *odd_man);
+        void    insertInRange(std::deque<Pair *> &main_chain, std::deque<Pair *>::size_type start, std::deque<Pair *>::size_type count, Pair *odd_man);
 
         void    insertLosers(std::vector<Pair *> &main_chain, std::vector<Pair *>::size_type target_size);
-
-        void    printPairTree(Pair *head);
+        void    insertLosers(std::deque<Pair *> &main_chain, std::deque<Pair *>::size_type target_size);
+        Pair    *haveTournament(std::vector<Pair *> &players);
+        Pair    *haveTournament(std::deque<Pair *> &players);
 
     public:
         PmergeMe();
@@ -37,6 +40,7 @@ class   PmergeMe
         ~PmergeMe();
 
         void    rank(std::vector<int> &players);
+        void    rank(std::deque<int> &players);
 };
 
 #endif

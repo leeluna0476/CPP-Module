@@ -3,6 +3,20 @@
 #include <sstream>
 #include <algorithm>
 
+template <typename Container>
+static void printContainer(const Container &c)
+{
+    typename Container::const_iterator   it = c.begin();
+    typename Container::const_iterator   ite = c.end();
+
+    while (it != ite)
+    {
+        std::cout << *it << " ";
+        ++it;
+    }
+    std::cout << std::endl;
+}
+
 int	main(int ac, char **av)
 {
     if (ac == 1)
@@ -13,6 +27,7 @@ int	main(int ac, char **av)
 
     std::stringstream   ss;
     std::vector<int>    vec;
+    std::deque<int>     deq;
     for (int i = 1; i < ac; ++i)
     {
         int num;
@@ -26,32 +41,20 @@ int	main(int ac, char **av)
         }
 
         vec.push_back(num);
+        deq.push_back(num);
     }
-    std::cout << "Before:  ";
-    for (std::vector<int>::size_type i = 0; i < vec.size(); ++i)
-    {
-        std::cout << vec[i] << " ";
-    }
-    std::cout << std::endl;
-
-    std::vector<int>    vec2 = vec;
 
     PmergeMe    fj;
 
+    std::cout << "[vector] Before: ";
+    printContainer(vec);
     fj.rank(vec);
+    std::cout << "[vector] After:  ";
+    printContainer(vec);
 
-    std::cout << "After:        ";
-    for (std::vector<int>::size_type i = 0; i < vec.size(); ++i)
-    {
-        std::cout << vec[i] << " ";
-    }
-    std::cout << std::endl;
-
-    std::sort(vec2.begin(), vec2.end());
-    std::cout << "std::sort():  ";
-    for (std::vector<int>::size_type i = 0; i < vec2.size(); ++i)
-    {
-        std::cout << vec2[i] << " ";
-    }
-    std::cout << std::endl;
+    std::cout << "[deque]  Before: ";
+    printContainer(deq);
+    fj.rank(deq);
+    std::cout << "[deque]  After:  ";
+    printContainer(deq);
 }
