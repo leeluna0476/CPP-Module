@@ -2,7 +2,7 @@
 
 NAME=PmergeMe
 CXX=c++
-CXXFLAGS=-Wall -Wextra -Werror --std=c++98 -fsanitize=address
+CXXFLAGS=-Wall -Wextra -Werror --std=c++98
 CPPFLAGS=-MMD -MP -MF $(DEPS_DIR)/$*.d
 SRCS= \
 	 main.cpp \
@@ -17,6 +17,19 @@ DEPS_DIR=.deps
 DEPS=$(addprefix $(DEPS_DIR)/, $(SRCS:.cpp=.d))
 -include $(DEPS)
 
+ifeq ($(MAKECMDGOALS),deque)
+	CPPFLAGS+=-D DEQUE
+endif
+
+ifeq ($(MAKECMDGOALS),debug)
+	CXXFLAGS+=-g3 -fsanitize=address
+endif
+
+ifeq ($(MAKECMDGOALS),debug deque)
+	CPPFLAGS+=-D DEQUE
+	CXXFLAGS+=-g3 -fsanitize=address
+endif
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -30,6 +43,10 @@ $(OBJS_DIR):
 
 $(DEPS_DIR):
 	mkdir -p $(DEPS_DIR)
+
+deque: all
+debug: all
+debug deque: all
 
 clean:
 	$(RM) $(OBJS) $(DEPS)

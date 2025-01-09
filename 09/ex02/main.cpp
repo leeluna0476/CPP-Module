@@ -1,7 +1,8 @@
 #include "PmergeMe.hpp"
 #include <iostream>
 #include <sstream>
-#include <algorithm>
+#include <sys/time.h>
+#include <iomanip>
 
 template <typename Container>
 static void printContainer(const Container &c)
@@ -46,15 +47,34 @@ int	main(int ac, char **av)
 
     PmergeMe    fj;
 
+#ifndef DEQUE
     std::cout << "[vector] Before: ";
     printContainer(vec);
-    fj.rank(vec);
-    std::cout << "[vector] After:  ";
-    printContainer(vec);
-
+#else
     std::cout << "[deque]  Before: ";
     printContainer(deq);
+#endif
+
+    struct timeval  begin;
+    gettimeofday(&begin, NULL);
+    fj.rank(vec);
+    struct timeval  end;
+    gettimeofday(&end, NULL);
+    double  time_vec = end.tv_usec - begin.tv_usec;
+
+    gettimeofday(&begin, NULL);
     fj.rank(deq);
+    gettimeofday(&end, NULL);
+    double  time_deq = end.tv_usec - begin.tv_usec;
+
+#ifndef DEQUE
+    std::cout << "[vector] After:  ";
+    printContainer(vec);
+#else
     std::cout << "[deque]  After:  ";
     printContainer(deq);
+#endif
+
+    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << std::fixed << time_vec << " us" << std::endl;
+    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque  : " << time_deq << " us" << std::endl;
 }
