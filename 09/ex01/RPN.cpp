@@ -2,6 +2,7 @@
 #include <iostream>
 #include <utility>
 #include <sstream>
+#include <exception>
 
 RPN::RPN()
 {
@@ -57,6 +58,11 @@ static int  mul(int a, int b)
 
 static int  _div(int a, int b)
 {
+	if (b == 0)
+	{
+		throw std::logic_error("division by zero");
+	}
+
     return a / b;
 }
 
