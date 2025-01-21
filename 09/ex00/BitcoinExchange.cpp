@@ -244,14 +244,24 @@ void    BitcoinExchange::exchangeBitcoin(std::ifstream &infile)
         before = line;
     }
 
+	// if data.csv is empty
+	if (!line.size() && !before.size())
+	{
+		std::cerr << "Cannot get an exchange rate" << std::endl;
+		return;
+	}
 
     double   exchange_rate;
-    std::string::size_type  pos = before.find(',', 0);
+    std::string target;
 
-    std::string target = line.substr(pos + 1);
+    std::string::size_type  pos = before.find(',', 0);
     if (data->first != line.substr(0, pos))
     {
         target = before.substr(pos + 1);
+    }
+    else
+    {
+        target = line.substr(pos + 1);
     }
 
     std::stringstream   ss(target);
